@@ -212,7 +212,8 @@ textarea#raw{width:100%;min-height:140px;padding:11px;border:1px solid var(--ln)
 .nscr{display:block;position:fixed;inset:0;background:rgba(18,48,31,.42);z-index:55;opacity:0;pointer-events:none;transition:.2s}
 .nscr.on{opacity:1;pointer-events:auto}
 .top{padding:10px 13px;gap:9px;flex-wrap:wrap}
-.cr{flex:1;min-width:0;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crp{display:none}
+.cr{flex:1;min-width:0;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sr{order:5;width:100%;margin-left:0}.sr input{width:100%;padding:11px 12px}
 .rp{font-size:11px;gap:5px}.rp select{padding:8px 7px}
 #reset{padding:8px 10px;font-size:11.5px}
@@ -265,7 +266,7 @@ textarea#raw{min-height:170px}
 <div class="sf"><div class="avt">СС</div><div><b>Стас С.</b><span id="rlbl">Адміністратор</span></div></div>
 </aside>
 <div>
-<header class="top"><button class="btn bs burg" id="burg" aria-label="Меню">&#8801;</button><div class="cr">ZEMLIA.UA / <b id="crumb">Блок 1 · Купівля землі</b></div>
+<header class="top"><button class="btn bs burg" id="burg" aria-label="Меню">&#8801;</button><div class="cr"><span class="crp">ZEMLIA.UA / </span><b id="crumb">Блок 1 · Купівля землі</b></div>
 <div class="sr"><input placeholder="Кадастровий номер, ПІБ, телефон..."></div>
 <div class="rp">Роль:<select id="role"><option value="admin">admin</option><option value="buyer">buyer_agent</option><option value="sales">sales_agent</option><option value="asset">asset_manager</option></select></div>
 <button class="btn bs" id="reset">Скинути демо</button></header>
