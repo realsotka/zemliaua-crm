@@ -156,6 +156,23 @@ textarea#raw{width:100%;min-height:140px;padding:11px;border:1px solid var(--ln)
 .ownh b{font-size:13px;flex:1}.ownh .sh{font-size:11px;color:var(--mu);background:#fff;padding:3px 8px;border-radius:20px;font-weight:600}
 .ownb{padding:12px 13px}
 .addo{width:100%;border:1px dashed #c9d3c8;border-radius:11px;padding:13px;text-align:center;font-size:12.5px;color:var(--mu);font-weight:600}
+.addo:hover{border-color:var(--g6);color:var(--g7)}
+.ownh .del{width:24px;height:24px;border-radius:7px;color:var(--m2);font-size:13px;display:grid;place-items:center;border:1px solid transparent}
+.ownh .del:hover{background:var(--rb);border-color:var(--rd2);color:var(--rd)}
+.ownh .del[disabled]{opacity:.3;cursor:not-allowed}
+.oit{border:1px solid var(--ln);border-radius:10px;margin-bottom:7px;overflow:hidden;background:#fbfcfa}
+.oit.op{background:#fff;border-color:#cfe3d6}
+.oith{display:flex;align-items:center;gap:9px;width:100%;padding:9px 11px;text-align:left}
+.oith .n{width:21px;height:21px;border-radius:6px;background:var(--g7);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;flex-shrink:0}
+.oith b{font-size:12.5px}
+.oith .sh{font-size:10.5px;color:var(--mu);background:#eff2ec;padding:2px 7px;border-radius:20px;font-weight:600}
+.oith .em{font-size:10px;background:var(--rb);color:var(--rd);padding:2px 7px;border-radius:5px;font-weight:600}
+.oith .ch{margin-left:auto;color:var(--m2);font-size:11px;font-weight:600;transition:.15s}
+.oit.op .ch{transform:rotate(180deg)}
+.oitb{display:none;padding:0 11px 11px}.oit.op .oitb{display:block}
+.osum{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mu);margin:2px 0 9px}
+.osum b{font-size:12.5px;color:var(--tx)}
+.osum button{margin-left:auto;font-size:11.5px;color:var(--g7);font-weight:600;text-decoration:underline}
 .gate{border:1px solid #e6d5a8;background:#fdf9ef;border-radius:11px;padding:13px;margin-top:18px}
 .gate b{font-size:12.5px;color:#8a5f10;display:block;margin-bottom:8px}
 .gate ul{list-style:none;font-size:12.5px;line-height:1.9}
@@ -165,6 +182,15 @@ textarea#raw{width:100%;min-height:140px;padding:11px;border:1px solid var(--ln)
 .doc .e.i{background:#e9f1f7;color:var(--bl)}
 .doc b{font-size:12.5px;display:block}.doc small{color:var(--mu);font-size:11px}
 .doc .sc{margin-left:auto;font-size:10.5px;color:var(--mu);background:#eff2ec;padding:3px 8px;border-radius:6px}
+.doc .sc.man{background:#fbf1dc;color:#8a5f10;font-weight:600}
+.doc .mid{flex:1;min-width:0}
+.doc .mid small{display:block;margin-top:2px}
+.doc select{border:1px solid transparent;background:transparent;font-size:12.5px;font-weight:700;padding:1px 3px;border-radius:6px;max-width:100%;outline:none}
+.doc select:hover{border-color:var(--ln);background:#fff}
+.doc select.no{color:var(--rd);border-color:var(--rd2);background:var(--rb)}
+.doc .rmf{color:var(--m2);font-size:13px;padding:0 3px}.doc .rmf:hover{color:var(--rd)}
+.up{width:100%;border:1px dashed #c9d3c8;border-radius:10px;padding:12px;text-align:center;font-size:12.5px;color:var(--mu);font-weight:600}
+.up:hover{border-color:var(--g6);color:var(--g7);background:#f7f9f5}
 .act{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--ln)}
 .act .ai{width:27px;height:27px;border-radius:50%;background:#eff2ec;display:grid;place-items:center;font-size:11px;flex-shrink:0}
 .act .ai.t{background:#e9f1f7;color:var(--bl)}
@@ -373,12 +399,12 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="drb">
 <div class="pane on" id="p-info"></div>
 <div class="pane" id="p-own"><div class="fs">Власники паю<span class="ln2"></span><em id="oW" style="display:none"></em></div><div id="oL"></div><button class="addo" id="aO"></button>
-<div class="hint">Поки власник один — його дані живуть у блоці «Інформація про продавця». З другого власника кожен отримує окрему картку з паспортом, ІПН, сімейним станом, місцем роботи й часткою. Максимум 6.</div></div>
-<div class="pane" id="p-docs"><div class="fs">Документи<span class="ln2"></span></div>
-<div class="doc"><div class="e">PDF</div><div><b>Витяг з ДЗК</b><small>2,4 МБ · 12.08.2026</small></div><span class="sc">Telegram</span></div>
-<div class="doc"><div class="e">PDF</div><div><b>Витяг про право власності</b><small>1,8 МБ · 12.08.2026</small></div><span class="sc">Telegram</span></div>
-<div class="doc"><div class="e i">JPG</div><div><b>Паспорт, стор. 1-2</b><small>3,1 МБ · 14.08.2026</small></div><span class="sc">Mini App</span></div>
-<div class="hint">Тип документа — окреме поле, а не назва файлу. Файли віддаються через підписане посилання на 15 хвилин, кожне відкриття потрапляє в аудит-лог.</div></div>
+<div class="hint">Додати власника — кнопкою вище, видалити — хрестиком у заголовку картки. Поки власник один — його дані живуть у блоці «Інформація про продавця». З другого власника кожен отримує окрему картку з паспортом, ІПН, сімейним станом, місцем роботи й часткою. Максимум 6.</div></div>
+<div class="pane" id="p-docs"><div class="fs">Документи<span class="ln2"></span><em id="dW" style="display:none"></em></div>
+<div id="dL"></div>
+<button class="up" id="upB">Завантажити документ вручну</button>
+<input type="file" id="upI" multiple style="display:none">
+<div class="hint">Тип документа — окреме поле, а не назва файлу, й змінюється списком у рядку. Вручну завантажені файли позначаються окремо. Файли віддаються через підписане посилання на 15 хвилин, кожне відкриття потрапляє в аудит-лог.</div></div>
 <div class="pane" id="p-act">
 <div class="act"><div class="ai t">TG</div><div><p><b>О. Панасюк</b>: власник готовий на 180, просить розрахунок у нотаріуса</p><small>сьогодні 12:04 · дзеркалено з Telegram</small></div></div>
 <div class="act"><div class="ai">e</div><div><p>Заповнено <b>НГО</b> — 62 400 ₴</p><small>сьогодні 11:22 · О. Панасюк</small></div></div>
@@ -416,7 +442,13 @@ var SN={1:"Аналітика ділянок",2:"Контрактування",3
 var D=load(),cur="1",just=[];
 function load(){try{var j=localStorage.getItem("zemlia1");if(j)return JSON.parse(j)}catch(e){}return JSON.parse(JSON.stringify(SEED))}
 function save(){try{localStorage.setItem("zemlia1",JSON.stringify(D))}catch(e){}}
-function vis(d){return F.filter(function(f){return f.s<=d.s})}
+var PERS=["Серія і номер паспорта","ІПН","Сімейний стан","Місце роботи"];
+function multi(d){return (d.owners||[]).length>1}
+function pl(n,a,b,c){var m=n%100,u=n%10;return n+" "+((m>=11&&m<=14)?c:(u===1?a:((u>=2&&u<=4)?b:c)))}
+function plE(n){return pl(n,"порожнє поле","порожні поля","порожніх полів")}
+function plO(n){return pl(n,"власник паю","власники паю","власників паю")}
+function plF(n){return pl(n,"файл","файли","файлів")}
+function vis(d){return F.filter(function(f){return f.s<=d.s&&!(multi(d)&&PERS.indexOf(f.k)>=0)})}
 function miss(d){return vis(d).filter(function(f){return !d.v[f.k]}).length}
 function omiss(d){var m=0;(d.owners||[]).forEach(function(o){["p","i","ms","w"].forEach(function(k){if(!o[k])m++})});return m}
 function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("on")},3400)}
@@ -427,7 +459,7 @@ if(d.s===3&&d.v["Статус ділянки"])t.push('<span class="tg b">'+d.v[
 else if(d.v["Орендар"]&&d.v["Орендар"]!=="—")t.push('<span class="tg b">'+d.v["Орендар"]+'</span>');
 if((d.owners||[]).length>1)t.push('<span class="tg a">'+d.owners.length+' власники</span>');
 if(m)t.push('<span class="tg r">'+m+' порожніх</span>');
-return '<div class="pc '+(m?"ms":"")+'" draggable="true" data-id="'+id+'"><div class="kd">'+d.kad+'</div><div class="pb">'+d.pib+'</div><div class="pm">'+t.join("")+'</div><div class="pf"><span class="pr cost '+(pr?"":"no")+'">'+(pr||"ціни ще немає")+'</span><span class="dc">'+d.docs+' фал.</span><span class="w2">'+d.mgr+'</span></div><div class="fl"><div class="br"><i class="'+(m?"w":"")+'" style="width:'+fill+'%"></i></div><span class="'+(m?"w":"")+'">'+(tot-miss(d))+"/"+tot+'</span></div></div>'}
+return '<div class="pc '+(m?"ms":"")+'" draggable="true" data-id="'+id+'"><div class="kd">'+d.kad+'</div><div class="pb">'+d.pib+'</div><div class="pm">'+t.join("")+'</div><div class="pf"><span class="pr cost '+(pr?"":"no")+'">'+(pr||"ціни ще немає")+'</span><span class="dc">'+nFiles(d)+' фал.</span><span class="w2">'+d.mgr+'</span></div><div class="fl"><div class="br"><i class="'+(m?"w":"")+'" style="width:'+fill+'%"></i></div><span class="'+(m?"w":"")+'">'+(tot-miss(d))+"/"+tot+'</span></div></div>'}
 function kan(){var meta={1:"Усі ділянки з ТГ-чату",2:"Намір зафіксовано",3:"передача в Блок 2"},h="",tm=0,ar={};
 for(var s=1;s<=3;s++){var ids=Object.keys(D).filter(function(i){return D[i].s===s});
 ar[s]=ids.reduce(function(a,i){return a+(parseFloat((D[i].v["Площа ділянки"]||"0").replace(",","."))||0)},0);
@@ -461,9 +493,13 @@ var gm=fs.filter(function(f){return !d.v[f.k]}).length;
 h+='<div class="fs">'+g+'<span class="ln2"></span>'+(gm?"<em>"+gm+" порожніх</em>":"")+'</div><div class="g2">';
 fs.forEach(function(f){var v=d.v[f.k]||"";
 h+='<div class="fld '+((f.wd||f.t==="area")?"wd ":"")+(v?"":"emp ")+(just.indexOf(f.k)>=0?"js":"")+'"><label>'+f.k+" "+bdg(f)+(f.lock?'<span class="lk">обмежений доступ</span>':"")+'</label>'+inp(f,v)+'</div>'});
-if(gi===0&&d.s>=2){var n=(d.owners||[]).length,om=omiss(d);
-h+='<div class="fld wd" data-own="1" style="cursor:pointer"><label>Власники паю <span class="s2 t2">етап 2</span></label><b style="font-size:13px">'+(n>1?n+" власники · окремі картки у вкладці «Власники»":"1 власник · дані з блоку продавця")+(om?' <span style="color:#b5453b">· '+om+' полів порожні</span>':"")+'</b></div>'}
-h+='</div>'});
+h+='</div>';
+if(gi===0&&d.s>=2){var L=d.owners||[],n=L.length,om=omiss(d);
+if(n>1){h+='<div class="osum"><b>'+plO(n)+'</b><span>персональні дані — у картках нижче</span>'+(om?'<em style="font-style:normal;color:#b5453b;font-weight:600">'+plE(om)+'</em>':"")+'<button data-own="1">відкрити вкладку «Власники»</button></div><div id="sOwn">'+L.map(function(o,i){
+var mm=["p","i","ms","w"].filter(function(k){return !o[k]}).length;
+return '<div class="oit"><button class="oith" data-x="'+i+'"><span class="n">'+(i+1)+'</span><b>'+(o.n||"Новий власник")+'</b><span class="sh">'+(o.sh||"—")+'</span><span class="em" style="display:'+(mm?"inline":"none")+'">'+plE(mm)+'</span><span class="ch">▾</span></button><div class="oitb">'+ownFields(o,i)+'</div></div>'}).join("")+'</div>'}
+else h+='<div class="fld wd" data-own="1" style="cursor:pointer"><label>Власники паю <span class="s2 t2">етап 2</span></label><b style="font-size:13px">1 власник · дані з блоку продавця · додати ще одного</b></div>'}
+});
 if(d.s<3){var req=d.s===1?["Погоджено намір продажу з власником"]:R2;
 h+='<div class="gate"><b>Умови переходу на етап '+(d.s+1)+" · "+SN[d.s+1]+'</b><ul>'+req.map(function(r){return '<li class="'+((d.s===1||d.v[r])?"ok":"")+'">'+r+'</li>'}).join("")+'</ul></div>'}
 else h+='<div class="gate"><b>Готовність до передачі в Блок 2</b><ul>'+R3.map(function(r){return '<li class="'+(d.v[r]?"ok":"")+'">'+r+'</li>'}).join("")+'</ul></div>';
@@ -474,23 +510,94 @@ if(v&&v!=="— обрати —")d.v[f]=v;else delete d.v[f];
 e.target.closest(".fld").classList.toggle("emp",!d.v[f]);
 var mm=miss(d)+omiss(d),mb=$(".mbar");mb.classList.toggle("ok",!mm);
 mb.querySelector("b").textContent=mm?mm+" полів не заповнено":"Усі поля заповнені";kan()};
-$("#p-info").onclick=function(e){if(e.target.closest("[data-own]"))$('[data-p="own"]').click()}}
-function owners(id){var d=D[id];
-var L=(d.owners&&d.owners.length)?d.owners:[{n:d.v["ПІБ"]||"Власник",sh:"1/1",p:d.v["Серія і номер паспорта"]||"",i:d.v["ІПН"]||"",ms:d.v["Сімейний стан"]||"",w:d.v["Місце роботи"]||""}];
-$("#oN").textContent=L.length;var om=omiss(d);$("#oW").style.display=om?"inline":"none";$("#oW").textContent=om+" порожніх";
-var FF=[["p","Серія і номер паспорта"],["i","ІПН"],["ms","Сімейний стан"],["w","Місце роботи"]];
-$("#oL").innerHTML=L.map(function(o,i){return '<div class="own"><div class="ownh"><span class="n">'+(i+1)+'</span><b>'+(o.n||"Новий власник")+'</b><span class="sh">частка '+(o.sh||"—")+'</span></div><div class="ownb"><div class="g2">'+FF.map(function(p){return '<div class="fld '+(o[p[0]]?"":"emp")+'"><label>'+p[1]+' <span class="s2 t2">етап 2</span></label><input data-o="'+i+'" data-k="'+p[0]+'" value="'+(o[p[0]]||"")+'" placeholder="Заповнити вручну"></div>'}).join("")+'</div></div></div>'}).join("");
+$("#p-info").onclick=function(e){
+if(e.target.closest("[data-own]")){$('[data-p="own"]').click();return}
+var hh=e.target.closest("[data-x]");if(hh){var ix=+hh.dataset.x;
+if(oOpen[ix])delete oOpen[ix];else oOpen[ix]=1;
+hh.parentNode.classList.toggle("op",!!oOpen[ix])}};
+var so=$("#sOwn");if(so){bindOwn(so,id);Object.keys(oOpen).forEach(function(ix){var el=so.children[ix];if(el)el.classList.add("op")})}}
+var MSO=["","Одружений / одружена","Неодружений / неодружена","Розлучений / розлучена","Вдівець / вдова"];
+var OF=[["n","ПІБ власника",0,0],["sh","Частка у паю",0,0],["p","Серія і номер паспорта",1,0],["i","ІПН",1,0],["ms","Сімейний стан",0,1],["w","Місце роботи",0,0]];
+var oOpen={};
+function oList(d){if(d.owners&&d.owners.length)return d.owners;
+return [{n:d.v["ПІБ"]||"Власник",sh:"1/1",p:d.v["Серія і номер паспорта"]||"",i:d.v["ІПН"]||"",ms:d.v["Сімейний стан"]||"",w:d.v["Місце роботи"]||""}]}
+function ownFields(o,i){return '<div class="g2">'+OF.map(function(f){var k=f[0];
+var ctrl=f[3]?('<select data-o="'+i+'" data-k="'+k+'">'+MSO.map(function(v){return '<option '+(v===o[k]?"selected":"")+'>'+(v||"— обрати —")+'</option>'}).join("")+'</select>')
+:('<input data-o="'+i+'" data-k="'+k+'" value="'+(o[k]||"")+'" placeholder="Заповнити вручну">');
+return '<div class="fld '+(o[k]?"":"emp")+'"><label>'+f[1]+' <span class="s2 t2">етап 2</span>'+(f[2]?'<span class="lk">обмежений доступ</span>':"")+'</label>'+ctrl+'</div>'}).join("")+'</div>'}
+function ownEdit(id,i,k,val,el){var d=D[id];if(!(d.owners&&d.owners.length))d.owners=oList(d);
+var v=(val||"").trim();if(v==="— обрати —")v="";d.owners[i][k]=v;
+if(el&&el.closest(".fld"))el.closest(".fld").classList.toggle("emp",!v);
+if(d.owners.length===1){var M={n:"ПІБ",p:"Серія і номер паспорта",i:"ІПН",ms:"Сімейний стан",w:"Місце роботи"};
+if(M[k]){if(v)d.v[M[k]]=v;else delete d.v[M[k]];if(k==="n")d.pib=v||d.pib}}
+syncOwn(id);save()}
+function bindOwn(box,id){var h=function(e){var i=e.target.dataset.o,k=e.target.dataset.k;if(i===undefined||!k)return;ownEdit(id,+i,k,e.target.value,e.target)};
+box.oninput=h;box.onchange=h}
+function syncOwn(id){var d=D[id],L=oList(d),om=omiss(d);
+$("#oN").textContent=L.length;$("#oW").style.display=om?"inline":"none";$("#oW").textContent=plE(om);
+$$("#oL .own").forEach(function(el,i){var o=L[i];if(!o)return;
+el.querySelector(".ownh b").textContent=o.n||"Новий власник";
+el.querySelector(".ownh .sh").textContent="частка "+(o.sh||"—")});
+$$("#sOwn .oit").forEach(function(el,i){var o=L[i];if(!o)return;
+el.querySelector("b").textContent=o.n||"Новий власник";
+el.querySelector(".sh").textContent=o.sh||"—";
+var mm=["p","i","ms","w"].filter(function(k){return !o[k]}).length,em=el.querySelector(".em");
+if(em){em.style.display=mm?"inline":"none";em.textContent=plE(mm)}});
+var mm2=miss(d)+omiss(d),mb=$(".mbar");
+if(mb){mb.classList.toggle("ok",!mm2);mb.querySelector("b").textContent=mm2?mm2+" полів не заповнено":"Усі поля заповнені"}
+kan()}
+function owners(id){var d=D[id],L=oList(d),om=omiss(d);
+$("#oN").textContent=L.length;$("#oW").style.display=om?"inline":"none";$("#oW").textContent=plE(om);
+$("#oL").innerHTML=L.map(function(o,i){return '<div class="own"><div class="ownh"><span class="n">'+(i+1)+'</span><b>'+(o.n||"Новий власник")+'</b><span class="sh">частка '+(o.sh||"—")+'</span><button class="del" data-del="'+i+'" title="Видалити власника"'+(L.length<2?" disabled":"")+'>X</button></div><div class="ownb">'+ownFields(o,i)+'</div></div>'}).join("");
 $("#aO").style.display=L.length>=6?"none":"block";$("#aO").textContent="+ Додати власника паю ("+L.length+"/6)";
-$("#oL").oninput=function(e){var i=e.target.dataset.o,k=e.target.dataset.k;if(i===undefined)return;
-if(!d.owners||!d.owners.length)d.owners=L;d.owners[i][k]=e.target.value.trim();
-e.target.closest(".fld").classList.toggle("emp",!e.target.value.trim());kan()}}
+bindOwn($("#oL"),id);
+$("#oL").onclick=function(e){var b=e.target.closest("[data-del]");if(!b||b.disabled)return;delOwner(id,+b.dataset.del)}}
+function addOwner(id){var d=D[id];
+if(!(d.owners&&d.owners.length))d.owners=oList(d).map(function(o){return {n:o.n,sh:o.sh||"",p:o.p,i:o.i,ms:o.ms,w:o.w}});
+if(d.owners.length>=6){toast("Максимум — 6 власників паю");return}
+d.owners.push({n:"",sh:"",p:"",i:"",ms:"",w:""});oOpen[d.owners.length-1]=1;
+owners(id);info(id);kan();save();toast("Додано власника №"+d.owners.length+" — заповніть ПІБ, частку та документи")}
+function delOwner(id,i){var d=D[id],L=oList(d);
+if(L.length<2){toast("У картки має залишитись щонайменше один власник");return}
+var nm=L[i].n||("№"+(i+1));
+if(!confirm("Видалити власника «"+nm+"» із цієї картки?"))return;
+if(!(d.owners&&d.owners.length))d.owners=L;
+d.owners.splice(i,1);oOpen={};
+if(d.owners.length===1){var o=d.owners[0];if(o.n){d.v["ПІБ"]=o.n;d.pib=o.n}
+[["p","Серія і номер паспорта"],["i","ІПН"],["ms","Сімейний стан"],["w","Місце роботи"]].forEach(function(pp){if(o[pp[0]])d.v[pp[1]]=o[pp[0]];else delete d.v[pp[1]]})}
+openC(id);kan();save();toast("Власника «"+nm+"» видалено · запис збережено в активності")}
+var DT=["Витяг з ДЗК","Витяг про право власності","Паспорт, стор. 1-2","Паспорт, реєстрація","Довідка ІПН","Свідоцтво про шлюб","Згода подружжя","Свідоцтво про право на спадщину","Договір оренди","Договір купівлі-продажу","Акт приймання-передачі","Інше"];
+var IMGE=["JPG","JPEG","PNG","HEIC"];
+function nFiles(d){return d.files?d.files.length:(d.docs||0)}
+function initFiles(){Object.keys(D).forEach(function(id){var d=D[id];if(d.files)return;d.files=[];
+for(var i=0;i<(d.docs||0);i++){var t=DT[i%DT.length],img=t.indexOf("Паспорт")===0;
+d.files.push({t:t,ext:img?"JPG":"PDF",fn:(img?"photo_":"doc_")+(1000+i*37+(+id))+(img?".jpg":".pdf"),
+size:((1.1+((i*7+(+id)*3)%29)/10).toFixed(1)+" МБ").replace(".",","),
+date:("0"+(8+(i%3))).slice(-2)+".08.2026",src:(i%3===2)?"Mini App":"Telegram"})}});save()}
+function docs(id){var d=D[id];if(!d.files)d.files=[];
+var nt=d.files.filter(function(f){return !f.t}).length;
+$("#dW").style.display=nt?"inline":"none";$("#dW").textContent=pl(nt,"файл без типу","файли без типу","файлів без типу");
+$("#dL").innerHTML=d.files.length?d.files.map(function(f,i){
+return '<div class="doc"><div class="e '+(IMGE.indexOf(f.ext)>=0?"i":"")+'">'+f.ext+'</div><div class="mid"><select data-d="'+i+'" class="'+(f.t?"":"no")+'">'+[""].concat(DT).map(function(t){return '<option value="'+t+'" '+(t===f.t?"selected":"")+'>'+(t||"— вказати тип документа —")+'</option>'}).join("")+'</select><small>'+f.fn+' · '+f.size+' · '+f.date+'</small></div><span class="sc '+(f.src==="Вручну"?"man":"")+'">'+f.src+'</span><button class="rmf" data-rm="'+i+'" title="Видалити файл">X</button></div>'}).join("")
+:'<div class="add" style="margin-bottom:8px">Файлів ще немає — бот додасть із чату або завантажте вручну</div>';
+$("#dL").onchange=function(e){var i=e.target.dataset.d;if(i===undefined)return;
+d.files[i].t=e.target.value;e.target.classList.toggle("no",!e.target.value);docs(id);save()};
+$("#dL").onclick=function(e){var b=e.target.closest("[data-rm]");if(!b)return;var f=d.files[+b.dataset.rm];
+if(!confirm("Видалити файл «"+(f.t||f.fn)+"»?"))return;
+d.files.splice(+b.dataset.rm,1);d.docs=d.files.length;docs(id);kan();save();toast("Файл видалено · запис у аудит-логу")};
+d.docs=d.files.length}
+function addFiles(id,fl){var d=D[id];if(!d.files)d.files=[];
+var n=new Date(),dt=("0"+n.getDate()).slice(-2)+"."+("0"+(n.getMonth()+1)).slice(-2)+"."+n.getFullYear();
+Array.prototype.slice.call(fl).forEach(function(f){var ext=(f.name.split(".").pop()||"FILE").toUpperCase().slice(0,4);
+d.files.push({t:"",ext:ext,fn:f.name,size:(f.size/1048576).toFixed(1).replace(".",",")+" МБ",date:dt,src:"Вручну"})});
+d.docs=d.files.length;docs(id);kan();save();toast("Додано "+plF(fl.length)+" вручну — вкажіть тип документа")}
 function openC(id){cur=id;var d=D[id];
 $("#dKad").textContent=d.kad;$("#dPib").textContent=d.pib;
 $("#dAr").textContent=d.v["Площа ділянки"]||"площа не вказана";$("#dLo").textContent=(d.v["Сільрада"]||"—")+" с/р";
 $("#dSt").textContent=SN[d.s];$("#dSt").className="st "+SC[d.s];
 $$("#stpr div").forEach(function(el,i){el.className=(i+1<d.s)?"dn":((i+1===d.s)?"cu":"")});
 $("#nxt").textContent=d.s===3?"Передати в Блок 2":"Перевести на етап "+(d.s+1);
-info(id);owners(id);$("#drw").classList.add("on");$("#scrim").classList.add("on")}
+info(id);owners(id);docs(id);$("#drw").classList.add("on");$("#scrim").classList.add("on")}
 document.body.addEventListener("click",function(e){var t=e.target.closest(".pc[data-id]");if(t)openC(t.dataset.id)});
 $("#cls").onclick=function(){$("#drw").classList.remove("on");$("#scrim").classList.remove("on");just=[]};
 $("#scrim").onclick=$("#cls").onclick;
@@ -499,13 +606,14 @@ $$(".drt button").forEach(function(b){b.onclick=function(){$$(".drt button").for
 $$(".pane").forEach(function(p){p.classList.toggle("on",p.id==="p-"+b.dataset.p)})}});
 $$("#stpr div").forEach(function(el){el.onclick=function(){var d=D[cur],ns=+el.dataset.s;if(ns===d.s)return;d.s=ns;
 if(ns>=2&&!(d.owners||[]).length)d.owners=[{n:d.v["ПІБ"],sh:"1/1",p:"",i:"",ms:"",w:""}];
-just=F.filter(function(f){return f.s===ns}).map(function(f){return f.k});openC(cur);kan()}});
+just=F.filter(function(f){return f.s===ns}).map(function(f){return f.k});oOpen={};openC(cur);kan()}});
 $("#nxt").onclick=function(){var d=D[cur];if(d.s>=3){toast("Ділянку передано в Блок 2 · Продаж інвестору");return}
 d.s++;just=F.filter(function(f){return f.s===d.s}).map(function(f){return f.k});
 if(d.s===2&&!(d.owners||[]).length)d.owners=[{n:d.v["ПІБ"],sh:"1/1",p:"",i:"",ms:"",w:""}];
-openC(cur);kan();toast("Етап «"+SN[d.s]+"»: додано "+just.length+" нових полів — заповніть вручну")};
-$("#aO").onclick=function(){var d=D[cur];if(!d.owners||!d.owners.length)d.owners=[{n:d.v["ПІБ"],sh:"",p:d.v["Серія і номер паспорта"]||"",i:d.v["ІПН"]||"",ms:d.v["Сімейний стан"]||"",w:d.v["Місце роботи"]||""}];
-if(d.owners.length<6){d.owners.push({n:"",sh:"",p:"",i:"",ms:"",w:""});owners(cur);info(cur);kan()}};
+oOpen={};openC(cur);kan();toast("Етап «"+SN[d.s]+"»: додано "+just.length+" нових полів — заповніть вручну")};
+$("#aO").onclick=function(){addOwner(cur)};
+$("#upB").onclick=function(){$("#upI").click()};
+$("#upI").onchange=function(e){if(e.target.files.length)addFiles(cur,e.target.files);e.target.value=""};
 $$(".nav a").forEach(function(a){a.onclick=function(e){e.preventDefault();var id=a.dataset.go;if(!id)return;
 $$(".nav a").forEach(function(x){x.classList.remove("on")});a.classList.add("on");
 $$(".wrap").forEach(function(p){p.classList.toggle("on",p.id===id)});
@@ -513,7 +621,7 @@ var T={b1:"Блок 1 · Купівля землі",b2:"Блок 2 · Прода
 $("#crumb").textContent=T[id];window.scrollTo({top:0})}});
 $("#role").onchange=function(e){var r=e.target.value;document.body.classList.toggle("hide-cost",r!=="admin");
 $("#rlbl").textContent={admin:"Адміністратор",buyer:"Закупівельник",sales:"Менеджер з продажу",asset:"Керуючий активами"}[r]};
-$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");D=JSON.parse(JSON.stringify(SEED));kan();toast("Демо-дані відновлено")}};
+$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");D=JSON.parse(JSON.stringify(SEED));initFiles();kan();toast("Демо-дані відновлено")}};
 var KAD=/\b(\d{10}):(\d{2}):(\d{3}):(\d{4})\b/,known=["1812345678:03:015:0042","1825182000:05:011:0088"];
 function fv(t,k){var m=t.match(new RegExp("^\\s*"+k+"\\s*:\\s*(.+)$","im"));return m?m[1].trim():null}
 function parse(){var t=$("#raw").value,o=[],hs=/#(нова_ділянка|дооцінка|відмова)/.exec(t);
@@ -532,5 +640,5 @@ var ok=hs&&k&&ph;o.push(["Результат",ok?"Готово до створе
 $("#res").innerHTML=o.map(function(r){return '<div class="rr '+(r[2]?"":"bad")+'"><div class="k">'+r[0]+'</div><div class="v">'+r[1]+'</div></div>'}).join("")}
 $("#pbtn").onclick=parse;
 $("#bbtn").onclick=function(){$("#raw").value="по пулинській ділянці домовились на 180, площа десь 2 га, кадастр скину пізніше";parse()};
-kan();parse();
+initFiles();kan();parse();
 </script></body></html>

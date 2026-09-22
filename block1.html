@@ -1,737 +1,644 @@
 <!DOCTYPE html>
-<html lang="uk">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZEMLIA.UA · Блок 1 — Купівля землі (воронка v4)</title>
+<html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZEMLIA.UA CRM</title>
 <style>
-:root{
-  --green-900:#12301f;--green-800:#1b4430;--green-700:#22563b;--green-600:#2e6b4a;
-  --gold:#c9a227;--bg:#f4f6f2;--line:#e2e7dd;
-  --text:#17211b;--muted:#6d7a70;--muted-2:#98a49b;
-  --blue:#2f6f9f;--red:#b5453b;--red-bg:#fdf2f1;--red-bd:#f0cfcb;--amber:#c98a1e;
-  --r:14px;--shadow:0 1px 2px rgba(18,48,31,.06),0 8px 24px rgba(18,48,31,.06);
-}
+:root{--g9:#12301f;--g7:#22563b;--g6:#2e6b4a;--gd:#c9a227;--bg:#f4f6f2;--ln:#e2e7dd;--tx:#17211b;--mu:#6d7a70;--m2:#98a49b;--bl:#2f6f9f;--rd:#b5453b;--rb:#fdf2f1;--rd2:#f0cfcb;--am:#c98a1e;--sh:0 1px 2px rgba(18,48,31,.06),0 8px 24px rgba(18,48,31,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);font-size:14px;-webkit-font-smoothing:antialiased}
+body{font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);font-size:14px}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit}
 input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
 .app{display:grid;grid-template-columns:236px 1fr;min-height:100vh}
-
-.side{background:var(--green-900);color:#dbe6de;padding:20px 14px;display:flex;flex-direction:column;gap:24px;position:sticky;top:0;height:100vh}
-.logo{display:flex;align-items:center;gap:10px;padding:0 8px}
-.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(150deg,var(--gold),#8f7415);display:grid;place-items:center;font-weight:800;color:#12301f}
-.logo-txt b{display:block;font-size:14px;letter-spacing:.06em;color:#fff}
-.logo-txt span{font-size:11px;color:#8fa696}
-.nav-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d9287;padding:0 10px;margin-bottom:8px}
+.side{background:var(--g9);color:#dbe6de;padding:20px 14px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh}
+.lg{display:flex;align-items:center;gap:10px;padding:0 8px}
+.lm{width:34px;height:34px;border-radius:9px;background:linear-gradient(150deg,var(--gd),#8f7415);display:grid;place-items:center;font-weight:800;color:#12301f}
+.lt b{display:block;font-size:14px;letter-spacing:.06em;color:#fff}.lt span{font-size:11px;color:#8fa696}
+.nl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d9287;padding:0 10px;margin-bottom:8px}
 .nav{display:flex;flex-direction:column;gap:3px}
-.nav a{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:10px;color:#c6d5cb;text-decoration:none;font-size:13.5px}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 11px;border-radius:10px;color:#c6d5cb;text-decoration:none;font-size:13.5px}
 .nav a .n{margin-left:auto;font-size:11px;background:rgba(255,255,255,.08);padding:2px 7px;border-radius:20px}
-.nav a.on{background:var(--green-700);color:#fff;font-weight:600}
-.nav a.on .n{background:var(--gold);color:#12301f;font-weight:700}
-.side-foot{margin-top:auto;border-top:1px solid rgba(255,255,255,.09);padding-top:14px;display:flex;align-items:center;gap:10px}
-.ava{width:32px;height:32px;border-radius:50%;background:var(--green-600);display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
-.side-foot b{font-size:13px;color:#fff;display:block}.side-foot span{font-size:11px;color:#8fa696}
-
-.top{background:#fff;border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20}
-.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--text)}
-.search{margin-left:auto;position:relative}
-.search input{width:280px;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:10px;background:var(--bg);outline:none}
-.search .mag{position:absolute;left:11px;top:9px;color:var(--muted-2)}
-.wrap{padding:22px 24px 60px}
-.h1{font-size:22px;font-weight:700;letter-spacing:-.01em}
-.sub{color:var(--muted);font-size:13px;margin-top:4px}
-.head-row{display:flex;align-items:flex-end;gap:20px;margin-bottom:18px;flex-wrap:wrap}
-.actions{margin-left:auto;display:flex;gap:9px}
-.btn{padding:9px 15px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff}
-.btn:hover{border-color:var(--green-600)}
-.btn-pri{background:var(--green-700);color:#fff;border-color:var(--green-700)}
-.btn-sm{padding:6px 11px;font-size:12px;border-radius:8px}
-
+.nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+.nav a.on{background:var(--g7);color:#fff;font-weight:600}.nav a.on .n{background:var(--gd);color:#12301f;font-weight:700}
+.sf{margin-top:auto;border-top:1px solid rgba(255,255,255,.09);padding-top:14px;display:flex;align-items:center;gap:10px}
+.avt{width:32px;height:32px;border-radius:50%;background:var(--g6);display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
+.sf b{font-size:13px;color:#fff;display:block}.sf span{font-size:11px;color:#8fa696}
+.top{background:#fff;border-bottom:1px solid var(--ln);padding:13px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:20}
+.cr{font-size:12px;color:var(--mu)}.cr b{color:var(--tx)}
+.sr{margin-left:auto}.sr input{width:250px;padding:9px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);outline:none}
+.rp{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mu)}
+.rp select{padding:8px 10px;border:1px solid var(--ln);border-radius:9px;background:#fff}
+.wrap{padding:22px 24px 60px;display:none}.wrap.on{display:block}
+.h1{font-size:22px;font-weight:700}.sub{color:var(--mu);font-size:13px;margin-top:4px}
+.hr{display:flex;align-items:flex-end;gap:20px;margin-bottom:18px;flex-wrap:wrap}.ac{margin-left:auto;display:flex;gap:9px}
+.btn{padding:9px 15px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid var(--ln);background:#fff}
+.btn:hover{border-color:var(--g6)}.bp{background:var(--g7);color:#fff;border-color:var(--g7)}.bg2{background:var(--gd);color:#2a2205;border-color:var(--gd)}
+.bs{padding:6px 11px;font-size:12px;border-radius:8px}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px}
-.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;box-shadow:var(--shadow)}
-.kpi .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
-.kpi .val{font-size:25px;font-weight:700;margin-top:6px;letter-spacing:-.02em}
-.kpi .val small{font-size:13px;color:var(--muted);font-weight:600}
-.kpi .dl{font-size:12px;margin-top:5px;color:var(--green-600);font-weight:600}
-.kpi .dl.warn{color:var(--red)}
-.kpi.acc{border-left:3px solid var(--gold)}
-
-.tools{display:flex;gap:9px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.chip{padding:7px 12px;border:1px solid var(--line);border-radius:20px;background:#fff;font-size:12.5px;color:var(--muted)}
-.chip.on{border-color:var(--green-600);color:var(--green-700);background:#eef5f0;font-weight:600}
-.chip.red{border-color:var(--red-bd);color:var(--red);background:var(--red-bg);font-weight:600}
-
+.kpi{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:15px 16px;box-shadow:var(--sh)}
+.kpi .l{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.07em}
+.kpi .v{font-size:25px;font-weight:700;margin-top:6px}.kpi .v small{font-size:13px;color:var(--mu);font-weight:600}
+.kpi .d{font-size:12px;margin-top:5px;color:var(--g6);font-weight:600}.kpi .d.w{color:var(--rd)}.kpi.acc{border-left:3px solid var(--gd)}
+.tl{display:flex;gap:9px;margin-bottom:16px;flex-wrap:wrap}
+.chip{padding:7px 12px;border:1px solid var(--ln);border-radius:20px;background:#fff;font-size:12.5px;color:var(--mu)}
+.chip.on{border-color:var(--g6);color:var(--g7);background:#eef5f0;font-weight:600}
+.chip.r{border-color:var(--rd2);color:var(--rd);background:var(--rb);font-weight:600}
 .kan{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;align-items:start}
-.col{background:#eff2ec;border-radius:var(--r);padding:12px;display:flex;flex-direction:column;gap:10px;min-height:200px}
-.col-h{padding:2px 4px 8px;border-bottom:1px solid #e0e6dc}
-.col-h .t{display:flex;align-items:center;gap:8px}
-.col-h .num{width:20px;height:20px;border-radius:6px;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
-.col.s1 .num{background:var(--muted)}.col.s2 .num{background:var(--amber)}.col.s3 .num{background:var(--green-700)}
-.col-h b{font-size:13.5px;flex:1}
-.col-h .cnt{font-size:11px;color:var(--muted);background:#fff;padding:2px 8px;border-radius:20px;font-weight:600}
-.col-h .sum{font-size:11.5px;color:var(--muted);margin-top:6px;padding-left:28px}
-
-.pc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 13px;cursor:pointer;transition:.15s}
-.pc:hover{border-color:var(--green-600);transform:translateY(-1px);box-shadow:var(--shadow)}
-.pc.miss{border-left:3px solid var(--red-bd)}
-.pc .kad{font-family:'SF Mono',Menlo,monospace;font-size:13px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
-.pc .pib{font-size:12.5px;color:var(--muted);margin-top:4px}
-.pc-m{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tag{font-size:10.5px;padding:3px 8px;border-radius:6px;background:#eff2ec;color:var(--muted);font-weight:600}
-.tag.g{background:#e7f2ea;color:var(--green-700)}
-.tag.a{background:#fbf1dc;color:#8a5f10}
-.tag.r{background:var(--red-bg);color:var(--red)}
-.tag.b{background:#e9f1f7;color:var(--blue)}
-.pc-f{display:flex;align-items:center;gap:9px;margin-top:11px;padding-top:10px;border-top:1px solid var(--line)}
-.pc-f .price{font-weight:700;font-size:13.5px}
-.pc-f .price.no{color:var(--muted-2);font-weight:600;font-size:12px}
-.pc-f .docs{font-size:11.5px;color:var(--muted)}
-.pc-f .who2{margin-left:auto;width:24px;height:24px;border-radius:50%;background:var(--green-600);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700}
-.pc .fill{display:flex;align-items:center;gap:7px;margin-top:9px}
-.pc .fill .bar{flex:1;height:4px;background:#eff2ec;border-radius:3px;overflow:hidden}
-.pc .fill .bar i{display:block;height:100%;background:var(--green-600)}
-.pc .fill .bar i.warn{background:var(--red)}
-.pc .fill span{font-size:10.5px;color:var(--muted-2);font-weight:600}
-.pc .fill span.warn{color:var(--red)}
-.add{border:1px dashed #c9d3c8;border-radius:10px;padding:10px;text-align:center;font-size:12px;color:var(--muted)}
-.tg-in{background:#fff;border:1px dashed var(--blue);border-radius:12px;padding:11px 12px}
-.tg-in .h{font-size:11.5px;color:var(--blue);font-weight:700;margin-bottom:6px}
-.tg-in p{font-size:12px;color:var(--muted);line-height:1.5}
-.tg-in .b{display:flex;gap:6px;margin-top:9px}
-
-/* drawer */
-.scrim{position:fixed;inset:0;background:rgba(18,48,31,.42);opacity:0;pointer-events:none;transition:.2s;z-index:40}
-.scrim.on{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;width:640px;max-width:96vw;height:100vh;background:#fff;z-index:50;transform:translateX(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(18,48,31,.18)}
-.drawer.on{transform:none}
-.dr-h{padding:17px 20px;border-bottom:1px solid var(--line)}
-.dr-h .x{float:right;font-size:20px;color:var(--muted)}
-.dr-h .kad3{font-family:'SF Mono',Menlo,monospace;font-size:18px;font-weight:700;letter-spacing:-.02em}
-.dr-h .pib3{font-size:14px;color:var(--muted);margin-top:4px}
-.dr-h .row{display:flex;gap:8px;margin-top:13px;align-items:center;flex-wrap:wrap}
-.st{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600}
-.st.g{background:#e7f2ea;color:var(--green-700)}
-.st.a{background:#fbf1dc;color:#8a5f10}
-.st.b{background:#e9f1f7;color:var(--blue)}
-.st.m{background:#eff2ec;color:var(--muted)}
-.st.r{background:var(--red-bg);color:var(--red)}
-
-.step{display:flex;padding:12px 20px;background:#fbfcfa;border-bottom:1px solid var(--line)}
-.step div{flex:1;text-align:center;font-size:11.5px;color:var(--muted-2);position:relative;padding-top:16px;font-weight:600}
-.step div:before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:#dfe5db;z-index:2}
-.step div:after{content:'';position:absolute;top:8px;left:-50%;width:100%;height:2px;background:#dfe5db}
-.step div:first-child:after{display:none}
-.step div.done{color:var(--green-700)}
-.step div.done:before,.step div.done:after{background:var(--green-600)}
-.step div.cur:before{background:var(--gold);box-shadow:0 0 0 4px #f3e6bd}
-.step div.cur{color:#8a5f10}
-
-.dr-tabs{display:flex;padding:0 20px;border-bottom:1px solid var(--line)}
-.dr-tabs button{padding:12px 13px;font-size:13px;color:var(--muted);font-weight:600;border-bottom:2px solid transparent}
-.dr-tabs button.on{color:var(--green-700);border-bottom-color:var(--green-700)}
-.dr-b{padding:0;overflow-y:auto;flex:1}
-.pane{display:none;padding:18px 20px}.pane.on{display:block}
-
-.miss-bar{display:flex;align-items:center;gap:10px;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:10px;padding:10px 13px;margin-bottom:18px}
-.miss-bar b{color:var(--red);font-size:12.5px}
-.miss-bar span{font-size:12px;color:var(--muted);flex:1}
-.miss-bar.ok{background:#eef5f0;border-color:#cfe3d6}
-.miss-bar.ok b{color:var(--green-700)}
-
-.fs{display:flex;align-items:center;gap:9px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-2);font-weight:700;margin:22px 0 11px}
-.fs:first-of-type{margin-top:0}
-.fs .ln{flex:1;height:1px;background:var(--line)}
-.fs em{font-style:normal;font-size:10px;background:var(--red-bg);color:var(--red);padding:2px 7px;border-radius:5px;letter-spacing:.02em}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-.fld{border:1px solid var(--line);border-radius:9px;padding:8px 11px;background:#fbfcfa;position:relative;transition:.15s}
-.fld.wide{grid-column:1/-1}
-.fld label{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-bottom:3px}
-.fld label .st2{font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;letter-spacing:.02em}
-.fld label .st2.tg{background:#e9f1f7;color:var(--blue)}
-.fld label .st2.e2{background:#fbf1dc;color:#8a5f10}
-.fld label .st2.e3{background:#e7f2ea;color:var(--green-700)}
-.fld label .lk{margin-left:auto;font-size:10px;color:var(--muted-2)}
+.col{background:#eff2ec;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:280px;border:2px dashed transparent;transition:.15s}
+.col.over{background:#e4efe6;border-color:var(--g6)}
+.ch{padding:2px 4px 8px;border-bottom:1px solid #e0e6dc}
+.ch .t{display:flex;align-items:center;gap:8px}
+.ch .nm{width:20px;height:20px;border-radius:6px;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.c1 .nm{background:var(--mu)}.c2 .nm{background:var(--am)}.c3 .nm{background:var(--g7)}
+.ch b{font-size:13.5px;flex:1}.ch .ct{font-size:11px;color:var(--mu);background:#fff;padding:2px 8px;border-radius:20px;font-weight:600}
+.ch .sm{font-size:11.5px;color:var(--mu);margin-top:6px;padding-left:28px}
+.pc{background:#fff;border:1px solid var(--ln);border-radius:12px;padding:12px 13px;cursor:grab;transition:.15s}
+.pc:hover{border-color:var(--g6);transform:translateY(-1px);box-shadow:var(--sh)}
+.pc.dg{opacity:.4}.pc.ms{border-left:3px solid var(--rd2)}
+.pc .kd{font-family:Menlo,monospace;font-size:13px;font-weight:700;line-height:1.2}
+.pc .pb{font-size:12.5px;color:var(--mu);margin-top:4px}
+.pm{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tg{font-size:10.5px;padding:3px 8px;border-radius:6px;background:#eff2ec;color:var(--mu);font-weight:600}
+.tg.g{background:#e7f2ea;color:var(--g7)}.tg.a{background:#fbf1dc;color:#8a5f10}.tg.r{background:var(--rb);color:var(--rd)}.tg.b{background:#e9f1f7;color:var(--bl)}
+.pf{display:flex;align-items:center;gap:9px;margin-top:11px;padding-top:10px;border-top:1px solid var(--ln)}
+.pf .pr{font-weight:700;font-size:13.5px}.pf .pr.no{color:var(--m2);font-weight:600;font-size:12px}
+.pf .dc{font-size:11.5px;color:var(--mu)}
+.pf .w2{margin-left:auto;width:24px;height:24px;border-radius:50%;background:var(--g6);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700}
+.fl{display:flex;align-items:center;gap:7px;margin-top:9px}
+.fl .br{flex:1;height:4px;background:#eff2ec;border-radius:3px;overflow:hidden}
+.fl .br i{display:block;height:100%;background:var(--g6)}.fl .br i.w{background:var(--rd)}
+.fl span{font-size:10.5px;color:var(--m2);font-weight:600}.fl span.w{color:var(--rd)}
+.add{border:1px dashed #c9d3c8;border-radius:10px;padding:10px;text-align:center;font-size:12px;color:var(--mu)}
+.tgi{background:#fff;border:1px dashed var(--bl);border-radius:12px;padding:11px 12px}
+.tgi .h{font-size:11.5px;color:var(--bl);font-weight:700;margin-bottom:6px}
+.tgi p{font-size:12px;color:var(--mu);line-height:1.5}
+.hint{font-size:11.5px;color:var(--mu);line-height:1.6;margin-top:14px;background:#f7f9f5;border-left:2px solid var(--g6);padding:9px 12px;border-radius:0 8px 8px 0}
+.two{display:grid;grid-template-columns:1fr 350px;gap:18px;align-items:start}
+.pn{background:#fff;border:1px solid var(--ln);border-radius:14px;box-shadow:var(--sh);overflow:hidden;margin-bottom:18px}
+.pnh{padding:13px 16px;border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:9px}
+.pnh b{font-size:13.5px}.pnh .x{margin-left:auto;font-size:11px;color:var(--mu)}
+.pnb{padding:15px 16px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--mu);padding:11px 13px;background:#f8faf7;border-bottom:1px solid var(--ln);white-space:nowrap}
+td{padding:12px 13px;border-bottom:1px solid var(--ln);font-size:13px}
+tr:last-child td{border-bottom:none}tbody tr:hover{background:#fafcf9}
+.mn{font-family:Menlo,monospace;font-size:11.5px}
+.st{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;white-space:nowrap}
+.st.g{background:#e7f2ea;color:var(--g7)}.st.a{background:#fbf1dc;color:#8a5f10}.st.b{background:#e9f1f7;color:var(--bl)}.st.m{background:#eff2ec;color:var(--mu)}.st.r{background:var(--rb);color:var(--rd)}
+.hide-cost .cost{filter:blur(5px)}
+.lots{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:15px}
+.lot{background:#fff;border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
+.lot .ph{height:110px;background:linear-gradient(135deg,#3f7a52,#8fae6a);position:relative;display:grid;place-items:center;color:rgba(255,255,255,.5);font-size:30px}
+.lot .bd{position:absolute;top:10px;left:10px;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:20px;background:#fff;color:var(--g7)}
+.lot .bd.rs{background:var(--gd);color:#2a2205}
+.lot .yl{position:absolute;bottom:10px;right:10px;background:rgba(18,48,31,.82);color:#fff;font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px}
+.lb{padding:13px 14px}.lb b{font-size:14px}.lb .kd{font-family:Menlo,monospace;font-size:10.5px;color:var(--mu);margin-top:4px}
+.lr{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+.lp{display:flex;align-items:baseline;gap:7px;margin-top:11px;padding-top:11px;border-top:1px solid var(--ln)}
+.lp b{font-size:16px}.lp small{color:var(--mu);font-size:11.5px}
+.fmn{display:flex;gap:3px;margin-top:11px}.fmn i{height:4px;flex:1;background:#eff2ec;border-radius:3px}.fmn i.f{background:var(--g6)}
+.cal{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--ln)}.cal:last-child{border-bottom:none}
+.cd{width:42px;text-align:center;flex-shrink:0}.cd b{display:block;font-size:16px;line-height:1}.cd span{font-size:10px;color:var(--mu);text-transform:uppercase}
+.cal p{font-size:12.5px;line-height:1.45}.cal small{color:var(--mu);font-size:11px}
+.row2{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--ln);font-size:12.5px}.row2:last-child{border-bottom:none}
+.bar2{height:7px;background:#eff2ec;border-radius:5px;overflow:hidden;margin-top:7px}.bar2 i{display:block;height:100%;background:var(--g6)}
+.ti{border:1px solid var(--ln);border-radius:11px;padding:12px;margin-bottom:11px;background:#fbfcfa}
+.th2{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mu);margin-bottom:8px}
+.th2 .a2{width:20px;height:20px;border-radius:50%;background:var(--bl);color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700}
+.th2 b{color:var(--tx);font-size:12px}.th2 .tm{margin-left:auto}
+.tt{font-size:12.5px;line-height:1.55;white-space:pre-line;background:#fff;border:1px solid var(--ln);border-radius:8px;padding:9px 10px}
+.tt .hs{color:var(--bl);font-weight:600}
+.okn{font-size:11.5px;color:var(--g7);background:#e7f2ea;padding:7px 9px;border-radius:8px;margin-top:9px;font-weight:600}
+.wn{font-size:11.5px;color:#8a5f10;background:#fbf1dc;padding:7px 9px;border-radius:8px;margin-top:9px;font-weight:600}
+.bts{display:flex;gap:7px;margin-top:11px}
+textarea#raw{width:100%;min-height:140px;padding:11px;border:1px solid var(--ln);border-radius:10px;font-family:Menlo,monospace;font-size:11.5px;line-height:1.65;resize:vertical;outline:none}
+.res{margin-top:12px;border:1px solid var(--ln);border-radius:10px;overflow:hidden}
+.rr{display:flex;gap:10px;padding:8px 11px;border-bottom:1px solid var(--ln);font-size:12.5px}.rr:last-child{border-bottom:none}
+.rr .k{width:120px;color:var(--mu);flex-shrink:0}.rr .v{font-weight:600}.rr.bad .v{color:var(--rd)}
+.scr{position:fixed;inset:0;background:rgba(18,48,31,.42);opacity:0;pointer-events:none;transition:.2s;z-index:40}.scr.on{opacity:1;pointer-events:auto}
+.dr{position:fixed;top:0;right:0;width:640px;max-width:96vw;height:100vh;background:#fff;z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+.dr.on{transform:none}
+.drh{padding:17px 20px;border-bottom:1px solid var(--ln)}
+.drh .cl{float:right;font-size:20px;color:var(--mu)}
+.drh .k3{font-family:Menlo,monospace;font-size:18px;font-weight:700}
+.drh .p3{font-size:14px;color:var(--mu);margin-top:4px}
+.drh .rw{display:flex;gap:8px;margin-top:13px;align-items:center;flex-wrap:wrap}
+.stp{display:flex;padding:12px 20px;background:#fbfcfa;border-bottom:1px solid var(--ln)}
+.stp div{flex:1;text-align:center;font-size:11.5px;color:var(--m2);position:relative;padding-top:16px;font-weight:600;cursor:pointer}
+.stp div:before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:#dfe5db;z-index:2}
+.stp div:after{content:'';position:absolute;top:8px;left:-50%;width:100%;height:2px;background:#dfe5db}
+.stp div:first-child:after{display:none}
+.stp div.dn{color:var(--g7)}.stp div.dn:before,.stp div.dn:after{background:var(--g6)}
+.stp div.cu:before{background:var(--gd);box-shadow:0 0 0 4px #f3e6bd}.stp div.cu{color:#8a5f10}
+.drt{display:flex;padding:0 20px;border-bottom:1px solid var(--ln)}
+.drt button{padding:12px 13px;font-size:13px;color:var(--mu);font-weight:600;border-bottom:2px solid transparent}
+.drt button.on{color:var(--g7);border-bottom-color:var(--g7)}
+.drb{overflow-y:auto;flex:1}.pane{display:none;padding:18px 20px}.pane.on{display:block}
+.mbar{display:flex;align-items:center;gap:10px;background:var(--rb);border:1px solid var(--rd2);border-radius:10px;padding:10px 13px;margin-bottom:18px}
+.mbar b{color:var(--rd);font-size:12.5px}.mbar span{font-size:12px;color:var(--mu);flex:1}
+.mbar.ok{background:#eef5f0;border-color:#cfe3d6}.mbar.ok b{color:var(--g7)}
+.fs{display:flex;align-items:center;gap:9px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--m2);font-weight:700;margin:22px 0 11px}
+.fs:first-of-type{margin-top:0}.fs .ln2{flex:1;height:1px;background:var(--ln)}
+.fs em{font-style:normal;font-size:10px;background:var(--rb);color:var(--rd);padding:2px 7px;border-radius:5px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fld{border:1px solid var(--ln);border-radius:9px;padding:8px 11px;background:#fbfcfa}
+.fld.wd{grid-column:1/-1}
+.fld label{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mu);margin-bottom:3px}
+.fld label .s2{font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700}
+.s2.t1{background:#e9f1f7;color:var(--bl)}.s2.t2{background:#fbf1dc;color:#8a5f10}.s2.t3{background:#e7f2ea;color:var(--g7)}
+.fld label .lk{margin-left:auto;font-size:10px;color:var(--m2)}
 .fld input,.fld select,.fld textarea{width:100%;border:none;background:transparent;outline:none;font-size:13px;font-weight:600;padding:0}
-.fld textarea{resize:vertical;min-height:38px;font-weight:500;line-height:1.5}
+.fld textarea{resize:vertical;min-height:36px;font-weight:500}
 .fld input::placeholder,.fld textarea::placeholder{color:#c98d86;font-weight:500}
-.fld:focus-within{border-color:var(--green-600);background:#fff}
-.fld.empty{background:var(--red-bg);border-color:var(--red-bd)}
-.fld.empty label{color:#a35c54}
-.fld.just{animation:pop .9s ease}
-@keyframes pop{0%{transform:scale(.97);box-shadow:0 0 0 4px #fbf1dc}100%{transform:none;box-shadow:none}}
-
-.owner{border:1px solid var(--line);border-radius:11px;margin-bottom:11px;overflow:hidden}
-.owner-h{display:flex;align-items:center;gap:10px;padding:11px 13px;background:#f7f9f5;border-bottom:1px solid var(--line)}
-.owner-h .n{width:24px;height:24px;border-radius:7px;background:var(--green-700);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
-.owner-h b{font-size:13px;flex:1}
-.owner-h .sh{font-size:11px;color:var(--muted);background:#fff;padding:3px 8px;border-radius:20px;font-weight:600}
-.owner-b{padding:12px 13px}
-.add-owner{width:100%;border:1px dashed #c9d3c8;border-radius:11px;padding:13px;text-align:center;font-size:12.5px;color:var(--muted);font-weight:600}
-.add-owner:hover{border-color:var(--green-600);color:var(--green-700)}
-.owner-h .del{width:24px;height:24px;border-radius:7px;color:var(--muted-2);font-size:13px;display:grid;place-items:center;border:1px solid transparent}
-.owner-h .del:hover{background:var(--red-bg);border-color:var(--red-bd);color:var(--red)}
-.owner-h .del[disabled]{opacity:.3;cursor:not-allowed}
-
-/* власники у блоці продавця — список, що розгортається */
-.oitem{border:1px solid var(--line);border-radius:10px;margin-bottom:7px;overflow:hidden;background:#fbfcfa}
-.oitem.op{background:#fff;border-color:#cfe3d6}
-.oitem-h{display:flex;align-items:center;gap:9px;width:100%;padding:9px 11px;text-align:left}
-.oitem-h .n{width:21px;height:21px;border-radius:6px;background:var(--green-700);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;flex-shrink:0}
-.oitem-h b{font-size:12.5px}
-.oitem-h .sh{font-size:10.5px;color:var(--muted);background:#eff2ec;padding:2px 7px;border-radius:20px;font-weight:600}
-.oitem-h .em{font-size:10px;background:var(--red-bg);color:var(--red);padding:2px 7px;border-radius:5px;font-weight:600}
-.oitem-h .ch{margin-left:auto;color:var(--muted-2);font-size:11px;font-weight:600;transition:.15s}
-.oitem.op .ch{transform:rotate(180deg)}
-.oitem-b{display:none;padding:0 11px 11px}
-.oitem.op .oitem-b{display:block}
-.own-sum{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);margin:2px 0 9px}
-.own-sum b{font-size:12.5px;color:var(--text)}
-.own-sum button{margin-left:auto;font-size:11.5px;color:var(--green-700);font-weight:600;text-decoration:underline}
-.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:14px;background:#f7f9f5;border-left:2px solid var(--green-600);padding:9px 12px;border-radius:0 8px 8px 0}
+.fld:focus-within{border-color:var(--g6);background:#fff}
+.fld.emp{background:var(--rb);border-color:var(--rd2)}.fld.emp label{color:#a35c54}
+.fld.js{animation:pop .9s}@keyframes pop{0%{box-shadow:0 0 0 4px #fbf1dc}100%{box-shadow:none}}
+.own{border:1px solid var(--ln);border-radius:11px;margin-bottom:11px;overflow:hidden}
+.ownh{display:flex;align-items:center;gap:10px;padding:11px 13px;background:#f7f9f5;border-bottom:1px solid var(--ln)}
+.ownh .n{width:24px;height:24px;border-radius:7px;background:var(--g7);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.ownh b{font-size:13px;flex:1}.ownh .sh{font-size:11px;color:var(--mu);background:#fff;padding:3px 8px;border-radius:20px;font-weight:600}
+.ownb{padding:12px 13px}
+.addo{width:100%;border:1px dashed #c9d3c8;border-radius:11px;padding:13px;text-align:center;font-size:12.5px;color:var(--mu);font-weight:600}
+.addo:hover{border-color:var(--g6);color:var(--g7)}
+.ownh .del{width:24px;height:24px;border-radius:7px;color:var(--m2);font-size:13px;display:grid;place-items:center;border:1px solid transparent}
+.ownh .del:hover{background:var(--rb);border-color:var(--rd2);color:var(--rd)}
+.ownh .del[disabled]{opacity:.3;cursor:not-allowed}
+.oit{border:1px solid var(--ln);border-radius:10px;margin-bottom:7px;overflow:hidden;background:#fbfcfa}
+.oit.op{background:#fff;border-color:#cfe3d6}
+.oith{display:flex;align-items:center;gap:9px;width:100%;padding:9px 11px;text-align:left}
+.oith .n{width:21px;height:21px;border-radius:6px;background:var(--g7);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;flex-shrink:0}
+.oith b{font-size:12.5px}
+.oith .sh{font-size:10.5px;color:var(--mu);background:#eff2ec;padding:2px 7px;border-radius:20px;font-weight:600}
+.oith .em{font-size:10px;background:var(--rb);color:var(--rd);padding:2px 7px;border-radius:5px;font-weight:600}
+.oith .ch{margin-left:auto;color:var(--m2);font-size:11px;font-weight:600;transition:.15s}
+.oit.op .ch{transform:rotate(180deg)}
+.oitb{display:none;padding:0 11px 11px}.oit.op .oitb{display:block}
+.osum{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mu);margin:2px 0 9px}
+.osum b{font-size:12.5px;color:var(--tx)}
+.osum button{margin-left:auto;font-size:11.5px;color:var(--g7);font-weight:600;text-decoration:underline}
 .gate{border:1px solid #e6d5a8;background:#fdf9ef;border-radius:11px;padding:13px;margin-top:18px}
 .gate b{font-size:12.5px;color:#8a5f10;display:block;margin-bottom:8px}
 .gate ul{list-style:none;font-size:12.5px;line-height:1.9}
-.gate li:before{content:'○ ';color:var(--muted-2)}
-.gate li.ok:before{content:'● ';color:var(--green-600)}
-.gate li.ok{color:var(--green-700)}
-.doc{display:flex;align-items:center;gap:11px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;margin-bottom:8px}
-.doc .ext{width:32px;height:32px;border-radius:7px;background:var(--red-bg);color:var(--red);display:grid;place-items:center;font-size:9.5px;font-weight:800}
-.doc .ext.img{background:#e9f1f7;color:var(--blue)}
-.doc b{font-size:12.5px;display:block}.doc small{color:var(--muted);font-size:11px}
-.doc .src{margin-left:auto;font-size:10.5px;color:var(--muted);background:#eff2ec;padding:3px 8px;border-radius:6px}
-.doc .src.man{background:#fbf1dc;color:#8a5f10;font-weight:600}
+.gate li:before{content:'o ';color:var(--m2)}.gate li.ok:before{content:'* ';color:var(--g6)}.gate li.ok{color:var(--g7)}
+.doc{display:flex;align-items:center;gap:11px;padding:10px 11px;border:1px solid var(--ln);border-radius:9px;margin-bottom:8px}
+.doc .e{width:32px;height:32px;border-radius:7px;background:var(--rb);color:var(--rd);display:grid;place-items:center;font-size:9.5px;font-weight:800}
+.doc .e.i{background:#e9f1f7;color:var(--bl)}
+.doc b{font-size:12.5px;display:block}.doc small{color:var(--mu);font-size:11px}
+.doc .sc{margin-left:auto;font-size:10.5px;color:var(--mu);background:#eff2ec;padding:3px 8px;border-radius:6px}
+.doc .sc.man{background:#fbf1dc;color:#8a5f10;font-weight:600}
 .doc .mid{flex:1;min-width:0}
 .doc .mid small{display:block;margin-top:2px}
 .doc select{border:1px solid transparent;background:transparent;font-size:12.5px;font-weight:700;padding:1px 3px;border-radius:6px;max-width:100%;outline:none}
-.doc select:hover{border-color:var(--line);background:#fff}
-.doc select.no{color:var(--red);border-color:var(--red-bd);background:var(--red-bg)}
-.doc .dl2{color:var(--muted-2);font-size:13px;padding:0 3px}
-.doc .dl2:hover{color:var(--red)}
-.doc.new{animation:pop .9s ease}
-.up{width:100%;border:1px dashed #c9d3c8;border-radius:10px;padding:12px;text-align:center;font-size:12.5px;color:var(--muted);font-weight:600;margin-top:2px}
-.up:hover{border-color:var(--green-600);color:var(--green-700);background:#f7f9f5}
-.act{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}
+.doc select:hover{border-color:var(--ln);background:#fff}
+.doc select.no{color:var(--rd);border-color:var(--rd2);background:var(--rb)}
+.doc .rmf{color:var(--m2);font-size:13px;padding:0 3px}.doc .rmf:hover{color:var(--rd)}
+.up{width:100%;border:1px dashed #c9d3c8;border-radius:10px;padding:12px;text-align:center;font-size:12.5px;color:var(--mu);font-weight:600}
+.up:hover{border-color:var(--g6);color:var(--g7);background:#f7f9f5}
+.act{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--ln)}
 .act .ai{width:27px;height:27px;border-radius:50%;background:#eff2ec;display:grid;place-items:center;font-size:11px;flex-shrink:0}
-.act .ai.tg{background:#e9f1f7;color:var(--blue)}
-.act p{font-size:12.5px;line-height:1.5}.act small{color:var(--muted-2);font-size:11px}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green-800);color:#fff;padding:11px 18px;border-radius:11px;font-size:13px;font-weight:600;z-index:80;transition:.25s;box-shadow:0 8px 30px rgba(18,48,31,.3)}
-.toast.on{transform:translateX(-50%)}
-@media(max-width:1100px){.kan{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+.act .ai.t{background:#e9f1f7;color:var(--bl)}
+.act p{font-size:12.5px;line-height:1.5}.act small{color:var(--m2);font-size:11px}
+.soon{text-align:center;padding:46px 20px;border:1px dashed #c9d3c8;border-radius:14px;background:#fff}
+.soon .em{font-size:30px}.soon b{display:block;margin-top:11px;font-size:15px}
+.soon p{color:var(--mu);font-size:13px;margin:7px auto 0;max-width:520px;line-height:1.6}
+.tst{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(90px);background:#1b4430;color:#fff;padding:11px 18px;border-radius:11px;font-size:13px;font-weight:600;z-index:80;transition:.25s}
+.tst.on{transform:translateX(-50%)}
+@media(max-width:1100px){.kan{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
 @media(max-width:820px){.app{grid-template-columns:1fr}.side{display:none}}
-</style>
-</head>
-<body>
+</style></head><body>
 <div class="app">
-  <aside class="side">
-    <div class="logo"><div class="logo-mark">Z</div><div class="logo-txt"><b>ZEMLIA.UA</b><span>операційна система</span></div></div>
-    <div><div class="nav-label">Блоки</div><nav class="nav">
-      <a href="#" class="on">🌱 Купівля землі <span class="n">9</span></a>
-      <a href="#">🤝 Продаж інвестору <span class="n">11</span></a>
-      <a href="#">🌾 Земельний банк <span class="n">64</span></a>
-    </nav></div>
-    <div><div class="nav-label">Робота</div><nav class="nav">
-      <a href="#">✈️ Telegram-інбокс <span class="n">3</span></a>
-      <a href="#">📊 Аналітика</a><a href="#">⚙️ Налаштування</a>
-    </nav></div>
-    <div class="side-foot"><div class="ava">СС</div><div><b>Стас С.</b><span>Адміністратор</span></div></div>
-  </aside>
-
-  <div>
-    <header class="top">
-      <div class="crumb">ZEMLIA.UA / <b>Блок 1 · Купівля землі</b></div>
-      <div class="search"><span class="mag">⌕</span><input placeholder="Кадастровий номер, ПІБ, телефон…"></div>
-      <button class="btn btn-sm">🔔</button>
-    </header>
-
-    <div class="wrap">
-      <div class="head-row">
-        <div><div class="h1">Купівля землі</div>
-          <div class="sub">Аналітика ділянок → Контрактування → Законтрактовані</div></div>
-        <div class="actions">
-          <button class="btn">⇩ Експорт</button><button class="btn">✈️ Шаблон для чату</button>
-          <button class="btn btn-pri">+ Нова ділянка</button>
-        </div>
-      </div>
-
-      <div class="kpis">
-        <div class="kpi"><div class="lbl">Ділянок в аналітиці</div><div class="val" id="k1">3</div><div class="dl">+5 з чату за тиждень</div></div>
-        <div class="kpi"><div class="lbl">У контрактуванні</div><div class="val" id="k2">3</div><div class="dl">6,8 га</div></div>
-        <div class="kpi acc"><div class="lbl">Законтрактовано</div><div class="val" id="k3">3</div><div class="dl">7,4 га · 612 тис ₴</div></div>
-        <div class="kpi"><div class="lbl">Незаповнених полів</div><div class="val" id="kMiss">—</div><div class="dl warn">потребує уваги менеджерів</div></div>
-      </div>
-
-      <div class="tools">
-        <span class="chip on">Всі</span><span class="chip">Житомирська</span><span class="chip">Вінницька</span>
-        <span class="chip">Мої</span><span class="chip red" id="chipMiss">⚠ Є незаповнені поля</span><span class="chip">✈️ З чату сьогодні 2</span>
-      </div>
-
-      <div class="kan" id="kan"></div>
-
-      <div class="hint" style="margin-top:18px">
-        Автоматично заповнюється <b>лише перший етап</b> — з шаблону в Telegram-чаті. Під час переходу на наступний етап нові поля просто
-        <b>додаються у відповідні блоки</b> картки порожніми й підсвічуються червоним, поки менеджер не заповнить їх вручну.
-        Жодне поле не зникає й не перезаписується.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer">
-  <div class="dr-h">
-    <button class="x" id="closeDr">✕</button>
-    <div class="kad3" id="dKad"></div>
-    <div class="pib3" id="dPib"></div>
-    <div class="row">
-      <span class="st m" id="dStage"></span>
-      <span class="st g" id="dArea"></span>
-      <span class="st b" id="dLoc"></span>
-      <button class="btn btn-sm btn-pri" style="margin-left:auto" id="nextBtn">Перевести далі →</button>
-    </div>
-  </div>
-  <div class="step" id="stepper">
-    <div>1 · Аналітика ділянок</div><div>2 · Контрактування</div><div>3 · Законтрактовані</div>
-  </div>
-  <div class="dr-tabs">
-    <button class="on" data-p="info">Картка</button>
-    <button data-p="own">Власники <span id="ownN" style="color:var(--muted-2)"></span></button>
-    <button data-p="docs">Документи</button>
-    <button data-p="act">Активність</button>
-  </div>
-  <div class="dr-b">
-    <div class="pane on" id="p-info"></div>
-    <div class="pane" id="p-own">
-      <div class="fs">Власники паю <span class="ln"></span><em id="ownWarn" style="display:none">є незаповнені</em></div>
-      <div id="ownList"></div>
-      <button class="add-owner" id="addOwn"></button>
-      <div class="hint">Додати власника — кнопкою нижче, видалити — хрестиком у заголовку картки. Поки власник один — його дані живуть у блоці «Інформація про продавця». Щойно доданий другий, кожен власник отримує окрему картку з паспортом, ІПН, сімейним станом, місцем роботи й часткою. Максимум — 6 осіб.</div>
-    </div>
-    <div class="pane" id="p-docs">
-      <div class="fs">Документи <span class="ln"></span><em id="docWarn" style="display:none"></em></div>
-      <div id="docList"></div>
-      <button class="up" id="upBtn">⇪ Завантажити документ вручну</button>
-      <input type="file" id="upInp" multiple style="display:none">
-      <div class="hint">Тип документа — окреме поле, а не назва файлу, й змінюється списком у рядку. Файли з чату розкладає бот, менеджер лише підтверджує тип. Вручну завантажені файли позначаються окремо і падають в аудит-лог.</div>
-    </div>
-    <div class="pane" id="p-act">
-      <div class="act"><div class="ai tg">✈️</div><div><p><b>О. Панасюк</b>: власник готовий на 180, просить розрахунок у нотаріуса</p><small>сьогодні 12:04 · дзеркалено з Telegram</small></div></div>
-      <div class="act"><div class="ai">✎</div><div><p>Заповнено <b>НГО</b> — 62 400 ₴</p><small>сьогодні 11:22 · О. Панасюк</small></div></div>
-      <div class="act"><div class="ai tg">📎</div><div><p>Додано 3 файли з повідомлення <b>#нова_ділянка</b></p><small>12.08.2026 09:14 · бот</small></div></div>
-      <div class="act" style="border:none"><div class="ai">✚</div><div><p>Картку створено автоматично з чату «Закупка · Житомир»</p><small>11.08.2026 15:02 · бот</small></div></div>
-    </div>
-  </div>
+<aside class="side">
+<div class="lg"><div class="lm">Z</div><div class="lt"><b>ZEMLIA.UA</b><span>операційна система</span></div></div>
+<div><div class="nl">Блоки</div><nav class="nav">
+<a href="#" class="on" data-go="b1">Купівля землі <span class="n" id="nb1">6</span></a>
+<a href="#" data-go="b2">Продаж інвестору <span class="n">4</span></a>
+<a href="#" data-go="b3">Земельний банк <span class="n">64</span></a></nav></div>
+<div><div class="nl">Робота</div><nav class="nav">
+<a href="#" data-go="tgp">Telegram-інбокс <span class="n">3</span></a>
+<a href="#" data-go="an">Аналітика</a>
+<a href="#" data-go="stp">Налаштування</a></nav></div>
+<div class="sf"><div class="avt">СС</div><div><b>Стас С.</b><span id="rlbl">Адміністратор</span></div></div>
 </aside>
-<div class="toast" id="toast"></div>
+<div>
+<header class="top"><div class="cr">ZEMLIA.UA / <b id="crumb">Блок 1 · Купівля землі</b></div>
+<div class="sr"><input placeholder="Кадастровий номер, ПІБ, телефон..."></div>
+<div class="rp">Роль:<select id="role"><option value="admin">admin</option><option value="buyer">buyer_agent</option><option value="sales">sales_agent</option><option value="asset">asset_manager</option></select></div>
+<button class="btn bs" id="reset">Скинути демо</button></header>
+
+<section class="wrap on" id="b1">
+<div class="hr"><div><div class="h1">Купівля землі</div><div class="sub">Аналітика ділянок - Контрактування - Законтрактовані · картки перетягуються мишкою</div></div>
+<div class="ac"><button class="btn">Експорт</button><button class="btn">Шаблон для чату</button><button class="btn bp">+ Нова ділянка</button></div></div>
+<div class="kpis">
+<div class="kpi"><div class="l">В аналітиці</div><div class="v" id="k1">2</div><div class="d">+5 з чату за тиждень</div></div>
+<div class="kpi"><div class="l">У контрактуванні</div><div class="v" id="k2">2</div><div class="d" id="k2a"></div></div>
+<div class="kpi acc"><div class="l">Законтрактовано</div><div class="v" id="k3">2</div><div class="d" id="k3a"></div></div>
+<div class="kpi"><div class="l">Незаповнених полів</div><div class="v" id="kM">0</div><div class="d w">потребує уваги менеджерів</div></div></div>
+<div class="tl"><span class="chip on">Всі</span><span class="chip">Житомирська</span><span class="chip">Вінницька</span><span class="chip">Мої</span><span class="chip r" id="chM"></span></div>
+<div class="kan" id="kan"></div>
+<div class="hint">Автоматично заповнюється <b>лише перший етап</b> — з шаблону #нова_ділянка у Telegram-чаті. Нові поля наступних етапів додаються у ті самі блоки картки порожніми й підсвічуються червоним, поки менеджер не заповнить їх вручну. Зміни зберігаються у браузері.</div>
+</section>
+
+<section class="wrap" id="tgp">
+<div class="hr"><div><div class="h1">Telegram-інбокс</div><div class="sub">Чати «Закупка · Житомир» і «Закупка · Вінниця»</div></div>
+<div class="ac"><button class="btn">Правила парсингу</button><button class="btn bp">Підключити чат</button></div></div>
+<div class="two"><div>
+<div class="pn"><div class="pnh"><b>Очікують підтвердження</b><span class="x">3 нових</span></div><div class="pnb">
+<div class="ti"><div class="th2"><span class="a2">ОП</span><b>Олег Панасюк</b> · #нова_ділянка<span class="tm">12:04</span></div>
+<div class="tt"><span class="hs">#нова_ділянка</span>
+Кадастровий: 1822055100:02:004:0117
+Площа: 1.45
+Локація: Черняхів, Житомирська
+Продавець: Кравчук Марія Петрівна
+Телефон: +380673344121
+Ціна: 118000
+3 файли: витяг ДЗК, паспорт, код</div>
+<div class="okn">Формат валідний · КОАТУУ збігається · дублів немає · 3 файли розпізнано</div>
+<div class="bts"><button class="btn bs bp">Створити картку</button><button class="btn bs">Прив язати</button><button class="btn bs">Ігнорувати</button></div></div>
+<div class="ti"><div class="th2"><span class="a2">ІД</span><b>Ірина Дубина</b> · #дооцінка<span class="tm">11:38</span></div>
+<div class="tt"><span class="hs">#дооцінка</span> 1825182000:05:011:0088
+довантажую згоду дружини і свіжий витяг</div>
+<div class="okn">Знайдено картку «Бондар О. С.» · 2 файли будуть додані</div>
+<div class="bts"><button class="btn bs bp">Додати до картки</button><button class="btn bs">Ігнорувати</button></div></div>
+<div class="ti"><div class="th2"><span class="a2">ОП</span><b>Олег Панасюк</b> · без хештегу<span class="tm">10:52</span></div>
+<div class="tt">по гайсинській ділянці хазяїн просить 3.8 га за 340, каже думає ще
+IMG_2841.HEIC (11,2 МБ)</div>
+<div class="wn">Хештег відсутній, кадастровий номер не знайдено — файл в «Інбоксі невідомих документів»</div>
+<div class="bts"><button class="btn bs">Прив язати вручну</button><button class="btn bs">Попросити шаблон</button></div></div>
+</div></div>
+<div class="pn"><div class="pnh"><b>Тест парсера</b><span class="x">так бот читає повідомлення</span></div><div class="pnb">
+<textarea id="raw">#нова_ділянка
+Кадастровий: 1812345678:03:015:0042
+Площа: 2.1
+Локація: Пулини, Житомирська
+Продавець: Іваненко Іван Іванович
+Телефон: +380671234567
+Ціна: 180000</textarea>
+<div class="bts"><button class="btn bp bs" id="pbtn">Розпарсити</button><button class="btn bs" id="bbtn">Зламати формат</button></div>
+<div class="res" id="res"></div></div></div>
+</div><div>
+<div class="pn"><div class="pnh"><b>Підключені чати</b></div><div class="pnb">
+<div class="row2"><span>Закупка · Житомир</span><span class="st g">бот-адмін</span></div>
+<div class="row2"><span>Закупка · Вінниця</span><span class="st g">бот-адмін</span></div>
+<div class="row2"><span>Продаж · інвестори</span><span class="st m">не підключено</span></div></div></div>
+<div class="pn"><div class="pnh"><b>Шаблон для чату</b></div><div class="pnb">
+<div class="tt" style="font-family:Menlo,monospace;font-size:11px">#нова_ділянка
+Кадастровий:
+Площа:
+Локація:
+Продавець:
+Телефон:
+Ціна:
+Оренда:
+Коментар:</div>
+<button class="btn bs bg2" style="margin-top:10px;width:100%">Скопіювати · /шаблон</button>
+<div class="hint">Обов язкові: кадастровий номер і телефон. Вкладення надсилати <b>як файл</b>, не як фото.</div></div></div>
+<div class="pn"><div class="pnh"><b>Якість автоімпорту</b><span class="x">30 днів</span></div><div class="pnb">
+<div class="row2"><span>Повідомлень із хештегом</span><b>142</b></div>
+<div class="row2"><span>Розпізнано без правок</span><b>91%</b></div><div class="bar2"><i style="width:91%"></i></div>
+<div class="row2" style="margin-top:8px"><span>Файлів імпортовано</span><b>318</b></div>
+<div class="row2"><span>Дублів відхилено</span><b>7</b></div></div></div>
+</div></div></section>
+
+<section class="wrap" id="b2">
+<div class="hr"><div><div class="h1">Продаж інвестору</div><div class="sub">Ділянки у власності компанії, показ інвесторам, резерв, угода</div></div>
+<div class="ac"><button class="btn">Інвестори · 34</button><button class="btn bp">+ Сформувати лот</button></div></div>
+<div class="kpis">
+<div class="kpi"><div class="l">Доступно до продажу</div><div class="v">11 <small>лотів</small></div><div class="d">26,4 га</div></div>
+<div class="kpi"><div class="l">У резерві</div><div class="v">3</div><div class="d">2 з авансом</div></div>
+<div class="kpi acc"><div class="l">Сер. дохідність лота</div><div class="v">11,8 <small>%</small></div><div class="d">після приведення оренди</div></div>
+<div class="kpi"><div class="l">Показів на угоду</div><div class="v">4,2</div><div class="d">цикл 19 днів</div></div></div>
+<div class="tl"><span class="chip on">Каталог</span><span class="chip">Воронка угод</span><span class="chip">Інвестори</span><span class="chip">Резерв 3</span></div>
+<div class="lots">
+<div class="lot"><div class="ph">*<span class="bd">Доступна</span><span class="yl">12,4%</span></div><div class="lb"><b>Лот «Радомишль-1»</b><div class="kd">1820100000:04:012:0603</div>
+<div class="lr"><span class="tg g">2,70 га</span><span class="tg">рілля</span><span class="tg b">оренда до 2029</span></div>
+<div class="lp"><b class="cost">268 000 ₴</b><small class="cost">99 259 ₴/га</small></div>
+<div class="fmn"><i class="f"></i><i></i><i></i><i></i><i></i></div></div></div>
+<div class="lot"><div class="ph">*<span class="bd rs">Резерв до 18.09</span><span class="yl">11,1%</span></div><div class="lb"><b>Лот «Хорошів-масив»</b><div class="kd">1823400000:06:019:0074 +2</div>
+<div class="lr"><span class="tg g">6,90 га</span><span class="tg a">3 суміжні</span><span class="tg b">ФГ Колос</span></div>
+<div class="lp"><b class="cost">642 000 ₴</b><small class="cost">93 043 ₴/га</small></div>
+<div class="fmn"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></div></div></div>
+<div class="lot"><div class="ph">*<span class="bd">Доступна</span><span class="yl">10,6%</span></div><div class="lb"><b>Лот «Баранівка-3»</b><div class="kd">1826300000:01:005:0219</div>
+<div class="lr"><span class="tg g">3,10 га</span><span class="tg">рілля</span></div>
+<div class="lp"><b class="cost">301 000 ₴</b><small class="cost">97 097 ₴/га</small></div>
+<div class="fmn"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></div></div></div>
+<div class="lot"><div class="ph">*<span class="bd rs">Аванс внесено</span><span class="yl">13,0%</span></div><div class="lb"><b>Лот «Коростишів-2»</b><div class="kd">1821999900:02:021:0155</div>
+<div class="lr"><span class="tg g">1,60 га</span><span class="tg g">інвестор: Р. К.</span></div>
+<div class="lp"><b class="cost">259 000 ₴</b><small class="cost">99 615 ₴/га</small></div>
+<div class="fmn"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div></div></div>
+</div>
+<div class="hint">Воронка живе у зв язці «лот + інвестор» (таблиця deal_sale): один лот показується кільком інвесторам, але резервується одним.</div></section>
+
+<section class="wrap" id="b3">
+<div class="hr"><div><div class="h1">Управління земельним банком</div><div class="sub">Договори оренди, НГО, річні виплати інвесторам</div></div>
+<div class="ac"><button class="btn">Звіт інвестору</button><button class="btn bp">+ Договір оренди</button></div></div>
+<div class="kpis">
+<div class="kpi"><div class="l">Ділянок під управлінням</div><div class="v">64</div><div class="d">153,8 га</div></div>
+<div class="kpi"><div class="l">Вартість банку</div><div class="v cost">14,9 <small>млн ₴</small></div><div class="d">+8,4% за рік</div></div>
+<div class="kpi acc"><div class="l">Орендний потік / рік</div><div class="v">1,72 <small>млн ₴</small></div><div class="d">сер. 11 180 ₴/га</div></div>
+<div class="kpi"><div class="l">Спливає ≤12 міс</div><div class="v">9</div><div class="d w">потребує переговорів</div></div></div>
+<div class="two">
+<div class="pn"><div class="pnh"><b>Договори оренди</b><span class="x">ставка нижче ринку — червона</span></div>
+<table><thead><tr><th>Ділянка</th><th>Інвестор</th><th>Орендар</th><th>Підписано</th><th>Зареєстровано</th><th>НГО</th><th>Ставка</th><th>Спливає</th></tr></thead><tbody>
+<tr><td class="mn">1820100000:04:012:0603</td><td>Р. Кравець</td><td>ТОВ Агро-Схід</td><td>12.03.2024</td><td><b>18.03.2024</b></td><td>63 700 ₴</td><td><span class="st g">12,0%</span></td><td>2029</td></tr>
+<tr><td class="mn">1823400000:06:019:0074</td><td>О. Мороз</td><td>ФГ Колос</td><td>04.11.2023</td><td><b>15.11.2023</b></td><td>59 800 ₴</td><td><span class="st r">4,5%</span></td><td>02.2027</td></tr>
+<tr><td class="mn">1826300000:01:005:0219</td><td>І. Гнатюк</td><td>ТОВ Полісся-Агро</td><td>21.06.2022</td><td><b>29.06.2022</b></td><td>57 300 ₴</td><td><span class="st a">8,0%</span></td><td>06.2027</td></tr>
+<tr><td class="mn">1821999900:02:021:0155</td><td>Р. Кравець</td><td>ФГ Нива</td><td>08.02.2025</td><td><b>19.02.2025</b></td><td>61 200 ₴</td><td><span class="st g">12,5%</span></td><td>2030</td></tr>
+<tr><td class="mn">1824555100:03:008:0330</td><td>Т. Левченко</td><td>ТОВ Агро-Схід</td><td>17.09.2021</td><td><b>28.09.2021</b></td><td>60 100 ₴</td><td><span class="st r">3,8%</span></td><td>11.2026</td></tr>
+</tbody></table>
+<div class="pnb" style="border-top:1px solid var(--ln)"><div class="hint" style="margin:0">Строк оренди рахується від <b>дати державної реєстрації речового права</b>, а не від підписання — тому це дві окремі колонки. НГО зберігається з історією значень: при зміні орендна плата перераховується автоматично.</div></div></div>
+<div>
+<div class="pn"><div class="pnh"><b>Календар зобов язань</b></div><div class="pnb">
+<div class="cal"><div class="cd"><b>15</b><span>вер</span></div><div><p><b>Виплата доходу</b> — 11 інвесторів</p><small>418 400 ₴ · транш 3/4</small></div></div>
+<div class="cal"><div class="cd"><b>28</b><span>вер</span></div><div><p><b>Переговори по ставці</b> — ФГ Колос</p><small>4,5% проти 11,2% по ОТГ</small></div></div>
+<div class="cal"><div class="cd"><b>11</b><span>лис</span></div><div><p><b>Спливає договір</b> — Ткачук С. М.</p><small>1824555100:03:008:0330</small></div></div>
+<div class="cal"><div class="cd"><b>01</b><span>січ</span></div><div><p><b>Оновлення НГО</b> по 3 ОТГ</p><small>перерахунок 17 договорів</small></div></div></div></div>
+<div class="pn"><div class="pnh"><b>Приведення до ринку</b></div><div class="pnb">
+<div class="row2"><span>Договорів нижче ринку</span><b>14</b></div>
+<div class="row2"><span>Потенціал приросту</span><b>+286 тис ₴/рік</b></div>
+<div class="bar2"><i style="width:34%"></i></div>
+<div class="hint">34% банку вже приведено до ринкових ставок.</div></div></div>
+</div></div></section>
+
+<section class="wrap" id="an">
+<div class="hr"><div><div class="h1">Аналітика</div><div class="sub">Крос-блокові звіти на матеріалізованих в ю</div></div></div>
+<div class="kpis">
+<div class="kpi"><div class="l">Маржа купівля-продаж</div><div class="v cost">18,6 <small>%</small></div><div class="d">по 23 угодах</div></div>
+<div class="kpi"><div class="l">Цикл lead-інвестор</div><div class="v">51 <small>днів</small></div><div class="d">-7 днів до Q2</div></div>
+<div class="kpi acc"><div class="l">Дохідність на гектар</div><div class="v">11 180 <small>₴</small></div><div class="d">Житомирська обл.</div></div>
+<div class="kpi"><div class="l">Втрачених лідів</div><div class="v">63 <small>%</small></div><div class="d w">гол. причина: ціна</div></div></div>
+<div class="soon"><div class="em">#</div><b>Дашборди по регіонах, орендарях і причинах відмов</b><p>Будуються нічним cron на матеріалізованих в ю. Роль analyst бачить агрегати без персональних даних.</p></div></section>
+
+<section class="wrap" id="stp">
+<div class="hr"><div><div class="h1">Налаштування</div><div class="sub">Ролі, доступи, інтеграції, аудит</div></div></div>
+<div class="two">
+<div class="pn"><div class="pnh"><b>Ролі та доступи</b></div>
+<table><thead><tr><th>Роль</th><th>Блок 1</th><th>Блок 2</th><th>Блок 3</th><th>Ціни</th><th>Паспортні дані</th></tr></thead><tbody>
+<tr><td><b>buyer_agent</b></td><td><span class="st g">свої</span></td><td><span class="st m">—</span></td><td><span class="st m">—</span></td><td><span class="st r">ні</span></td><td><span class="st g">так</span></td></tr>
+<tr><td><b>sales_agent</b></td><td><span class="st m">—</span></td><td><span class="st g">всі</span></td><td><span class="st b">читання</span></td><td><span class="st r">ні</span></td><td><span class="st r">ні</span></td></tr>
+<tr><td><b>asset_manager</b></td><td><span class="st m">—</span></td><td><span class="st b">читання</span></td><td><span class="st g">всі</span></td><td><span class="st r">ні</span></td><td><span class="st r">ні</span></td></tr>
+<tr><td><b>analyst</b></td><td><span class="st b">агрегати</span></td><td><span class="st b">агрегати</span></td><td><span class="st b">агрегати</span></td><td><span class="st g">так</span></td><td><span class="st r">ні</span></td></tr>
+<tr><td><b>admin</b></td><td><span class="st g">всі</span></td><td><span class="st g">всі</span></td><td><span class="st g">всі</span></td><td><span class="st g">так</span></td><td><span class="st g">так</span></td></tr>
+</tbody></table></div>
+<div>
+<div class="pn"><div class="pnh"><b>Інтеграції</b></div><div class="pnb">
+<div class="row2"><span>Telegram-бот (2 чати)</span><span class="st g">активно</span></div>
+<div class="row2"><span>Локальний Bot API server</span><span class="st a">файли &gt;20 МБ</span></div>
+<div class="row2"><span>Mini App</span><span class="st g">активно</span></div>
+<div class="row2"><span>Object storage (R2)</span><span class="st g">318 файлів</span></div>
+<div class="row2"><span>PostGIS / шейпфайли ДЗК</span><span class="st m">налаштування</span></div></div></div>
+<div class="pn"><div class="pnh"><b>Аудит доступу</b></div><div class="pnb">
+<div class="act"><div class="ai">o</div><div><p><b>І. Дубина</b> відкрила паспорт продавця</p><small>сьогодні 11:41 · IP 46.211.x.x</small></div></div>
+<div class="act"><div class="ai">v</div><div><p><b>Ю. Вербицька</b> завантажила витяг</p><small>сьогодні 10:07</small></div></div>
+<div class="act" style="border:none"><div class="ai">*</div><div><p><b>admin</b> змінив права sales_agent</p><small>02.09.2026 18:22</small></div></div></div></div>
+</div></div></section>
+</div></div>
+
+<div class="scr" id="scrim"></div>
+<aside class="dr" id="drw">
+<div class="drh"><button class="cl" id="cls">X</button><div class="k3" id="dKad"></div><div class="p3" id="dPib"></div>
+<div class="rw"><span class="st m" id="dSt"></span><span class="st g" id="dAr"></span><span class="st b" id="dLo"></span><button class="btn bs bp" style="margin-left:auto" id="nxt"></button></div></div>
+<div class="stp" id="stpr"><div data-s="1">1 · Аналітика ділянок</div><div data-s="2">2 · Контрактування</div><div data-s="3">3 · Законтрактовані</div></div>
+<div class="drt"><button class="on" data-p="info">Картка</button><button data-p="own">Власники <span id="oN"></span></button><button data-p="docs">Документи</button><button data-p="act">Активність</button></div>
+<div class="drb">
+<div class="pane on" id="p-info"></div>
+<div class="pane" id="p-own"><div class="fs">Власники паю<span class="ln2"></span><em id="oW" style="display:none"></em></div><div id="oL"></div><button class="addo" id="aO"></button>
+<div class="hint">Додати власника — кнопкою вище, видалити — хрестиком у заголовку картки. Поки власник один — його дані живуть у блоці «Інформація про продавця». З другого власника кожен отримує окрему картку з паспортом, ІПН, сімейним станом, місцем роботи й часткою. Максимум 6.</div></div>
+<div class="pane" id="p-docs"><div class="fs">Документи<span class="ln2"></span><em id="dW" style="display:none"></em></div>
+<div id="dL"></div>
+<button class="up" id="upB">Завантажити документ вручну</button>
+<input type="file" id="upI" multiple style="display:none">
+<div class="hint">Тип документа — окреме поле, а не назва файлу, й змінюється списком у рядку. Вручну завантажені файли позначаються окремо. Файли віддаються через підписане посилання на 15 хвилин, кожне відкриття потрапляє в аудит-лог.</div></div>
+<div class="pane" id="p-act">
+<div class="act"><div class="ai t">TG</div><div><p><b>О. Панасюк</b>: власник готовий на 180, просить розрахунок у нотаріуса</p><small>сьогодні 12:04 · дзеркалено з Telegram</small></div></div>
+<div class="act"><div class="ai">e</div><div><p>Заповнено <b>НГО</b> — 62 400 ₴</p><small>сьогодні 11:22 · О. Панасюк</small></div></div>
+<div class="act"><div class="ai t">f</div><div><p>Додано 3 файли з повідомлення <b>#нова_ділянка</b></p><small>12.08.2026 09:14 · бот</small></div></div>
+<div class="act" style="border:none"><div class="ai">+</div><div><p>Картку створено автоматично з чату</p><small>11.08.2026 15:02 · бот</small></div></div></div>
+</div></aside>
+<div class="tst" id="toast"></div>
 
 <script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-
-/* ===== СХЕМА: поле → блок + етап появи + тип ===== */
-const GROUPS=['Інформація про продавця','Інформація про ділянку','Робота з продавцем'];
-const FIELDS=[
- // ---- ЕТАП 1 (заповнюється ботом із шаблону) ----
- {k:'ПІБ',                        g:0,s:1,auto:1},
- {k:'Номер телефону',             g:0,s:1,auto:1},
- {k:'Кадастровий номер',          g:1,s:1,auto:1,mono:1},
- {k:'Область',                    g:1,s:1,auto:1},
- {k:'Район',                      g:1,s:1,auto:1},
- {k:'Сільрада',                   g:1,s:1,auto:1},
- {k:'Площа ділянки',              g:1,s:1,auto:1},
- {k:'Нормативна грошова оцінка',  g:1,s:1,auto:1},
- {k:'Орендар',                    g:1,s:1,auto:1},
- {k:'Термін оренди',              g:1,s:1,auto:1},
- {k:'Дата останнього контакту',   g:2,s:1,auto:1,t:'date'},
- {k:'Коментарі',                  g:2,s:1,auto:1,t:'area',wide:1},
- // ---- ЕТАП 2 (додаються порожніми, вручну) ----
- {k:'Серія і номер паспорта',     g:0,s:2,lock:1},
- {k:'ІПН',                        g:0,s:2,lock:1},
- {k:'Сімейний стан',              g:0,s:2,t:'sel',opt:['','Одружений / одружена','Неодружений / неодружена','Розлучений / розлучена','Вдівець / вдова']},
- {k:'Місце роботи',               g:0,s:2},
- {k:'Узгоджена ціна Д/У',         g:1,s:2},
- {k:'Ціна наміру',                g:1,s:2},
- {k:'Дата реєстрації наміру',     g:1,s:2,t:'date'},
- {k:'Канал залучення',            g:2,s:2,t:'sel',opt:['','Telegram-чат','Обхід подвір\'їв','Рекомендація','Вхідний дзвінок','Реклама']},
- {k:'Нотаріус',                   g:2,s:2},
- {k:'Дата і час у нотаріуса',     g:2,s:2,t:'dt'},
- // ---- ЕТАП 3 ----
- {k:'Статус ділянки',             g:1,s:3,t:'sel',opt:['','Намір','Переважне право','Ділянка без оренди'],wide:1},
- {k:'Орендна плата фактична',     g:1,s:3},
- {k:'Орендна плата прогнозована', g:1,s:3},
- {k:'Ідентифікатор ділянки',      g:1,s:3}
-];
-const REQ_2=['Серія і номер паспорта','ІПН','Узгоджена ціна Д/У','Ціна наміру','Дата реєстрації наміру','Нотаріус','Дата і час у нотаріуса'];
-const REQ_3=['Статус ділянки','Орендна плата прогнозована','Ідентифікатор ділянки'];
-
-/* ===== ДАНІ ===== */
-const D={
-1:{s:1,kad:'1812345678:03:015:0042',pib:'Іваненко Іван Іванович',mgr:'ОП',docs:3,owners:[],
-  v:{'ПІБ':'Іваненко Іван Іванович','Номер телефону':'+380 67 123 45 67','Кадастровий номер':'1812345678:03:015:0042','Область':'Житомирська','Район':'Житомирський','Сільрада':'Пулинська','Площа ділянки':'2,1000 га','Нормативна грошова оцінка':'62 400 ₴','Орендар':'ТОВ «Агро-Схід»','Термін оренди':'до 31.12.2029','Дата останнього контакту':'14.09.2026','Коментарі':'Готовий продавати, є згода дружини. Просить розрахунок у нотаріуса.'}},
-2:{s:1,kad:'1822081200:04:002:0451',pib:'Гончарук Людмила Василівна',mgr:'ІД',docs:1,owners:[],
-  v:{'ПІБ':'Гончарук Людмила Василівна','Номер телефону':'+380 96 771 08 55','Кадастровий номер':'1822081200:04:002:0451','Область':'Житомирська','Район':'Житомирський','Сільрада':'Брусилівська','Площа ділянки':'2,8000 га','Орендар':'ФГ «Колос»','Термін оренди':'до 2027','Дата останнього контакту':'09.09.2026'}},
-3:{s:1,kad:'0523688400:01:009:0203',pib:'Шевченко Роман Олегович',mgr:'ОП',docs:0,owners:[],
-  v:{'ПІБ':'Шевченко Роман Олегович','Номер телефону':'+380 63 440 12 90','Кадастровий номер':'0523688400:01:009:0203','Область':'Вінницька','Район':'Гайсинський','Сільрада':'Гайсинська','Площа ділянки':'3,8000 га'}},
-4:{s:2,kad:'1825182000:05:011:0088',pib:'Бондар Олег Сергійович',mgr:'ІД',docs:5,owners:[],
-  v:{'ПІБ':'Бондар Олег Сергійович','Номер телефону':'+380 68 220 41 17','Кадастровий номер':'1825182000:05:011:0088','Область':'Житомирська','Район':'Житомирський','Сільрада':'Романівська','Площа ділянки':'2,0000 га','Нормативна грошова оцінка':'58 900 ₴','Орендар':'ТОВ «Полісся-Агро»','Термін оренди':'до 30.09.2027','Дата останнього контакту':'12.09.2026','Коментарі':'Домовились про угоду, чекаємо нотаріуса.','Серія і номер паспорта':'КМ 481902','ІПН':'3214567890','Сімейний стан':'Одружений / одружена','Місце роботи':'ТОВ «Житомир-Буд»','Узгоджена ціна Д/У':'164 000 ₴','Ціна наміру':'160 000 ₴','Дата реєстрації наміру':'02.09.2026','Канал залучення':'Обхід подвір\'їв','Нотаріус':'Кравченко О. М., Житомир','Дата і час у нотаріуса':'18.09.2026, 11:00'}},
-5:{s:2,kad:'1823400000:06:019:0074',pib:'Савчук Ніна Іванівна',mgr:'ОП',docs:7,
-  owners:[{n:'Савчук Ніна Іванівна',sh:'1/2',p:'КМ 220417',i:'2905611234',ms:'Вдівець / вдова',w:'Пенсіонерка'},
-          {n:'Савчук Андрій Петрович',sh:'1/4',p:'КМ 664120',i:'3344556677',ms:'Одружений / одружена',w:'ТОВ «Хорошів-Агро»'},
-          {n:'Мельник Оксана Петрівна',sh:'1/4',p:'',i:'',ms:'',w:''}],
-  v:{'ПІБ':'Савчук Ніна Іванівна','Номер телефону':'+380 97 118 30 22','Кадастровий номер':'1823400000:06:019:0074','Область':'Житомирська','Район':'Житомирський','Сільрада':'Хорошівська','Площа ділянки':'2,3000 га','Нормативна грошова оцінка':'59 800 ₴','Орендар':'ФГ «Колос»','Термін оренди':'до 02.2027','Дата останнього контакту':'13.09.2026','Коментарі':'Пай у спільній частковій власності — троє спадкоємців.','Серія і номер паспорта':'КМ 220417','ІПН':'2905611234','Сімейний стан':'Вдівець / вдова','Місце роботи':'Пенсіонерка','Узгоджена ціна Д/У':'183 000 ₴','Ціна наміру':'180 000 ₴','Дата реєстрації наміру':'28.08.2026','Канал залучення':'Рекомендація','Нотаріус':'Левчук І. П., Хорошів','Дата і час у нотаріуса':'22.09.2026, 14:30'}},
-6:{s:2,kad:'1824555100:03:008:0330',pib:'Ткачук Сергій Миколайович',mgr:'ЮВ',docs:4,owners:[],
-  v:{'ПІБ':'Ткачук Сергій Миколайович','Номер телефону':'+380 50 337 22 08','Кадастровий номер':'1824555100:03:008:0330','Область':'Житомирська','Район':'Житомирський','Сільрада':'Любарська','Площа ділянки':'2,5000 га','Нормативна грошова оцінка':'60 100 ₴','Орендар':'ТОВ «Агро-Схід»','Термін оренди':'до 11.2026','Дата останнього контакту':'11.09.2026','Серія і номер паспорта':'КМ 903112','Сімейний стан':'Одружений / одружена','Місце роботи':'ФОП','Узгоджена ціна Д/У':'205 000 ₴','Ціна наміру':'200 000 ₴','Дата реєстрації наміру':'05.09.2026','Канал залучення':'Telegram-чат'}},
-7:{s:3,kad:'1826300000:01:005:0219',pib:'Поліщук Андрій Дмитрович',mgr:'ЮВ',docs:9,
-  owners:[{n:'Поліщук Андрій Дмитрович',sh:'2/3',p:'КМ 771230',i:'3011224455',ms:'Одружений / одружена',w:'ТОВ «Баранівка-Ліс»'},
-          {n:'Поліщук Ганна Іванівна',sh:'1/3',p:'КМ 771231',i:'3011224466',ms:'Одружений / одружена',w:'Домогосподарка'}],
-  v:{'ПІБ':'Поліщук Андрій Дмитрович','Номер телефону':'+380 67 905 44 31','Кадастровий номер':'1826300000:01:005:0219','Область':'Житомирська','Район':'Звягельський','Сільрада':'Баранівська','Площа ділянки':'3,1000 га','Нормативна грошова оцінка':'57 300 ₴','Орендар':'ТОВ «Полісся-Агро»','Термін оренди':'до 06.2027','Дата останнього контакту':'10.09.2026','Коментарі':'Угода підписана, право зареєстровано.','Серія і номер паспорта':'КМ 771230','ІПН':'3011224455','Сімейний стан':'Одружений / одружена','Місце роботи':'ТОВ «Баранівка-Ліс»','Узгоджена ціна Д/У':'254 000 ₴','Ціна наміру':'250 000 ₴','Дата реєстрації наміру':'19.08.2026','Канал залучення':'Обхід подвір\'їв','Нотаріус':'Кравченко О. М., Житомир','Дата і час у нотаріуса':'05.09.2026, 10:00','Статус ділянки':'Намір','Орендна плата фактична':'4,2% НГО · 2 407 ₴/рік','Орендна плата прогнозована':'11,2% НГО · 6 418 ₴/рік','Ідентифікатор ділянки':'ZM-0219'}},
-8:{s:3,kad:'1820100000:04:012:0603',pib:'Лисенко Оксана Юріївна',mgr:'ЮВ',docs:8,owners:[],
-  v:{'ПІБ':'Лисенко Оксана Юріївна','Номер телефону':'+380 93 220 77 14','Кадастровий номер':'1820100000:04:012:0603','Область':'Житомирська','Район':'Коростенський','Сільрада':'Радомишльська','Площа ділянки':'2,7000 га','Нормативна грошова оцінка':'63 700 ₴','Орендар':'ТОВ «Агро-Схід»','Термін оренди':'до 2029','Дата останнього контакту':'08.09.2026','Серія і номер паспорта':'КМ 118844','ІПН':'2788015566','Сімейний стан':'Розлучений / розлучена','Місце роботи':'КНП «Радомишльська ЦРЛ»','Узгоджена ціна Д/У':'221 000 ₴','Ціна наміру':'218 000 ₴','Дата реєстрації наміру':'11.08.2026','Канал залучення':'Рекомендація','Нотаріус':'Левчук І. П.','Дата і час у нотаріуса':'01.09.2026, 09:30','Статус ділянки':'Переважне право','Орендна плата фактична':'8,0% НГО · 5 096 ₴/рік','Орендна плата прогнозована':'12,0% НГО · 7 644 ₴/рік','Ідентифікатор ділянки':'ZM-0603'}},
-9:{s:3,kad:'1821999900:02:021:0155',pib:'Дмитрук Віктор Володимирович',mgr:'ОП',docs:6,owners:[],
-  v:{'ПІБ':'Дмитрук Віктор Володимирович','Номер телефону':'+380 66 401 39 27','Кадастровий номер':'1821999900:02:021:0155','Область':'Житомирська','Район':'Житомирський','Сільрада':'Коростишівська','Площа ділянки':'1,6000 га','Нормативна грошова оцінка':'61 200 ₴','Орендар':'—','Термін оренди':'—','Дата останнього контакту':'07.09.2026','Серія і номер паспорта':'КМ 550021','ІПН':'3122778899','Сімейний стан':'Одружений / одружена','Місце роботи':'ТОВ «Граніт»','Узгоджена ціна Д/У':'137 000 ₴','Ціна наміру':'135 000 ₴','Дата реєстрації наміру':'25.08.2026','Канал залучення':'Telegram-чат','Нотаріус':'Кравченко О. М.','Дата і час у нотаріуса':'03.09.2026, 15:00','Статус ділянки':'Ділянка без оренди','Орендна плата прогнозована':'11,8% НГО · 7 222 ₴/рік','Ідентифікатор ділянки':'ZM-0155'}}
-};
-const STAGES={1:'Аналітика ділянок',2:'Контрактування',3:'Законтрактовані'};
-const STAG={1:'m',2:'a',3:'g'};
-let cur=1,justAdded=[];
-const openOwn=new Set(); /* розгорнуті власники в блоці продавця */
-/* українські форми числа */
-function pl(n,a,b,c){const m=n%100,u=n%10;return n+' '+(m>=11&&m<=14?c:u===1?a:u>=2&&u<=4?b:c)}
-const plEmpty=n=>pl(n,'порожнє поле','порожні поля','порожніх полів');
-const plOwn=n=>pl(n,'власник паю','власники паю','власників паю');
-const plFile=n=>pl(n,'файл','файли','файлів');
-
-/* персональні поля продавця: коли власників декілька — живуть у списку власників, не дублюються */
-const PERS=['Серія і номер паспорта','ІПН','Сімейний стан','Місце роботи'];
-const multi=d=>(d.owners||[]).length>1;
-const visible=d=>FIELDS.filter(f=>f.s<=d.s&&!(multi(d)&&PERS.includes(f.k)));
-const missing=d=>visible(d).filter(f=>!d.v[f.k]).length;
-const total=d=>visible(d).length;
-function ownersMissing(d){let m=0;(d.owners||[]).forEach(o=>{['p','i','ms','w'].forEach(k=>{if(!o[k])m++})});return m}
-
-/* ===== KANBAN ===== */
-function card(id){
-  const d=D[id],miss=missing(d)+ownersMissing(d),tot=total(d),fill=Math.round((tot-missing(d))/tot*100);
-  const price=d.v['Узгоджена ціна Д/У'];
-  const tags=[];
-  if(d.v['Сільрада'])tags.push(`<span class="tag">${d.v['Сільрада']} с/р</span>`);
-  if(d.v['Площа ділянки'])tags.push(`<span class="tag g">${d.v['Площа ділянки'].replace('0000','')}</span>`);
-  if(d.s===3&&d.v['Статус ділянки'])tags.push(`<span class="tag b">${d.v['Статус ділянки']}</span>`);
-  else if(d.v['Орендар']&&d.v['Орендар']!=='—')tags.push(`<span class="tag b">${d.v['Орендар']}</span>`);
-  if((d.owners||[]).length>1)tags.push(`<span class="tag a">${plOwn(d.owners.length).replace(" паю","")}</span>`);
-  if(miss)tags.push(`<span class="tag r">${miss} порожніх</span>`);
-  return `<div class="pc ${miss?'miss':''}" data-id="${id}">
-    <div class="kad">${d.kad}</div>
-    <div class="pib">${d.pib}</div>
-    <div class="pc-m">${tags.join('')}</div>
-    <div class="pc-f">
-      <span class="price ${price?'':'no'}">${price||'ціни ще немає'}</span>
-      <span class="docs">📎 ${d.docs}</span><span class="who2">${d.mgr}</span>
-    </div>
-    <div class="fill"><div class="bar"><i class="${miss?'warn':''}" style="width:${fill}%"></i></div>
-      <span class="${miss?'warn':''}">${tot-missing(d)}/${tot}</span></div>
-  </div>`;
-}
-function renderKan(){
-  const meta={1:['Усі ділянки з ТГ-чату','s1'],2:['Намір зафіксовано','s2'],3:['→ передача в Блок 2','s3']};
-  let html='',totalMiss=0;
-  for(let s=1;s<=3;s++){
-    const ids=Object.keys(D).filter(i=>D[i].s===s);
-    const area=ids.reduce((a,i)=>a+parseFloat((D[i].v['Площа ділянки']||'0').replace(',','.'))||a,0);
-    ids.forEach(i=>totalMiss+=missing(D[i])+ownersMissing(D[i]));
-    html+=`<div class="col ${meta[s][1]}">
-      <div class="col-h"><div class="t"><span class="num">${s}</span><b>${STAGES[s]}</b><span class="cnt">${ids.length}</span></div>
-      <div class="sum">${area.toFixed(2).replace('.',',')} га · ${meta[s][0]}</div></div>
-      ${ids.map(card).join('')}
-      ${s===1?`<div class="tg-in"><div class="h">✈️ Нове з чату «Закупка · Житомир»</div>
-        <p><b>1822055100:02:004:0117</b> · Кравчук М. П. · 1,45 га · 3 файли</p>
-        <div class="b"><button class="btn btn-sm btn-pri">Створити картку</button><button class="btn btn-sm">Переглянути</button></div></div>`:''}
-      <div class="add">${s===1?'+ додати ділянку вручну':'перетягни картку сюди'}</div></div>`;
-    $('#k'+s).textContent=ids.length;
-  }
-  $('#kan').innerHTML=html;
-  $('#kMiss').textContent=totalMiss;
-  $('#chipMiss').textContent='⚠ Незаповнених полів: '+totalMiss;
-}
-
-/* ===== DRAWER ===== */
-function inp(f,val,id){
-  const ph='Заповнити вручну';
-  if(f.t==='sel'){
-    return `<select data-f="${f.k}" data-o="${id}">${f.opt.map(o=>`<option ${o===val?'selected':''}>${o||'— обрати —'}</option>`).join('')}</select>`;
-  }
-  if(f.t==='area') return `<textarea data-f="${f.k}" placeholder="${ph}">${val||''}</textarea>`;
-  return `<input data-f="${f.k}" value="${val||''}" placeholder="${ph}" ${f.mono?'style="font-family:SF Mono,Menlo,monospace;font-size:12.5px"':''}>`;
-}
-function badge(f){
-  if(f.s===1)return '<span class="st2 tg">✈️ з чату</span>';
-  if(f.s===2)return '<span class="st2 e2">етап 2</span>';
-  return '<span class="st2 e3">етап 3</span>';
-}
-function renderInfo(id){
-  const d=D[id];let html='';
-  const miss=missing(d)+ownersMissing(d);
-  html+=`<div class="miss-bar ${miss?'':'ok'}"><b>${miss?'⚠ '+miss+' полів не заповнено':'✓ Усі поля заповнені'}</b>
-    <span>${miss?'Червоні поля заповнюються менеджером вручну — автоматично приходить лише перший етап.':'Картка готова до наступного кроку.'}</span></div>`;
-  GROUPS.forEach((g,gi)=>{
-    const fs=visible(d).filter(f=>f.g===gi);
-    if(!fs.length)return;
-    const gm=fs.filter(f=>!d.v[f.k]).length;
-    html+=`<div class="fs">${g}<span class="ln"></span>${gm?`<em>${gm} порожніх</em>`:''}</div><div class="grid2">`;
-    fs.forEach(f=>{
-      const val=d.v[f.k]||'';
-      const cls=[ 'fld', f.wide||f.t==='area'?'wide':'', val?'':'empty', justAdded.includes(f.k)?'just':'' ].join(' ');
-      html+=`<div class="${cls}"><label>${f.k} ${badge(f)}${f.lock?'<span class="lk">🔒 обмежений доступ</span>':''}</label>${inp(f,val,id)}</div>`;
-    });
-    html+='</div>';
-    if(gi===0&&d.s>=2){
-      const list=d.owners||[],n=list.length;
-      if(n>1){
-        html+=`<div class="own-sum"><b>${plOwn(n)}</b><span>персональні дані — у картках нижче</span>
-          ${ownersMissing(d)?`<em style="font-style:normal;color:var(--red);font-weight:600">${plEmpty(ownersMissing(d))}</em>`:''}
-          <button onclick="document.querySelector('[data-p=own]').click()">відкрити вкладку «Власники»</button></div>
-          <div id="sellerOwners">${list.map((o,i)=>{
-            const m=['p','i','ms','w'].filter(k=>!o[k]).length;
-            return `<div class="oitem ${openOwn.has(i)?'op':''}">
-              <button class="oitem-h" data-x="${i}">
-                <span class="n">${i+1}</span><b>${o.n||'Новий власник'}</b>
-                <span class="sh">${o.sh||'—'}</span>
-                <span class="em" style="display:${m?'inline':'none'}">${plEmpty(m)}</span>
-                <span class="ch">▾</span></button>
-              <div class="oitem-b">${ownerFields(o,i)}</div></div>`}).join('')}</div>`;
-      }else{
-        html+=`<div class="fld wide" style="cursor:pointer" onclick="document.querySelector('[data-p=own]').click()">
-          <label>Власники паю <span class="st2 e2">етап 2</span></label>
-          <b style="font-size:13px">1 власник · дані з блоку продавця · додати ще одного →</b></div>`;
-      }
-    }
-  });
-  if(d.s<3){
-    const req=d.s===1?['Погоджено намір продажу з власником']:REQ_2;
-    html+=`<div class="gate"><b>Умови переходу на етап ${d.s+1} · ${STAGES[d.s+1]}</b><ul>${
-      req.map(r=>`<li class="${d.s===1?'ok':(d.v[r]?'ok':'')}">${r}</li>`).join('')}</ul></div>`;
-  }else{
-    html+=`<div class="gate"><b>Готовність до передачі в Блок 2</b><ul>${
-      REQ_3.map(r=>`<li class="${d.v[r]?'ok':''}">${r}</li>`).join('')}</ul></div>`;
-  }
-  html+=`<div class="hint">Поля з міткою «етап 2» і «етап 3» додались у ці ж блоки при переході воронкою й заповнюються вручну. Дані першого етапу прийшли з шаблону <b>#нова_ділянка</b> — їх можна редагувати, зміни пишуться в історію картки.</div>`;
-  $('#p-info').innerHTML=html;
-  $('#p-info').oninput=e=>{
-    const f=e.target.dataset.f;if(!f)return;
-    const v=e.target.value.trim();
-    if(v&&v!=='— обрати —')d.v[f]=v;else delete d.v[f];
-    e.target.closest('.fld').classList.toggle('empty',!d.v[f]);
-    softRefresh(id);
-  };
-  $('#p-info').onchange=$('#p-info').oninput;
-  const so=$('#sellerOwners');
-  if(so){
-    so.onclick=e=>{
-      const h=e.target.closest('[data-x]');if(!h)return;
-      const i=+h.dataset.x;
-      if(openOwn.has(i))openOwn.delete(i);else openOwn.add(i);
-      h.parentElement.classList.toggle('op',openOwn.has(i));
-    };
-    bindOwnerInputs(so,id);
-  }
-}
-function softRefresh(id){
-  const d=D[id],miss=missing(d)+ownersMissing(d);
-  const mb=$('.miss-bar');
-  if(mb){mb.classList.toggle('ok',!miss);
-    mb.querySelector('b').textContent=miss?`⚠ ${miss} полів не заповнено`:'✓ Усі поля заповнені';}
-  renderKan();
-}
-/* ===== ВЛАСНИКИ ===== */
-const MS_OPT=['','Одружений / одружена','Неодружений / неодружена','Розлучений / розлучена','Вдівець / вдова'];
-const OWN_F=[['n','ПІБ власника',0,0],['sh','Частка у паю',0,0],
-  ['p','Серія і номер паспорта',1,0],['i','ІПН',1,0],
-  ['ms','Сімейний стан',0,1],['w','Місце роботи',0,0]];
-function ownerList(d){
-  if((d.owners||[]).length)return d.owners;
-  return [{n:d.v['ПІБ']||'Власник',sh:'1/1',p:d.v['Серія і номер паспорта']||'',i:d.v['ІПН']||'',ms:d.v['Сімейний стан']||'',w:d.v['Місце роботи']||''}];
-}
-function ownerFields(o,i){
-  return `<div class="grid2">${OWN_F.map(([k,lab,lock,sel])=>`<div class="fld ${o[k]?'':'empty'}">
-    <label>${lab} <span class="st2 e2">етап 2</span>${lock?'<span class="lk">🔒 обмежений доступ</span>':''}</label>
-    ${sel?`<select data-o="${i}" data-k="${k}">${MS_OPT.map(v=>`<option ${v===o[k]?'selected':''}>${v||'— обрати —'}</option>`).join('')}</select>`
-        :`<input data-o="${i}" data-k="${k}" value="${o[k]||''}" placeholder="Заповнити вручну">`}
-  </div>`).join('')}</div>`;
-}
-function ownerEdit(id,i,k,val,el){
-  const d=D[id];
-  if(!(d.owners||[]).length)d.owners=ownerList(d);
-  const v=val.trim()==='— обрати —'?'':val.trim();
-  d.owners[i][k]=v;
-  if(el&&el.closest('.fld'))el.closest('.fld').classList.toggle('empty',!v);
-  if(d.owners.length===1){ /* один власник — дзеркалимо в блок продавця */
-    const M={n:'ПІБ',p:'Серія і номер паспорта',i:'ІПН',ms:'Сімейний стан',w:'Місце роботи'};
-    if(M[k]){if(v)d.v[M[k]]=v;else delete d.v[M[k]];if(k==='n')d.pib=v}
-  }
-  refreshOwnersUI(id);
-}
-function bindOwnerInputs(box,id){
-  const h=e=>{const i=e.target.dataset.o,k=e.target.dataset.k;if(i===undefined||!k)return;ownerEdit(id,+i,k,e.target.value,e.target)};
-  box.oninput=h;box.onchange=h;
-}
-function refreshOwnersUI(id){
-  const d=D[id];
-  $('#ownN').textContent=ownerList(d).length;
-  const om=ownersMissing(d);
-  $('#ownWarn').style.display=om?'inline':'none';
-  $('#ownWarn').textContent=plEmpty(om);
-  $$('#ownList .owner').forEach((el,i)=>{
-    const o=ownerList(d)[i];if(!o)return;
-    el.querySelector('.owner-h b').textContent=o.n||'Новий власник';
-    el.querySelector('.owner-h .sh').textContent='частка '+(o.sh||'—');
-  });
-  $$('#sellerOwners .oitem').forEach((el,i)=>{
-    const o=ownerList(d)[i];if(!o)return;
-    el.querySelector('b').textContent=o.n||'Новий власник';
-    el.querySelector('.sh').textContent=o.sh||'—';
-    const m=['p','i','ms','w'].filter(k=>!o[k]).length,em=el.querySelector('.em');
-    if(em){em.style.display=m?'inline':'none';em.textContent=plEmpty(m)}
-  });
-  softRefresh(id);
-}
-function renderOwners(id){
-  const d=D[id];
-  const list=ownerList(d);
-  $('#ownN').textContent=list.length;
-  const om=ownersMissing(d);
-  $('#ownWarn').style.display=om?'inline':'none';
-  $('#ownWarn').textContent=plEmpty(om);
-  $('#ownList').innerHTML=list.map((o,i)=>`
-    <div class="owner"><div class="owner-h"><span class="n">${i+1}</span><b>${o.n||'Новий власник'}</b><span class="sh">частка ${o.sh||'—'}</span>
-      <button class="del" data-del="${i}" title="Видалити власника" ${list.length<2?'disabled':''}>✕</button></div>
-    <div class="owner-b">${ownerFields(o,i)}</div></div>`).join('');
-  $('#addOwn').style.display=list.length>=6?'none':'block';
-  $('#addOwn').textContent=`+ Додати власника паю (${list.length}/6)`;
-  bindOwnerInputs($('#ownList'),id);
-  $('#ownList').onclick=e=>{
-    const b=e.target.closest('[data-del]');if(!b||b.disabled)return;
-    delOwner(id,+b.dataset.del);
-  };
-}
-function addOwner(id){
-  const d=D[id];
-  if(!(d.owners||[]).length)d.owners=ownerList(d).map(o=>({...o,sh:o.sh||''}));
-  if(d.owners.length>=6){toast('Максимум — 6 власників паю');return}
-  d.owners.push({n:'',sh:'',p:'',i:'',ms:'',w:''});
-  openOwn.add(d.owners.length-1);
-  renderOwners(id);renderInfo(id);renderKan();
-  toast(`Додано власника №${d.owners.length} — заповніть ПІБ, частку та документи`);
-}
-function delOwner(id,i){
-  const d=D[id];
-  const list=ownerList(d);
-  if(list.length<2){toast('У картки має залишитись щонайменше один власник');return}
-  const nm=list[i].n||'№'+(i+1);
-  if(!confirm(`Видалити власника «${nm}» із цієї картки?`))return;
-  if(!(d.owners||[]).length)d.owners=list;
-  d.owners.splice(i,1);openOwn.clear();
-  if(d.owners.length===1){
-    const o=d.owners[0];
-    d.v['ПІБ']=o.n||d.v['ПІБ'];d.pib=d.v['ПІБ'];
-    [['p','Серія і номер паспорта'],['i','ІПН'],['ms','Сімейний стан'],['w','Місце роботи']].forEach(([k,f])=>{if(o[k])d.v[f]=o[k];else delete d.v[f]});
-  }
-  open(id);renderKan();
-  toast(`Власника «${nm}» видалено · запис про це збережено в активності`);
-}
-
-/* ===== ДОКУМЕНТИ ===== */
-const DOCTYPES=['Витяг з ДЗК','Витяг про право власності','Паспорт, стор. 1-2','Паспорт, реєстрація','Довідка ІПН','Свідоцтво про шлюб','Згода подружжя','Свідоцтво про право на спадщину','Договір оренди','Договір купівлі-продажу','Акт приймання-передачі','Інше'];
-const IMG=['JPG','PNG','HEIC','JPEG'];
-function initFiles(){
-  Object.keys(D).forEach(id=>{
-    const d=D[id];if(d.files)return;
-    d.files=[];
-    for(let i=0;i<d.docs;i++){
-      const t=DOCTYPES[i%DOCTYPES.length];
-      const img=t.indexOf('Паспорт')===0;
-      d.files.push({t,ext:img?'JPG':'PDF',fn:(img?'photo_':'doc_')+(1000+i*37+ +id)+(img?'.jpg':'.pdf'),
-        size:((1.1+((i*7+ +id*3)%29)/10).toFixed(1)+' МБ').replace('.',','),
-        date:`${String(8+(i%3)).padStart(2,'0')}.08.2026`,src:i%3===2?'Mini App':'Telegram'});
-    }
-  });
-}
-function renderDocs(id){
-  const d=D[id];
-  if(!d.files)d.files=[];
-  const noType=d.files.filter(f=>!f.t).length;
-  $('#docWarn').style.display=noType?'inline':'none';
-  $('#docWarn').textContent=pl(noType,'файл без типу','файли без типу','файлів без типу');
-  $('#docList').innerHTML=d.files.length?d.files.map((f,i)=>`
-    <div class="doc ${f.isNew?'new':''}">
-      <div class="ext ${IMG.includes(f.ext)?'img':''}">${f.ext}</div>
-      <div class="mid">
-        <select data-d="${i}" class="${f.t?'':'no'}">
-          ${['',...DOCTYPES].map(t=>`<option value="${t}" ${t===f.t?'selected':''}>${t||'— вказати тип документа —'}</option>`).join('')}
-        </select>
-        <small>${f.fn} · ${f.size} · ${f.date}</small>
-      </div>
-      <span class="src ${f.src==='Вручну'?'man':''}">${f.src==='Telegram'?'✈️ Telegram':f.src}</span>
-      <button class="dl2" data-rm="${i}" title="Видалити файл">✕</button>
-    </div>`).join(''):`<div class="add" style="margin-bottom:8px">Файлів ще немає — бот додасть із чату або завантажте вручну</div>`;
-  d.files.forEach(f=>delete f.isNew);
-  $('#docList').onchange=e=>{
-    const i=e.target.dataset.d;if(i===undefined)return;
-    d.files[i].t=e.target.value;
-    e.target.classList.toggle('no',!e.target.value);
-    renderDocs(id);
-  };
-  $('#docList').onclick=e=>{
-    const b=e.target.closest('[data-rm]');if(!b)return;
-    const f=d.files[+b.dataset.rm];
-    if(!confirm(`Видалити файл «${f.t||f.fn}»?`))return;
-    d.files.splice(+b.dataset.rm,1);d.docs=d.files.length;
-    renderDocs(id);renderKan();toast('Файл видалено · запис у аудит-логу');
-  };
-  d.docs=d.files.length;
-}
-function addFiles(id,fl){
-  const d=D[id];if(!d.files)d.files=[];
-  const now=new Date(),dt=`${String(now.getDate()).padStart(2,'0')}.${String(now.getMonth()+1).padStart(2,'0')}.${now.getFullYear()}`;
-  [...fl].forEach(f=>{
-    const ext=(f.name.split('.').pop()||'FILE').toUpperCase().slice(0,4);
-    d.files.push({t:'',ext,fn:f.name,size:(f.size/1048576).toFixed(1).replace('.',',')+' МБ',date:dt,src:'Вручну',isNew:1});
-  });
-  d.docs=d.files.length;
-  renderDocs(id);renderKan();
-  toast(`Додано ${plFile(fl.length)} вручну — вкажіть тип документа`);
-}
-function open(id){
-  cur=id;const d=D[id];
-  $('#dKad').textContent=d.kad;$('#dPib').textContent=d.pib;
-  $('#dArea').textContent=d.v['Площа ділянки']||'площа не вказана';
-  $('#dLoc').textContent=(d.v['Сільрада']||'—')+' с/р';
-  $('#dStage').textContent=STAGES[d.s];$('#dStage').className='st '+STAG[d.s];
-  $$('#stepper div').forEach((el,i)=>el.className=i+1<d.s?'done':(i+1===d.s?'cur':''));
-  $('#nextBtn').textContent=d.s===3?'Передати в Блок 2 →':'Перевести на етап '+(d.s+1)+' →';
-  renderInfo(id);renderOwners(id);renderDocs(id);
-  $('#drawer').classList.add('on');$('#scrim').classList.add('on');
-}
-function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),3200)}
-document.body.addEventListener('click',e=>{const t=e.target.closest('[data-id]');if(t)open(+t.dataset.id)});
-$('#closeDr').onclick=()=>{$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');justAdded=[]};
-$('#scrim').onclick=$('#closeDr').onclick;
-document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#closeDr').onclick()});
-$$('.dr-tabs button').forEach(b=>b.onclick=()=>{
-  $$('.dr-tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
-  $$('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.p));
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var GR=["Інформація про продавця","Інформація про ділянку","Робота з продавцем"];
+var F=[
+{k:"ПІБ",g:0,s:1},{k:"Номер телефону",g:0,s:1},
+{k:"Кадастровий номер",g:1,s:1,mono:1},{k:"Область",g:1,s:1},{k:"Район",g:1,s:1},{k:"Сільрада",g:1,s:1},
+{k:"Площа ділянки",g:1,s:1},{k:"Нормативна грошова оцінка",g:1,s:1},{k:"Орендар",g:1,s:1},{k:"Термін оренди",g:1,s:1},
+{k:"Дата останнього контакту",g:2,s:1},{k:"Коментарі",g:2,s:1,t:"area",wd:1},
+{k:"Серія і номер паспорта",g:0,s:2,lock:1},{k:"ІПН",g:0,s:2,lock:1},
+{k:"Сімейний стан",g:0,s:2,t:"sel",o:["","Одружений / одружена","Неодружений / неодружена","Розлучений / розлучена","Вдівець / вдова"]},
+{k:"Місце роботи",g:0,s:2},
+{k:"Узгоджена ціна Д/У",g:1,s:2},{k:"Ціна наміру",g:1,s:2},{k:"Дата реєстрації наміру",g:1,s:2},
+{k:"Канал залучення",g:2,s:2,t:"sel",o:["","Telegram-чат","Обхід подвір їв","Рекомендація","Вхідний дзвінок","Реклама"]},
+{k:"Нотаріус",g:2,s:2},{k:"Дата і час у нотаріуса",g:2,s:2},
+{k:"Статус ділянки",g:1,s:3,t:"sel",o:["","Намір","Переважне право","Ділянка без оренди"],wd:1},
+{k:"Орендна плата фактична",g:1,s:3},{k:"Орендна плата прогнозована",g:1,s:3},{k:"Ідентифікатор ділянки",g:1,s:3}];
+var R2=["Серія і номер паспорта","ІПН","Узгоджена ціна Д/У","Ціна наміру","Дата реєстрації наміру","Нотаріус","Дата і час у нотаріуса"];
+var R3=["Статус ділянки","Орендна плата прогнозована","Ідентифікатор ділянки"];
+var SEED={
+"1":{s:1,kad:"1812345678:03:015:0042",pib:"Іваненко Іван Іванович",mgr:"ОП",docs:3,owners:[],v:{"ПІБ":"Іваненко Іван Іванович","Номер телефону":"+380 67 123 45 67","Кадастровий номер":"1812345678:03:015:0042","Область":"Житомирська","Район":"Житомирський","Сільрада":"Пулинська","Площа ділянки":"2,10 га","Нормативна грошова оцінка":"62 400 ₴","Орендар":"ТОВ Агро-Схід","Термін оренди":"до 31.12.2029","Дата останнього контакту":"14.09.2026","Коментарі":"Готовий продавати, є згода дружини."}},
+"2":{s:1,kad:"0523688400:01:009:0203",pib:"Шевченко Роман Олегович",mgr:"ОП",docs:0,owners:[],v:{"ПІБ":"Шевченко Роман Олегович","Номер телефону":"+380 63 440 12 90","Кадастровий номер":"0523688400:01:009:0203","Область":"Вінницька","Район":"Гайсинський","Сільрада":"Гайсинська","Площа ділянки":"3,80 га"}},
+"3":{s:2,kad:"1825182000:05:011:0088",pib:"Бондар Олег Сергійович",mgr:"ІД",docs:5,owners:[],v:{"ПІБ":"Бондар Олег Сергійович","Номер телефону":"+380 68 220 41 17","Кадастровий номер":"1825182000:05:011:0088","Область":"Житомирська","Район":"Житомирський","Сільрада":"Романівська","Площа ділянки":"2,00 га","Нормативна грошова оцінка":"58 900 ₴","Орендар":"ТОВ Полісся-Агро","Термін оренди":"до 30.09.2027","Дата останнього контакту":"12.09.2026","Коментарі":"Домовились про угоду.","Серія і номер паспорта":"КМ 481902","ІПН":"3214567890","Сімейний стан":"Одружений / одружена","Місце роботи":"ТОВ Житомир-Буд","Узгоджена ціна Д/У":"164 000 ₴","Ціна наміру":"160 000 ₴","Дата реєстрації наміру":"02.09.2026","Канал залучення":"Обхід подвір їв","Нотаріус":"Кравченко О. М.","Дата і час у нотаріуса":"18.09.2026, 11:00"}},
+"4":{s:2,kad:"1823400000:06:019:0074",pib:"Савчук Ніна Іванівна",mgr:"ОП",docs:7,owners:[{n:"Савчук Ніна Іванівна",sh:"1/2",p:"КМ 220417",i:"2905611234",ms:"Вдівець / вдова",w:"Пенсіонерка"},{n:"Савчук Андрій Петрович",sh:"1/4",p:"КМ 664120",i:"3344556677",ms:"Одружений / одружена",w:"ТОВ Хорошів-Агро"},{n:"Мельник Оксана Петрівна",sh:"1/4",p:"",i:"",ms:"",w:""}],v:{"ПІБ":"Савчук Ніна Іванівна","Номер телефону":"+380 97 118 30 22","Кадастровий номер":"1823400000:06:019:0074","Область":"Житомирська","Район":"Житомирський","Сільрада":"Хорошівська","Площа ділянки":"2,30 га","Нормативна грошова оцінка":"59 800 ₴","Орендар":"ФГ Колос","Термін оренди":"до 02.2027","Дата останнього контакту":"13.09.2026","Коментарі":"Троє спадкоємців.","Серія і номер паспорта":"КМ 220417","ІПН":"2905611234","Сімейний стан":"Вдівець / вдова","Місце роботи":"Пенсіонерка","Узгоджена ціна Д/У":"183 000 ₴","Ціна наміру":"180 000 ₴","Дата реєстрації наміру":"28.08.2026","Канал залучення":"Рекомендація","Нотаріус":"Левчук І. П.","Дата і час у нотаріуса":"22.09.2026, 14:30"}},
+"5":{s:3,kad:"1826300000:01:005:0219",pib:"Поліщук Андрій Дмитрович",mgr:"ЮВ",docs:9,owners:[{n:"Поліщук Андрій Дмитрович",sh:"2/3",p:"КМ 771230",i:"3011224455",ms:"Одружений / одружена",w:"ТОВ Баранівка-Ліс"},{n:"Поліщук Ганна Іванівна",sh:"1/3",p:"КМ 771231",i:"3011224466",ms:"Одружений / одружена",w:"Домогосподарка"}],v:{"ПІБ":"Поліщук Андрій Дмитрович","Номер телефону":"+380 67 905 44 31","Кадастровий номер":"1826300000:01:005:0219","Область":"Житомирська","Район":"Звягельський","Сільрада":"Баранівська","Площа ділянки":"3,10 га","Нормативна грошова оцінка":"57 300 ₴","Орендар":"ТОВ Полісся-Агро","Термін оренди":"до 06.2027","Дата останнього контакту":"10.09.2026","Коментарі":"Право зареєстровано.","Серія і номер паспорта":"КМ 771230","ІПН":"3011224455","Сімейний стан":"Одружений / одружена","Місце роботи":"ТОВ Баранівка-Ліс","Узгоджена ціна Д/У":"254 000 ₴","Ціна наміру":"250 000 ₴","Дата реєстрації наміру":"19.08.2026","Канал залучення":"Обхід подвір їв","Нотаріус":"Кравченко О. М.","Дата і час у нотаріуса":"05.09.2026, 10:00","Статус ділянки":"Намір","Орендна плата фактична":"4,2% НГО · 2 407 ₴/рік","Орендна плата прогнозована":"11,2% НГО · 6 418 ₴/рік","Ідентифікатор ділянки":"ZM-0219"}},
+"6":{s:3,kad:"1821999900:02:021:0155",pib:"Дмитрук Віктор Володимирович",mgr:"ОП",docs:6,owners:[],v:{"ПІБ":"Дмитрук Віктор Володимирович","Номер телефону":"+380 66 401 39 27","Кадастровий номер":"1821999900:02:021:0155","Область":"Житомирська","Район":"Житомирський","Сільрада":"Коростишівська","Площа ділянки":"1,60 га","Нормативна грошова оцінка":"61 200 ₴","Орендар":"—","Термін оренди":"—","Дата останнього контакту":"07.09.2026","Серія і номер паспорта":"КМ 550021","ІПН":"3122778899","Сімейний стан":"Одружений / одружена","Місце роботи":"ТОВ Граніт","Узгоджена ціна Д/У":"137 000 ₴","Ціна наміру":"135 000 ₴","Дата реєстрації наміру":"25.08.2026","Канал залучення":"Telegram-чат","Нотаріус":"Кравченко О. М.","Дата і час у нотаріуса":"03.09.2026, 15:00","Статус ділянки":"Ділянка без оренди","Орендна плата прогнозована":"11,8% НГО · 7 222 ₴/рік","Ідентифікатор ділянки":"ZM-0155"}}};
+var SN={1:"Аналітика ділянок",2:"Контрактування",3:"Законтрактовані"},SC={1:"m",2:"a",3:"g"};
+var D=load(),cur="1",just=[];
+function load(){try{var j=localStorage.getItem("zemlia1");if(j)return JSON.parse(j)}catch(e){}return JSON.parse(JSON.stringify(SEED))}
+function save(){try{localStorage.setItem("zemlia1",JSON.stringify(D))}catch(e){}}
+var PERS=["Серія і номер паспорта","ІПН","Сімейний стан","Місце роботи"];
+function multi(d){return (d.owners||[]).length>1}
+function pl(n,a,b,c){var m=n%100,u=n%10;return n+" "+((m>=11&&m<=14)?c:(u===1?a:((u>=2&&u<=4)?b:c)))}
+function plE(n){return pl(n,"порожнє поле","порожні поля","порожніх полів")}
+function plO(n){return pl(n,"власник паю","власники паю","власників паю")}
+function plF(n){return pl(n,"файл","файли","файлів")}
+function vis(d){return F.filter(function(f){return f.s<=d.s&&!(multi(d)&&PERS.indexOf(f.k)>=0)})}
+function miss(d){return vis(d).filter(function(f){return !d.v[f.k]}).length}
+function omiss(d){var m=0;(d.owners||[]).forEach(function(o){["p","i","ms","w"].forEach(function(k){if(!o[k])m++})});return m}
+function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("on")},3400)}
+function card(id){var d=D[id],tot=vis(d).length,m=miss(d)+omiss(d),fill=Math.round((tot-miss(d))/tot*100),pr=d.v["Узгоджена ціна Д/У"],t=[];
+if(d.v["Сільрада"])t.push('<span class="tg">'+d.v["Сільрада"]+' с/р</span>');
+if(d.v["Площа ділянки"])t.push('<span class="tg g">'+d.v["Площа ділянки"]+'</span>');
+if(d.s===3&&d.v["Статус ділянки"])t.push('<span class="tg b">'+d.v["Статус ділянки"]+'</span>');
+else if(d.v["Орендар"]&&d.v["Орендар"]!=="—")t.push('<span class="tg b">'+d.v["Орендар"]+'</span>');
+if((d.owners||[]).length>1)t.push('<span class="tg a">'+d.owners.length+' власники</span>');
+if(m)t.push('<span class="tg r">'+m+' порожніх</span>');
+return '<div class="pc '+(m?"ms":"")+'" draggable="true" data-id="'+id+'"><div class="kd">'+d.kad+'</div><div class="pb">'+d.pib+'</div><div class="pm">'+t.join("")+'</div><div class="pf"><span class="pr cost '+(pr?"":"no")+'">'+(pr||"ціни ще немає")+'</span><span class="dc">'+nFiles(d)+' фал.</span><span class="w2">'+d.mgr+'</span></div><div class="fl"><div class="br"><i class="'+(m?"w":"")+'" style="width:'+fill+'%"></i></div><span class="'+(m?"w":"")+'">'+(tot-miss(d))+"/"+tot+'</span></div></div>'}
+function kan(){var meta={1:"Усі ділянки з ТГ-чату",2:"Намір зафіксовано",3:"передача в Блок 2"},h="",tm=0,ar={};
+for(var s=1;s<=3;s++){var ids=Object.keys(D).filter(function(i){return D[i].s===s});
+ar[s]=ids.reduce(function(a,i){return a+(parseFloat((D[i].v["Площа ділянки"]||"0").replace(",","."))||0)},0);
+ids.forEach(function(i){tm+=miss(D[i])+omiss(D[i])});
+h+='<div class="col c'+s+'" data-stage="'+s+'"><div class="ch"><div class="t"><span class="nm">'+s+'</span><b>'+SN[s]+'</b><span class="ct">'+ids.length+'</span></div><div class="sm">'+ar[s].toFixed(2).replace(".",",")+' га · '+meta[s]+'</div></div>'+ids.map(card).join("")+(s===1?'<div class="tgi"><div class="h">Нове з чату «Закупка · Житомир»</div><p><b>1822055100:02:004:0117</b> · Кравчук М. П. · 1,45 га · 3 файли</p><div class="bts"><button class="btn bs bp">Створити картку</button></div></div>':"")+'<div class="add">'+(s===1?"+ додати вручну":"перетягни картку сюди")+'</div></div>';
+$("#k"+s).textContent=ids.length}
+$("#kan").innerHTML=h;$("#kM").textContent=tm;$("#chM").textContent="Незаповнених полів: "+tm;
+$("#k2a").textContent=ar[2].toFixed(2).replace(".",",")+" га";$("#k3a").textContent=ar[3].toFixed(2).replace(".",",")+" га";
+$("#nb1").textContent=Object.keys(D).length;dnd();save()}
+function dnd(){
+$$(".pc").forEach(function(c){
+c.addEventListener("dragstart",function(e){e.dataTransfer.setData("text/plain",c.dataset.id);e.dataTransfer.effectAllowed="move";c.classList.add("dg")});
+c.addEventListener("dragend",function(){c.classList.remove("dg");$$(".col").forEach(function(x){x.classList.remove("over")})})});
+$$(".col").forEach(function(col){
+col.addEventListener("dragover",function(e){e.preventDefault();col.classList.add("over")});
+col.addEventListener("dragleave",function(){col.classList.remove("over")});
+col.addEventListener("drop",function(e){e.preventDefault();col.classList.remove("over");
+var id=e.dataTransfer.getData("text/plain"),ns=+col.dataset.stage,d=D[id];if(!d||d.s===ns)return;
+var up=ns>d.s;d.s=ns;
+if(ns>=2&&!(d.owners||[]).length)d.owners=[{n:d.v["ПІБ"],sh:"1/1",p:d.v["Серія і номер паспорта"]||"",i:d.v["ІПН"]||"",ms:d.v["Сімейний стан"]||"",w:d.v["Місце роботи"]||""}];
+var nf=F.filter(function(f){return f.s===ns&&!d.v[f.k]}).length;kan();
+toast(up?(d.kad+" - етап «"+SN[ns]+"»"+(nf?": додано "+nf+" полів для ручного заповнення":"")):(d.kad+" повернуто на етап «"+SN[ns]+"»"))})})}
+function inp(f,v){if(f.t==="sel")return '<select data-f="'+f.k+'">'+f.o.map(function(o){return '<option '+(o===v?"selected":"")+'>'+(o||"— обрати —")+'</option>'}).join("")+'</select>';
+if(f.t==="area")return '<textarea data-f="'+f.k+'" placeholder="Заповнити вручну">'+(v||"")+'</textarea>';
+return '<input data-f="'+f.k+'" value="'+(v||"")+'" placeholder="Заповнити вручну"'+(f.mono?' style="font-family:Menlo,monospace;font-size:12.5px"':"")+'>'}
+function bdg(f){return f.s===1?'<span class="s2 t1">з чату</span>':(f.s===2?'<span class="s2 t2">етап 2</span>':'<span class="s2 t3">етап 3</span>')}
+function info(id){var d=D[id],h="",m=miss(d)+omiss(d);
+h+='<div class="mbar '+(m?"":"ok")+'"><b>'+(m?m+" полів не заповнено":"Усі поля заповнені")+'</b><span>'+(m?"Червоні поля заповнює менеджер вручну — автоматично приходить лише перший етап.":"Картка готова до наступного кроку.")+'</span></div>';
+GR.forEach(function(g,gi){var fs=vis(d).filter(function(f){return f.g===gi});if(!fs.length)return;
+var gm=fs.filter(function(f){return !d.v[f.k]}).length;
+h+='<div class="fs">'+g+'<span class="ln2"></span>'+(gm?"<em>"+gm+" порожніх</em>":"")+'</div><div class="g2">';
+fs.forEach(function(f){var v=d.v[f.k]||"";
+h+='<div class="fld '+((f.wd||f.t==="area")?"wd ":"")+(v?"":"emp ")+(just.indexOf(f.k)>=0?"js":"")+'"><label>'+f.k+" "+bdg(f)+(f.lock?'<span class="lk">обмежений доступ</span>':"")+'</label>'+inp(f,v)+'</div>'});
+h+='</div>';
+if(gi===0&&d.s>=2){var L=d.owners||[],n=L.length,om=omiss(d);
+if(n>1){h+='<div class="osum"><b>'+plO(n)+'</b><span>персональні дані — у картках нижче</span>'+(om?'<em style="font-style:normal;color:#b5453b;font-weight:600">'+plE(om)+'</em>':"")+'<button data-own="1">відкрити вкладку «Власники»</button></div><div id="sOwn">'+L.map(function(o,i){
+var mm=["p","i","ms","w"].filter(function(k){return !o[k]}).length;
+return '<div class="oit"><button class="oith" data-x="'+i+'"><span class="n">'+(i+1)+'</span><b>'+(o.n||"Новий власник")+'</b><span class="sh">'+(o.sh||"—")+'</span><span class="em" style="display:'+(mm?"inline":"none")+'">'+plE(mm)+'</span><span class="ch">▾</span></button><div class="oitb">'+ownFields(o,i)+'</div></div>'}).join("")+'</div>'}
+else h+='<div class="fld wd" data-own="1" style="cursor:pointer"><label>Власники паю <span class="s2 t2">етап 2</span></label><b style="font-size:13px">1 власник · дані з блоку продавця · додати ще одного</b></div>'}
 });
-$('#nextBtn').onclick=()=>{
-  const d=D[cur];if(d.s>=3){toast('Ділянку передано в Блок 2 · Продаж інвестору');return}
-  d.s++;justAdded=FIELDS.filter(f=>f.s===d.s).map(f=>f.k);
-  if(d.s===2&&!(d.owners||[]).length)d.owners=[{n:d.v['ПІБ'],sh:'1/1',p:'',i:'',ms:'',w:''}];
-  openOwn.clear();
-  open(cur);renderKan();
-  toast(`Етап «${STAGES[d.s]}»: додано ${justAdded.length} нових полів — заповніть вручну`);
-};
-$('#addOwn').onclick=()=>addOwner(cur);
-$('#upBtn').onclick=()=>$('#upInp').click();
-$('#upInp').onchange=e=>{if(e.target.files.length)addFiles(cur,e.target.files);e.target.value=''};
-initFiles();
-renderKan();
-</script>
-</body>
-</html>
+if(d.s<3){var req=d.s===1?["Погоджено намір продажу з власником"]:R2;
+h+='<div class="gate"><b>Умови переходу на етап '+(d.s+1)+" · "+SN[d.s+1]+'</b><ul>'+req.map(function(r){return '<li class="'+((d.s===1||d.v[r])?"ok":"")+'">'+r+'</li>'}).join("")+'</ul></div>'}
+else h+='<div class="gate"><b>Готовність до передачі в Блок 2</b><ul>'+R3.map(function(r){return '<li class="'+(d.v[r]?"ok":"")+'">'+r+'</li>'}).join("")+'</ul></div>';
+h+='<div class="hint">Поля з мітками «етап 2» і «етап 3» додались у ці ж блоки при русі воронкою й заповнюються вручну. Дані першого етапу прийшли з шаблону #нова_ділянка.</div>';
+$("#p-info").innerHTML=h;
+$("#p-info").oninput=$("#p-info").onchange=function(e){var f=e.target.dataset.f;if(!f)return;var v=e.target.value.trim();
+if(v&&v!=="— обрати —")d.v[f]=v;else delete d.v[f];
+e.target.closest(".fld").classList.toggle("emp",!d.v[f]);
+var mm=miss(d)+omiss(d),mb=$(".mbar");mb.classList.toggle("ok",!mm);
+mb.querySelector("b").textContent=mm?mm+" полів не заповнено":"Усі поля заповнені";kan()};
+$("#p-info").onclick=function(e){
+if(e.target.closest("[data-own]")){$('[data-p="own"]').click();return}
+var hh=e.target.closest("[data-x]");if(hh){var ix=+hh.dataset.x;
+if(oOpen[ix])delete oOpen[ix];else oOpen[ix]=1;
+hh.parentNode.classList.toggle("op",!!oOpen[ix])}};
+var so=$("#sOwn");if(so){bindOwn(so,id);Object.keys(oOpen).forEach(function(ix){var el=so.children[ix];if(el)el.classList.add("op")})}}
+var MSO=["","Одружений / одружена","Неодружений / неодружена","Розлучений / розлучена","Вдівець / вдова"];
+var OF=[["n","ПІБ власника",0,0],["sh","Частка у паю",0,0],["p","Серія і номер паспорта",1,0],["i","ІПН",1,0],["ms","Сімейний стан",0,1],["w","Місце роботи",0,0]];
+var oOpen={};
+function oList(d){if(d.owners&&d.owners.length)return d.owners;
+return [{n:d.v["ПІБ"]||"Власник",sh:"1/1",p:d.v["Серія і номер паспорта"]||"",i:d.v["ІПН"]||"",ms:d.v["Сімейний стан"]||"",w:d.v["Місце роботи"]||""}]}
+function ownFields(o,i){return '<div class="g2">'+OF.map(function(f){var k=f[0];
+var ctrl=f[3]?('<select data-o="'+i+'" data-k="'+k+'">'+MSO.map(function(v){return '<option '+(v===o[k]?"selected":"")+'>'+(v||"— обрати —")+'</option>'}).join("")+'</select>')
+:('<input data-o="'+i+'" data-k="'+k+'" value="'+(o[k]||"")+'" placeholder="Заповнити вручну">');
+return '<div class="fld '+(o[k]?"":"emp")+'"><label>'+f[1]+' <span class="s2 t2">етап 2</span>'+(f[2]?'<span class="lk">обмежений доступ</span>':"")+'</label>'+ctrl+'</div>'}).join("")+'</div>'}
+function ownEdit(id,i,k,val,el){var d=D[id];if(!(d.owners&&d.owners.length))d.owners=oList(d);
+var v=(val||"").trim();if(v==="— обрати —")v="";d.owners[i][k]=v;
+if(el&&el.closest(".fld"))el.closest(".fld").classList.toggle("emp",!v);
+if(d.owners.length===1){var M={n:"ПІБ",p:"Серія і номер паспорта",i:"ІПН",ms:"Сімейний стан",w:"Місце роботи"};
+if(M[k]){if(v)d.v[M[k]]=v;else delete d.v[M[k]];if(k==="n")d.pib=v||d.pib}}
+syncOwn(id);save()}
+function bindOwn(box,id){var h=function(e){var i=e.target.dataset.o,k=e.target.dataset.k;if(i===undefined||!k)return;ownEdit(id,+i,k,e.target.value,e.target)};
+box.oninput=h;box.onchange=h}
+function syncOwn(id){var d=D[id],L=oList(d),om=omiss(d);
+$("#oN").textContent=L.length;$("#oW").style.display=om?"inline":"none";$("#oW").textContent=plE(om);
+$$("#oL .own").forEach(function(el,i){var o=L[i];if(!o)return;
+el.querySelector(".ownh b").textContent=o.n||"Новий власник";
+el.querySelector(".ownh .sh").textContent="частка "+(o.sh||"—")});
+$$("#sOwn .oit").forEach(function(el,i){var o=L[i];if(!o)return;
+el.querySelector("b").textContent=o.n||"Новий власник";
+el.querySelector(".sh").textContent=o.sh||"—";
+var mm=["p","i","ms","w"].filter(function(k){return !o[k]}).length,em=el.querySelector(".em");
+if(em){em.style.display=mm?"inline":"none";em.textContent=plE(mm)}});
+var mm2=miss(d)+omiss(d),mb=$(".mbar");
+if(mb){mb.classList.toggle("ok",!mm2);mb.querySelector("b").textContent=mm2?mm2+" полів не заповнено":"Усі поля заповнені"}
+kan()}
+function owners(id){var d=D[id],L=oList(d),om=omiss(d);
+$("#oN").textContent=L.length;$("#oW").style.display=om?"inline":"none";$("#oW").textContent=plE(om);
+$("#oL").innerHTML=L.map(function(o,i){return '<div class="own"><div class="ownh"><span class="n">'+(i+1)+'</span><b>'+(o.n||"Новий власник")+'</b><span class="sh">частка '+(o.sh||"—")+'</span><button class="del" data-del="'+i+'" title="Видалити власника"'+(L.length<2?" disabled":"")+'>X</button></div><div class="ownb">'+ownFields(o,i)+'</div></div>'}).join("");
+$("#aO").style.display=L.length>=6?"none":"block";$("#aO").textContent="+ Додати власника паю ("+L.length+"/6)";
+bindOwn($("#oL"),id);
+$("#oL").onclick=function(e){var b=e.target.closest("[data-del]");if(!b||b.disabled)return;delOwner(id,+b.dataset.del)}}
+function addOwner(id){var d=D[id];
+if(!(d.owners&&d.owners.length))d.owners=oList(d).map(function(o){return {n:o.n,sh:o.sh||"",p:o.p,i:o.i,ms:o.ms,w:o.w}});
+if(d.owners.length>=6){toast("Максимум — 6 власників паю");return}
+d.owners.push({n:"",sh:"",p:"",i:"",ms:"",w:""});oOpen[d.owners.length-1]=1;
+owners(id);info(id);kan();save();toast("Додано власника №"+d.owners.length+" — заповніть ПІБ, частку та документи")}
+function delOwner(id,i){var d=D[id],L=oList(d);
+if(L.length<2){toast("У картки має залишитись щонайменше один власник");return}
+var nm=L[i].n||("№"+(i+1));
+if(!confirm("Видалити власника «"+nm+"» із цієї картки?"))return;
+if(!(d.owners&&d.owners.length))d.owners=L;
+d.owners.splice(i,1);oOpen={};
+if(d.owners.length===1){var o=d.owners[0];if(o.n){d.v["ПІБ"]=o.n;d.pib=o.n}
+[["p","Серія і номер паспорта"],["i","ІПН"],["ms","Сімейний стан"],["w","Місце роботи"]].forEach(function(pp){if(o[pp[0]])d.v[pp[1]]=o[pp[0]];else delete d.v[pp[1]]})}
+openC(id);kan();save();toast("Власника «"+nm+"» видалено · запис збережено в активності")}
+var DT=["Витяг з ДЗК","Витяг про право власності","Паспорт, стор. 1-2","Паспорт, реєстрація","Довідка ІПН","Свідоцтво про шлюб","Згода подружжя","Свідоцтво про право на спадщину","Договір оренди","Договір купівлі-продажу","Акт приймання-передачі","Інше"];
+var IMGE=["JPG","JPEG","PNG","HEIC"];
+function nFiles(d){return d.files?d.files.length:(d.docs||0)}
+function initFiles(){Object.keys(D).forEach(function(id){var d=D[id];if(d.files)return;d.files=[];
+for(var i=0;i<(d.docs||0);i++){var t=DT[i%DT.length],img=t.indexOf("Паспорт")===0;
+d.files.push({t:t,ext:img?"JPG":"PDF",fn:(img?"photo_":"doc_")+(1000+i*37+(+id))+(img?".jpg":".pdf"),
+size:((1.1+((i*7+(+id)*3)%29)/10).toFixed(1)+" МБ").replace(".",","),
+date:("0"+(8+(i%3))).slice(-2)+".08.2026",src:(i%3===2)?"Mini App":"Telegram"})}});save()}
+function docs(id){var d=D[id];if(!d.files)d.files=[];
+var nt=d.files.filter(function(f){return !f.t}).length;
+$("#dW").style.display=nt?"inline":"none";$("#dW").textContent=pl(nt,"файл без типу","файли без типу","файлів без типу");
+$("#dL").innerHTML=d.files.length?d.files.map(function(f,i){
+return '<div class="doc"><div class="e '+(IMGE.indexOf(f.ext)>=0?"i":"")+'">'+f.ext+'</div><div class="mid"><select data-d="'+i+'" class="'+(f.t?"":"no")+'">'+[""].concat(DT).map(function(t){return '<option value="'+t+'" '+(t===f.t?"selected":"")+'>'+(t||"— вказати тип документа —")+'</option>'}).join("")+'</select><small>'+f.fn+' · '+f.size+' · '+f.date+'</small></div><span class="sc '+(f.src==="Вручну"?"man":"")+'">'+f.src+'</span><button class="rmf" data-rm="'+i+'" title="Видалити файл">X</button></div>'}).join("")
+:'<div class="add" style="margin-bottom:8px">Файлів ще немає — бот додасть із чату або завантажте вручну</div>';
+$("#dL").onchange=function(e){var i=e.target.dataset.d;if(i===undefined)return;
+d.files[i].t=e.target.value;e.target.classList.toggle("no",!e.target.value);docs(id);save()};
+$("#dL").onclick=function(e){var b=e.target.closest("[data-rm]");if(!b)return;var f=d.files[+b.dataset.rm];
+if(!confirm("Видалити файл «"+(f.t||f.fn)+"»?"))return;
+d.files.splice(+b.dataset.rm,1);d.docs=d.files.length;docs(id);kan();save();toast("Файл видалено · запис у аудит-логу")};
+d.docs=d.files.length}
+function addFiles(id,fl){var d=D[id];if(!d.files)d.files=[];
+var n=new Date(),dt=("0"+n.getDate()).slice(-2)+"."+("0"+(n.getMonth()+1)).slice(-2)+"."+n.getFullYear();
+Array.prototype.slice.call(fl).forEach(function(f){var ext=(f.name.split(".").pop()||"FILE").toUpperCase().slice(0,4);
+d.files.push({t:"",ext:ext,fn:f.name,size:(f.size/1048576).toFixed(1).replace(".",",")+" МБ",date:dt,src:"Вручну"})});
+d.docs=d.files.length;docs(id);kan();save();toast("Додано "+plF(fl.length)+" вручну — вкажіть тип документа")}
+function openC(id){cur=id;var d=D[id];
+$("#dKad").textContent=d.kad;$("#dPib").textContent=d.pib;
+$("#dAr").textContent=d.v["Площа ділянки"]||"площа не вказана";$("#dLo").textContent=(d.v["Сільрада"]||"—")+" с/р";
+$("#dSt").textContent=SN[d.s];$("#dSt").className="st "+SC[d.s];
+$$("#stpr div").forEach(function(el,i){el.className=(i+1<d.s)?"dn":((i+1===d.s)?"cu":"")});
+$("#nxt").textContent=d.s===3?"Передати в Блок 2":"Перевести на етап "+(d.s+1);
+info(id);owners(id);docs(id);$("#drw").classList.add("on");$("#scrim").classList.add("on")}
+document.body.addEventListener("click",function(e){var t=e.target.closest(".pc[data-id]");if(t)openC(t.dataset.id)});
+$("#cls").onclick=function(){$("#drw").classList.remove("on");$("#scrim").classList.remove("on");just=[]};
+$("#scrim").onclick=$("#cls").onclick;
+document.addEventListener("keydown",function(e){if(e.key==="Escape")$("#cls").onclick()});
+$$(".drt button").forEach(function(b){b.onclick=function(){$$(".drt button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+$$(".pane").forEach(function(p){p.classList.toggle("on",p.id==="p-"+b.dataset.p)})}});
+$$("#stpr div").forEach(function(el){el.onclick=function(){var d=D[cur],ns=+el.dataset.s;if(ns===d.s)return;d.s=ns;
+if(ns>=2&&!(d.owners||[]).length)d.owners=[{n:d.v["ПІБ"],sh:"1/1",p:"",i:"",ms:"",w:""}];
+just=F.filter(function(f){return f.s===ns}).map(function(f){return f.k});oOpen={};openC(cur);kan()}});
+$("#nxt").onclick=function(){var d=D[cur];if(d.s>=3){toast("Ділянку передано в Блок 2 · Продаж інвестору");return}
+d.s++;just=F.filter(function(f){return f.s===d.s}).map(function(f){return f.k});
+if(d.s===2&&!(d.owners||[]).length)d.owners=[{n:d.v["ПІБ"],sh:"1/1",p:"",i:"",ms:"",w:""}];
+oOpen={};openC(cur);kan();toast("Етап «"+SN[d.s]+"»: додано "+just.length+" нових полів — заповніть вручну")};
+$("#aO").onclick=function(){addOwner(cur)};
+$("#upB").onclick=function(){$("#upI").click()};
+$("#upI").onchange=function(e){if(e.target.files.length)addFiles(cur,e.target.files);e.target.value=""};
+$$(".nav a").forEach(function(a){a.onclick=function(e){e.preventDefault();var id=a.dataset.go;if(!id)return;
+$$(".nav a").forEach(function(x){x.classList.remove("on")});a.classList.add("on");
+$$(".wrap").forEach(function(p){p.classList.toggle("on",p.id===id)});
+var T={b1:"Блок 1 · Купівля землі",b2:"Блок 2 · Продаж інвестору",b3:"Блок 3 · Земельний банк",tgp:"Telegram-інбокс",an:"Аналітика",stp:"Налаштування"};
+$("#crumb").textContent=T[id];window.scrollTo({top:0})}});
+$("#role").onchange=function(e){var r=e.target.value;document.body.classList.toggle("hide-cost",r!=="admin");
+$("#rlbl").textContent={admin:"Адміністратор",buyer:"Закупівельник",sales:"Менеджер з продажу",asset:"Керуючий активами"}[r]};
+$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");D=JSON.parse(JSON.stringify(SEED));initFiles();kan();toast("Демо-дані відновлено")}};
+var KAD=/\b(\d{10}):(\d{2}):(\d{3}):(\d{4})\b/,known=["1812345678:03:015:0042","1825182000:05:011:0088"];
+function fv(t,k){var m=t.match(new RegExp("^\\s*"+k+"\\s*:\\s*(.+)$","im"));return m?m[1].trim():null}
+function parse(){var t=$("#raw").value,o=[],hs=/#(нова_ділянка|дооцінка|відмова)/.exec(t);
+o.push(["Тригер",hs?"#"+hs[1]:"не знайдено",!!hs]);var k=KAD.exec(t);
+o.push(["Кадастровий номер",k?k[0]:"формат не розпізнано",!!k]);
+if(k)o.push(["КОАТУУ",k[1],true]);
+var ph=(t.match(/\+?38\s?0\d{2}\s?\d{3}\s?\d{2}\s?\d{2}/)||[])[0];
+o.push(["Телефон",ph||"обов язкове поле відсутнє",!!ph]);
+var ar=fv(t,"Площа");o.push(["Площа",ar?ar.replace(",",".")+" га":"—",!!ar]);
+var pr=fv(t,"Ціна");o.push(["Ціна",pr?(+pr).toLocaleString("uk-UA")+" ₴":"—",!!pr]);
+if(ar&&pr)o.push(["Ціна за га",Math.round(pr/parseFloat(ar.replace(",","."))).toLocaleString("uk-UA")+" ₴",true]);
+o.push(["Продавець",fv(t,"Продавець")||"—",!!fv(t,"Продавець")]);
+o.push(["Локація",fv(t,"Локація")||"—",!!fv(t,"Локація")]);
+if(k)o.push(["Перевірка дублів",known.indexOf(k[0])>=0?"вже в базі":"дублів немає",known.indexOf(k[0])<0]);
+var ok=hs&&k&&ph;o.push(["Результат",ok?"Готово до створення картки":"Потрібне ручне підтвердження",!!ok]);
+$("#res").innerHTML=o.map(function(r){return '<div class="rr '+(r[2]?"":"bad")+'"><div class="k">'+r[0]+'</div><div class="v">'+r[1]+'</div></div>'}).join("")}
+$("#pbtn").onclick=parse;
+$("#bbtn").onclick=function(){$("#raw").value="по пулинській ділянці домовились на 180, площа десь 2 га, кадастр скину пізніше";parse()};
+initFiles();kan();parse();
+</script></body></html>
