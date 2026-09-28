@@ -272,9 +272,10 @@ textarea#raw{min-height:170px}
 .drb .up{margin-bottom:6px}
 #invT td{vertical-align:top}#invT .tg{display:inline-block;margin:0 4px 4px 0}
 #cTxt::placeholder{color:var(--m2)}
+#cBox{margin-top:18px}
 .cnew{display:flex;gap:10px;align-items:flex-end;margin-bottom:14px}.cnew .fld{flex:1}.cnew textarea{min-height:54px}
 .cfl{margin:4px 0 12px}.cfl .chip{cursor:pointer;font-size:11.5px;padding:5px 10px}
-#q-com .act p .s2{font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;margin-right:4px}
+#cBox .act p .s2{font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;margin-right:4px}
 @media(max-width:1100px){.kan.k5{grid-template-columns:1fr;overflow:visible}}
 @media(max-width:900px){.cnew{flex-direction:column;align-items:stretch}.g3{grid-template-columns:1fr}.invsel{flex-direction:column}#drw2 .stp div{font-size:9.5px}}
 </style></head><body>
@@ -476,9 +477,9 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="drh"><button class="cl" id="cls2">X</button><div class="k3" id="eUid"></div><div class="p3" id="eKad"></div>
 <div class="rw"><span class="st m" id="eSt"></span><span class="st g" id="eAr"></span><span class="st" id="eInt"></span><span class="st b" id="eInv"></span><button class="btn bs bp" style="margin-left:auto" id="nxt2"></button></div></div>
 <div class="stp" id="stpr2"><div data-s="1">1 · Доступні</div><div data-s="2">2 · Попереднє бронювання</div><div data-s="3">3 · З передплатою</div><div data-s="4">4 · Підготовка до КП</div><div data-s="5">5 · Угода КП</div></div>
-<div class="drt" id="drt2"><button class="on" data-q="info">Інформація про ділянку</button><button data-q="arch">Архів покупки</button><button data-q="inv">Інвестор</button><button data-q="docs">Документи <span id="dN2"></span></button><button data-q="kp">Підготовка до КП</button><button data-q="deal">Угода КП</button><button data-q="com">Коментарі <span id="cN2"></span></button></div>
+<div class="drt" id="drt2"><button class="on" data-q="info">Інформація про ділянку</button><button data-q="arch">Архів покупки</button><button data-q="inv">Інвестор</button><button data-q="docs">Документи <span id="dN2"></span></button><button data-q="kp">Підготовка до КП</button><button data-q="deal">Угода КП</button></div>
 <div class="drb">
-<div class="pane on" id="q-info"></div><div class="pane" id="q-arch"></div><div class="pane" id="q-inv"></div><div class="pane" id="q-docs"></div><div class="pane" id="q-kp"></div><div class="pane" id="q-deal"></div><div class="pane" id="q-com"></div>
+<div class="pane on" id="q-info"></div><div class="pane" id="q-arch"></div><div class="pane" id="q-inv"></div><div class="pane" id="q-docs"></div><div class="pane" id="q-kp"></div><div class="pane" id="q-deal"></div>
 <input type="file" id="upI2" multiple style="display:none">
 </div></aside>
 <div class="tst" id="toast"></div>
@@ -832,7 +833,7 @@ function move2(id,ns){var d=D[id];if(!d||d.b!==2||d.s2===ns)return;var up=ns>d.s
 if(up&&ns>=2&&!d.inv)w=" · оберіть інвестора у вкладці «Інвестор»";
 if(up&&ns===3&&!v2["Сума передплати"])w=" · вкажіть суму передплати";
 if(up&&ns===5&&!(v2["Узгоджена дата угоди"]&&v2["Нотаріус КП"]))w=" · вкажіть узгоджену дату угоди й нотаріуса";
-d.s2=ns;kan2();if($("#drw2").classList.contains("on")&&cur2===id){var tq=($("#drt2 button.on")||{}).dataset;openC2(id);if(tq&&tq.q==="com")tab2("com")}
+d.s2=ns;kan2();if($("#drw2").classList.contains("on")&&cur2===id)openC2(id);
 toast(up?(d.uid+" — етап «"+SN2[ns]+"»"+w):(d.uid+" повернуто на етап «"+SN2[ns]+"»"))}
 
 /* перехід з Блоку 1 */
@@ -859,7 +860,8 @@ h+=fld2("v",[f.k,f.k,1,f.t==="sel"?"sel":(f.auto?0:0),f.o],d.v[f.k]||"",{ro:!!f.
 h+='</div><div class="fs">Продаж<span class="ln2"></span></div><div class="g2">';
 F2S.forEach(function(f){h+=fld2("v2",f,v2[f[0]])});h+='</div>';
 if(d.s2>=2){h+='<div class="fs">Передплата<span class="ln2"></span></div><div class="g2">';F2P.forEach(function(f){h+=fld2("v2",f,v2[f[0]],{badge:stB(2)})});h+='</div>'}
-h+='<div class="hint">Узгоджена ціна Д/У, ціна наміру, дані про власників і робота з продавцем перенесені у вкладку «Архів покупки» — там вони зберігаються без змін.</div>';
+h+='<div id="cBox"></div>';
+h+='<div class="hint">Узгоджена ціна Д/У, ціна наміру, дані про власників і робота з продавцем перенесені у вкладку «Архів покупки». Коментарі позначаються етапом, на якому їх залишили, і не редагуються — це історія роботи з ділянкою.</div>';
 $("#q-info").innerHTML=h}
 
 function arch(id){var d=D[id],L=oList(d),h='<div class="mbar ok arc"><b>Лише перегляд</b><span>Архів фіксує дані покупки з Блоку 1. Редагувати й видаляти записи тут не можна.</span></div>';
@@ -917,18 +919,17 @@ docs2(id);toast("Додано "+plF(arr.length)+" — вкажіть тип до
 /* коментарі: стрічка на всі етапи, кожен запис прив'язаний до етапу */
 var cFlt=0;
 function coms(d){return d.c2||(d.c2=[])}
-function comPane(id){var d=D[id],L=coms(d),n=L.length;$("#cN2").textContent=n||"";
+function comPane(id){var d=D[id],L=coms(d),n=L.length;
 var cnt={};L.forEach(function(c){cnt[c.s]=(cnt[c.s]||0)+1});
-var h='<div class="cnew"><div class="fld wd"><label>Новий коментар <span class="s2 '+(d.s2>=4?"t3":"t2")+'">етап '+d.s2+' · '+SN2[d.s2]+'</span></label><textarea id="cTxt" placeholder="Що відбулось, домовленості, наступний крок…"></textarea></div><button class="btn bp" id="cAdd">Додати коментар</button></div>';
+var h='<div class="fs">Коментарі<span class="ln2"></span><span class="fsn">'+(n?pl(n,"коментар","коментарі","коментарів"):"на всіх етапах")+'</span></div><div class="cnew"><div class="fld wd"><label>Новий коментар <span class="s2 '+(d.s2>=4?"t3":"t2")+'">етап '+d.s2+' · '+SN2[d.s2]+'</span></label><textarea id="cTxt" placeholder="Що відбулось, домовленості, наступний крок…"></textarea></div><button class="btn bp" id="cAdd">Додати коментар</button></div>';
 h+='<div class="tl cfl"><span class="chip '+(cFlt?"":"on")+'" data-cf="0">Усі етапи · '+n+'</span>'+[1,2,3,4,5].map(function(s){return cnt[s]?'<span class="chip '+(cFlt===s?"on":"")+'" data-cf="'+s+'">'+s+' · '+SN2[s]+' · '+cnt[s]+'</span>':""}).join("")+'</div>';
 var V=L.map(function(c,i){return [c,i]}).filter(function(x){return !cFlt||x[0].s===cFlt}).reverse();
 h+=V.length?V.map(function(x){var c=x[0];return '<div class="act"><div class="ai">'+c.a.split(" ").map(function(w){return w[0]}).join("").slice(0,2)+'</div><div><p><span class="s2 '+(c.s>=4?"t3":"t2")+'">етап '+c.s+'</span> '+c.t.replace(/</g,"&lt;").replace(/\n/g,"<br>")+'</p><small>'+c.dt+' · '+c.a+'</small></div></div>'}).join(""):'<div class="add">Коментарів ще немає</div>';
-h+='<div class="hint">Кожен коментар позначається етапом, на якому його залишили, і зберігається в картці під час руху воронкою. Коментарі не редагуються й не видаляються — це історія роботи з ділянкою.</div>';
-$("#q-com").innerHTML=h;
+$("#cBox").innerHTML=h;
 $("#cAdd").onclick=function(){var t=$("#cTxt").value.trim();if(!t){$("#cTxt").focus();return}var n2=new Date();
 coms(d).push({s:d.s2,t:t,a:($(".sf b")||{}).textContent||"Менеджер",dt:fmtD(n2)+" "+("0"+n2.getHours()).slice(-2)+":"+("0"+n2.getMinutes()).slice(-2)});save();comPane(id);kan2();toast("Коментар додано · етап «"+SN2[d.s2]+"»")};
 $("#cTxt").onkeydown=function(e){if(e.key==="Enter"&&(e.ctrlKey||e.metaKey))$("#cAdd").click()};
-$$("#q-com [data-cf]").forEach(function(c){c.onclick=function(){cFlt=+c.dataset.cf;comPane(id)}})}
+$$("#cBox [data-cf]").forEach(function(c){c.onclick=function(){cFlt=+c.dataset.cf;comPane(id)}})}
 function hdr2(id){var d=D[id],ie=intentEnd(d),iv=invById(d.inv);
 $("#eUid").textContent=d.uid;$("#eKad").textContent=d.kad+" · "+(d.v["Сільрада"]||"—")+" с/р, "+(d.v["Район"]||"—")+" р-н";
 $("#eSt").textContent=SN2[d.s2];$("#eSt").className="st "+SC2[d.s2];$("#eAr").textContent=d.v["Площа ділянки"]||"площа не вказана";
