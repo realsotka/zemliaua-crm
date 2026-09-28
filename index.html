@@ -271,8 +271,12 @@ textarea#raw{min-height:170px}
 .mbar.arc{background:#f4f6f2;border-color:var(--ln)}.mbar.arc b{color:var(--g7)}
 .drb .up{margin-bottom:6px}
 #invT td{vertical-align:top}#invT .tg{display:inline-block;margin:0 4px 4px 0}
+#cTxt::placeholder{color:var(--m2)}
+.cnew{display:flex;gap:10px;align-items:flex-end;margin-bottom:14px}.cnew .fld{flex:1}.cnew textarea{min-height:54px}
+.cfl{margin:4px 0 12px}.cfl .chip{cursor:pointer;font-size:11.5px;padding:5px 10px}
+#q-com .act p .s2{font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;margin-right:4px}
 @media(max-width:1100px){.kan.k5{grid-template-columns:1fr;overflow:visible}}
-@media(max-width:900px){.g3{grid-template-columns:1fr}.invsel{flex-direction:column}#drw2 .stp div{font-size:9.5px}}
+@media(max-width:900px){.cnew{flex-direction:column;align-items:stretch}.g3{grid-template-columns:1fr}.invsel{flex-direction:column}#drw2 .stp div{font-size:9.5px}}
 </style></head><body>
 <div class="app">
 <aside class="side">
@@ -472,9 +476,9 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="drh"><button class="cl" id="cls2">X</button><div class="k3" id="eUid"></div><div class="p3" id="eKad"></div>
 <div class="rw"><span class="st m" id="eSt"></span><span class="st g" id="eAr"></span><span class="st" id="eInt"></span><span class="st b" id="eInv"></span><button class="btn bs bp" style="margin-left:auto" id="nxt2"></button></div></div>
 <div class="stp" id="stpr2"><div data-s="1">1 · Доступні</div><div data-s="2">2 · Попереднє бронювання</div><div data-s="3">3 · З передплатою</div><div data-s="4">4 · Підготовка до КП</div><div data-s="5">5 · Угода КП</div></div>
-<div class="drt" id="drt2"><button class="on" data-q="info">Інформація про ділянку</button><button data-q="arch">Архів покупки</button><button data-q="inv">Інвестор</button><button data-q="docs">Документи <span id="dN2"></span></button><button data-q="kp">Підготовка до КП</button><button data-q="deal">Угода КП</button></div>
+<div class="drt" id="drt2"><button class="on" data-q="info">Інформація про ділянку</button><button data-q="arch">Архів покупки</button><button data-q="inv">Інвестор</button><button data-q="docs">Документи <span id="dN2"></span></button><button data-q="kp">Підготовка до КП</button><button data-q="deal">Угода КП</button><button data-q="com">Коментарі <span id="cN2"></span></button></div>
 <div class="drb">
-<div class="pane on" id="q-info"></div><div class="pane" id="q-arch"></div><div class="pane" id="q-inv"></div><div class="pane" id="q-docs"></div><div class="pane" id="q-kp"></div><div class="pane" id="q-deal"></div>
+<div class="pane on" id="q-info"></div><div class="pane" id="q-arch"></div><div class="pane" id="q-inv"></div><div class="pane" id="q-docs"></div><div class="pane" id="q-kp"></div><div class="pane" id="q-deal"></div><div class="pane" id="q-com"></div>
 <input type="file" id="upI2" multiple style="display:none">
 </div></aside>
 <div class="tst" id="toast"></div>
@@ -757,7 +761,9 @@ function b2Seed(){var base=function(o){var v={"ПІБ":o.pib,"Номер тел�
 "Дата останнього контакту":"12.08.2026","Коментарі":"Власник погодився на продаж, документи в порядку","Серія і номер паспорта":o.pas,"ІПН":o.ipn,"Сімейний стан":"Одружений / одружена","Місце роботи":"Пенсіонер",
 "Узгоджена ціна Д/У":o.du,"Ціна наміру":o.pn,"Дата реєстрації наміру":o.dr,"Канал залучення":"Telegram-чат","Нотаріус":"Приватний нотаріус Литвин О. М.","Дата і час у нотаріуса":o.dr+" 10:30",
 "Статус ділянки":"Намір","Орендна плата фактична":o.opf,"Орендна плата прогнозована":o.opp,"Орендну плату взято наперед":o.nap||"Ні, не брав","Ідентифікатор ділянки":o.idf};
-return {b:2,s:3,s2:o.s2,uid:o.uid,kad:o.kad,pib:o.pib,mgr:o.mgr,docs:o.docs,owners:[{n:o.pib,sh:"1/1",p:o.pas,i:o.ipn,ms:"Одружений / одружена",w:"Пенсіонер"}],v:v,v2:o.v2||{},inv:o.inv||""}};
+var cs=[],cm=[[1,"Ділянку отримано з Блоку 1, документи перевірені, виставлено в продаж","О. Панасюк"],[2,"Інвестор подивився ділянку, просить тримати бронь до кінця тижня","І. Дмитренко"],[3,"Аванс отримано, розписку передано в бухгалтерію","О. Панасюк"],[4,"Інвестор просить провести угоду в суботу, уточнюю в нотаріуса","Ю. Васильчук"],[5,"Нотаріус підтвердив дату, оригінали передамо особисто","О. Панасюк"]];
+for(var ci=0;ci<o.s2;ci++)cs.push({s:cm[ci][0],t:cm[ci][1],a:cm[ci][2],dt:P(-(o.s2-ci)*3)+" "+(10+ci)+":1"+ci});
+return {c2:cs,b:2,s:3,s2:o.s2,uid:o.uid,kad:o.kad,pib:o.pib,mgr:o.mgr,docs:o.docs,owners:[{n:o.pib,sh:"1/1",p:o.pas,i:o.ipn,ms:"Одружений / одружена",w:"Пенсіонер"}],v:v,v2:o.v2||{},inv:o.inv||""}};
 var P=function(n){var t=new Date();t.setDate(t.getDate()+n);return ("0"+t.getDate()).slice(-2)+"."+("0"+(t.getMonth()+1)).slice(-2)+"."+t.getFullYear()};
 return {
 "21":base({s2:1,uid:"ЖТ05561КОР",kad:"1822580400:03:002:0461",pib:"Гончарук Петро Іванович",tel:"+380 97 611 20 08",obl:"Житомирська",rai:"Коростишівський",sr:"Щигліївська",ar:"2,40 га",ngo:"71 800 ₴",ore:"ТОВ Коростишів-Агро",ter:"до 31.12.2030",pas:"КН 301245",ipn:"2511304478",du:"118 000 ₴",pn:"122 000 ₴",dr:P(-40),opf:"8% НГО · 5 744 ₴/рік",opp:"12% НГО · 8 616 ₴/рік",idf:"ZM-0461",mgr:"ОП",docs:5,v2:{"Сума продажу":"236 000 ₴","Дохідність":"12,1 %"}}),
@@ -800,6 +806,7 @@ if(v2["Бронювання до"]&&d.s2>=2&&d.s2<=3){var bd=parseD(v2["Брон
 if(ie&&d.s2<5){var il=daysTo(ie);if(il<=14)t.push('<span class="tg r">'+(il<0?"намір сплив "+ddmm(ie):"намір до "+ddmm(ie))+'</span>')}
 if(d.s2===5&&dd){var dl=daysTo(dd);if(dl>=0&&dl<=3){hot=true;var r=readiness(d),ok=r.filter(function(x){return x[1]}).length;
 t.push('<span class="tg hot">угода '+(dl===0?"сьогодні":(dl===1?"завтра":"через "+dl+" дн."))+' · готово '+ok+'/'+r.length+'</span>')}}
+if((d.c2||[]).length)t.push('<span class="tg">'+pl(d.c2.length,"коментар","коментарі","коментарів")+'</span>');
 if(m)t.push('<span class="tg r">'+m+' порожніх</span>');
 var sum=v2["Сума продажу"];
 return '<div class="pc b2c '+(m?"ms ":"")+(hot?"hot":"")+'" draggable="true" data-id2="'+id+'"><div class="uid">'+d.uid+'</div><div class="kd sm2">'+d.kad+'</div><div class="pm">'+t.join("")+'</div><div class="pf"><span class="pr cost '+(sum?"":"no")+'">'+(sum||"сума продажу не вказана")+'</span><span class="dc">'+(d.s2===5&&dd?"угода "+ddmm(dd):"")+'</span><span class="w2">'+d.mgr+'</span>'+(d.s2<5?'<button class="mv" data-mv2="'+id+'">перевести на етап '+(d.s2+1)+' &#8594;</button>':'')+'</div></div>'}
@@ -825,7 +832,7 @@ function move2(id,ns){var d=D[id];if(!d||d.b!==2||d.s2===ns)return;var up=ns>d.s
 if(up&&ns>=2&&!d.inv)w=" · оберіть інвестора у вкладці «Інвестор»";
 if(up&&ns===3&&!v2["Сума передплати"])w=" · вкажіть суму передплати";
 if(up&&ns===5&&!(v2["Узгоджена дата угоди"]&&v2["Нотаріус КП"]))w=" · вкажіть узгоджену дату угоди й нотаріуса";
-d.s2=ns;kan2();if($("#drw2").classList.contains("on")&&cur2===id)openC2(id);
+d.s2=ns;kan2();if($("#drw2").classList.contains("on")&&cur2===id){var tq=($("#drt2 button.on")||{}).dataset;openC2(id);if(tq&&tq.q==="com")tab2("com")}
 toast(up?(d.uid+" — етап «"+SN2[ns]+"»"+w):(d.uid+" повернуто на етап «"+SN2[ns]+"»"))}
 
 /* перехід з Блоку 1 */
@@ -907,6 +914,21 @@ var arr=Array.prototype.slice.call(fl).map(function(f){return {t:"",sec:sec,ext:
 if(sec==="inv"){if(!iv)return;iv.files=iv.files.concat(arr);saveInv()}else{d.files=d.files.concat(arr);d.docs=d.files.length;save()}
 docs2(id);toast("Додано "+plF(arr.length)+" — вкажіть тип документа")}
 
+/* коментарі: стрічка на всі етапи, кожен запис прив'язаний до етапу */
+var cFlt=0;
+function coms(d){return d.c2||(d.c2=[])}
+function comPane(id){var d=D[id],L=coms(d),n=L.length;$("#cN2").textContent=n||"";
+var cnt={};L.forEach(function(c){cnt[c.s]=(cnt[c.s]||0)+1});
+var h='<div class="cnew"><div class="fld wd"><label>Новий коментар <span class="s2 '+(d.s2>=4?"t3":"t2")+'">етап '+d.s2+' · '+SN2[d.s2]+'</span></label><textarea id="cTxt" placeholder="Що відбулось, домовленості, наступний крок…"></textarea></div><button class="btn bp" id="cAdd">Додати коментар</button></div>';
+h+='<div class="tl cfl"><span class="chip '+(cFlt?"":"on")+'" data-cf="0">Усі етапи · '+n+'</span>'+[1,2,3,4,5].map(function(s){return cnt[s]?'<span class="chip '+(cFlt===s?"on":"")+'" data-cf="'+s+'">'+s+' · '+SN2[s]+' · '+cnt[s]+'</span>':""}).join("")+'</div>';
+var V=L.map(function(c,i){return [c,i]}).filter(function(x){return !cFlt||x[0].s===cFlt}).reverse();
+h+=V.length?V.map(function(x){var c=x[0];return '<div class="act"><div class="ai">'+c.a.split(" ").map(function(w){return w[0]}).join("").slice(0,2)+'</div><div><p><span class="s2 '+(c.s>=4?"t3":"t2")+'">етап '+c.s+'</span> '+c.t.replace(/</g,"&lt;").replace(/\n/g,"<br>")+'</p><small>'+c.dt+' · '+c.a+'</small></div></div>'}).join(""):'<div class="add">Коментарів ще немає</div>';
+h+='<div class="hint">Кожен коментар позначається етапом, на якому його залишили, і зберігається в картці під час руху воронкою. Коментарі не редагуються й не видаляються — це історія роботи з ділянкою.</div>';
+$("#q-com").innerHTML=h;
+$("#cAdd").onclick=function(){var t=$("#cTxt").value.trim();if(!t){$("#cTxt").focus();return}var n2=new Date();
+coms(d).push({s:d.s2,t:t,a:($(".sf b")||{}).textContent||"Менеджер",dt:fmtD(n2)+" "+("0"+n2.getHours()).slice(-2)+":"+("0"+n2.getMinutes()).slice(-2)});save();comPane(id);kan2();toast("Коментар додано · етап «"+SN2[d.s2]+"»")};
+$("#cTxt").onkeydown=function(e){if(e.key==="Enter"&&(e.ctrlKey||e.metaKey))$("#cAdd").click()};
+$$("#q-com [data-cf]").forEach(function(c){c.onclick=function(){cFlt=+c.dataset.cf;comPane(id)}})}
 function hdr2(id){var d=D[id],ie=intentEnd(d),iv=invById(d.inv);
 $("#eUid").textContent=d.uid;$("#eKad").textContent=d.kad+" · "+(d.v["Сільрада"]||"—")+" с/р, "+(d.v["Район"]||"—")+" р-н";
 $("#eSt").textContent=SN2[d.s2];$("#eSt").className="st "+SC2[d.s2];$("#eAr").textContent=d.v["Площа ділянки"]||"площа не вказана";
@@ -917,7 +939,7 @@ $("#nxt2").style.display=d.s2<5?"":"none";$("#nxt2").textContent="Перевес
 function openC2(id){cur2=id;var d=D[id];if(!d.v2)d.v2={};hdr2(id);
 $$("#stpr2 div").forEach(function(el,i){el.className=(i+1<d.s2)?"dn":((i+1===d.s2)?"cu":"")});
 $('#drt2 [data-q="inv"]').style.display=d.s2>=2?"":"none";$('#drt2 [data-q="kp"]').style.display=d.s2>=4?"":"none";$('#drt2 [data-q="deal"]').style.display=d.s2>=5?"":"none";
-info2(id);arch(id);invPane(id);kpPane(id);dealPane(id);docs2(id);
+cFlt=0;info2(id);arch(id);invPane(id);kpPane(id);dealPane(id);docs2(id);comPane(id);
 var on=$("#drt2 button.on");if(!on||on.style.display==="none")tab2("info");
 $("#drw2").classList.add("on");$("#scrim").classList.add("on")}
 function tab2(q){$$("#drt2 button").forEach(function(x){x.classList.toggle("on",x.dataset.q===q)});$$("#drw2 .pane").forEach(function(p){p.classList.toggle("on",p.id==="q-"+q)})}
