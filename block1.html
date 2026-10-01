@@ -297,6 +297,21 @@ textarea#raw{min-height:170px}
 .t3tabs{display:flex;padding:0 14px;border-bottom:1px solid var(--ln);overflow-x:auto}.t3tabs button{padding:13px 13px;font-size:13px;font-weight:600;color:var(--mu);border-bottom:2px solid transparent;white-space:nowrap}.t3tabs button.on{color:var(--g7);border-bottom-color:var(--g7)}
 .f3body{flex:1;padding:18px 20px;overflow:auto}
 .f3empty{border:1px dashed #c9d3c8;border-radius:12px;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:var(--mu);font-size:12.5px;padding:20px}.f3empty b{color:var(--tx);font-size:15px}
+.flt3{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid var(--ln);flex-wrap:wrap;align-items:center}.flt3 select{border:1px solid var(--ln);border-radius:8px;padding:7px 9px;font-size:12.5px;background:#fff}.flt3 .x{margin-left:auto;font-size:11px;color:var(--m2)}
+.al3{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:9px 0;border-bottom:1px solid var(--ln);cursor:pointer}.al3:last-child{border-bottom:none}.al3 b{font-family:Menlo,monospace;font-size:12px}.al3 span{font-size:11.5px;color:var(--mu);text-align:right}.al3 em{grid-column:1/-1;font-style:normal;font-size:12.5px;color:var(--rd);font-weight:600}.al3:hover b{color:var(--g7)}
+.dt3{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:7px;vertical-align:middle;background:#c9d3c8}.dt3.g{background:var(--g6)}.dt3.a{background:var(--am)}.dt3.r{background:var(--rd)}
+.mbar3{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:11px 14px;border-radius:10px;background:#eff2ec;margin-bottom:6px}.mbar3 b{font-size:13.5px}.mbar3 span{font-size:12px;color:var(--mu)}
+.mbar3.g{background:#e7f2ea}.mbar3.g b{color:var(--g7)}.mbar3.a{background:#fbf1dc}.mbar3.a b{color:#8a5f10}.mbar3.r{background:var(--rb)}.mbar3.r b{color:var(--rd)}
+.same3{margin-top:10px;font-size:12px;color:var(--mu);display:flex;flex-wrap:wrap;gap:6px;align-items:center}.same3 .tg{cursor:pointer}
+.cks3{display:grid;grid-template-columns:1fr 1fr;gap:7px}.ck3{display:flex;gap:8px;align-items:center;border:1px solid var(--ln);border-radius:9px;padding:9px 11px;font-size:12.5px;background:#fbfcfa;cursor:pointer}.ck3 input{accent-color:var(--g7);width:15px;height:15px}
+.soon3{margin-top:12px;opacity:.6;cursor:not-allowed}
+.seg3{display:inline-flex;border:1px solid var(--ln);border-radius:10px;overflow:hidden}.seg3 button{padding:9px 14px;font-size:12.5px;font-weight:600;color:var(--mu)}.seg3 button.on{background:var(--g7);color:#fff}
+.tl3{display:flex;flex-direction:column;gap:7px}.tl3r{display:grid;grid-template-columns:26px 1fr 190px;gap:10px;align-items:center}.tl3r .n{width:24px;height:24px;border-radius:50%;background:#eff2ec;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--mu)}.tl3r.ok .n{background:var(--g6);color:#fff}.tl3r b{font-size:13px}.tl3r .fld{padding:5px 9px}.tl3r .fld label{display:none}
+.let3{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--ln);font-size:12.5px}.let3 .c{color:var(--mu);flex:1}.let3 select{border:1px solid var(--ln);border-radius:7px;padding:5px 7px;font-size:12px;background:#fff}
+.letn{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.letn input,.letn select{border:1px solid var(--ln);border-radius:8px;padding:8px 9px;font-size:12.5px;background:#fff}.letn #l3c{flex:1;min-width:160px}.letn .soon3{margin-top:0}
+.pt3w{overflow-x:auto;border:1px solid var(--ln);border-radius:10px}.pt3{min-width:900px}.t3w{overflow-x:auto}.t3w .t3 td .st{white-space:nowrap}.pt3 th{font-size:10.5px}.pt3 td{padding:6px 8px}.pt3 input,.pt3 select{width:100%;border:1px solid transparent;border-radius:6px;padding:5px 6px;font-size:12.5px;background:transparent}.pt3 input:hover,.pt3 input:focus,.pt3 select:hover{border-color:var(--ln);background:#fff;outline:none}
+.pt3 tr.debt td{background:var(--rb)}.pt3 tfoot td{font-weight:700;font-size:12.5px;border-top:1px solid var(--ln)}
+@media(max-width:700px){.cks3{grid-template-columns:1fr}.tl3r{grid-template-columns:26px 1fr}.tl3r .fld{grid-column:2}.seg3{display:flex}.seg3 button{flex:1}.let3{flex-wrap:wrap}}
 .dr.hist #nxt2,.dr.hist .up,.dr.hist .rmf,.dr.hist .cnew,.dr.hist #invNew,.dr.hist .mbar:not(.arc){display:none}
 .dr.hist .stp div{cursor:default}
 .dr.hist .hbar{display:block}.hbar{display:none;background:#fbf1dc;color:#8a5f10;font-size:12px;font-weight:600;padding:8px 20px;border-bottom:1px solid #f0e2bf}
@@ -419,17 +434,14 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="kpi"><div class="l">Ділянок під управлінням</div><div class="v" id="b3n">0</div><div class="d" id="b3a">0 га</div></div>
 <div class="kpi"><div class="l">Вартість банку</div><div class="v cost">14,9 <small>млн ₴</small></div><div class="d">+8,4% за рік</div></div>
 <div class="kpi acc"><div class="l">Орендний потік / рік</div><div class="v">1,72 <small>млн ₴</small></div><div class="d">сер. 11 180 ₴/га</div></div>
-<div class="kpi"><div class="l">Спливає ≤12 міс</div><div class="v">9</div><div class="d w">потребує переговорів</div></div></div>
+<div class="kpi"><div class="l">Спливає ≤12 міс</div><div class="v" id="b3exp">0</div><div class="d w">потребує переговорів</div></div></div>
 <div class="two">
 <div class="pn"><div class="pnh"><b>Ділянки під управлінням</b><span class="x" id="b3cnt"></span></div>
-<table class="t3"><thead><tr><th>Ідентифікатор</th><th>Кадастровий номер</th><th>Інвестор</th><th>Орендар</th><th>Район</th><th>Площа</th><th>Угода КП</th></tr></thead><tbody id="b3body"></tbody></table>
+<div class="flt3"><select id="fi3"></select><select id="fo3"></select><select id="fy3"></select><span class="x">сортування за строком оренди</span></div>
+<div class="t3w"><table class="t3"><thead><tr><th>Ідентифікатор</th><th>Кадастровий номер</th><th>Інвестор</th><th>Орендар</th><th>Площа</th><th>Оренда до</th><th>Дог. управління</th><th>Перехід права</th></tr></thead><tbody id="b3body"></tbody></table></div>
 <div class="pnb" style="border-top:1px solid var(--ln)"><div class="hint" style="margin:0">Сюди потрапляють ділянки після угоди КП у Блоці 2. Картка відкривається на весь екран — натисніть на рядок.</div></div></div>
 <div>
-<div class="pn"><div class="pnh"><b>Календар зобов язань</b></div><div class="pnb">
-<div class="cal"><div class="cd"><b>15</b><span>вер</span></div><div><p><b>Виплата доходу</b> — 11 інвесторів</p><small>418 400 ₴ · транш 3/4</small></div></div>
-<div class="cal"><div class="cd"><b>28</b><span>вер</span></div><div><p><b>Переговори по ставці</b> — ФГ Колос</p><small>4,5% проти 11,2% по ОТГ</small></div></div>
-<div class="cal"><div class="cd"><b>11</b><span>лис</span></div><div><p><b>Спливає договір</b> — Ткачук С. М.</p><small>1824555100:03:008:0330</small></div></div>
-<div class="cal"><div class="cd"><b>01</b><span>січ</span></div><div><p><b>Оновлення НГО</b> по 3 ОТГ</p><small>перерахунок 17 договорів</small></div></div></div></div>
+<div class="pn"><div class="pnh"><b>Потребує уваги</b><span class="st r" id="al3n">0</span></div><div class="pnb" id="al3"></div></div>
 <div class="pn"><div class="pnh"><b>Приведення до ринку</b></div><div class="pnb">
 <div class="row2"><span>Договорів нижче ринку</span><b>14</b></div>
 <div class="row2"><span>Потенціал приросту</span><b>+286 тис ₴/рік</b></div>
@@ -511,7 +523,7 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="f3map"><svg viewBox="0 0 120 80" width="120" height="80" aria-hidden="true"><path d="M8 62 L30 14 L92 8 L112 52 L60 72 Z" fill="none" stroke="#9fb3a3" stroke-width="1.2" stroke-dasharray="4 3"/></svg><b>Карта ділянки</b><span>з'явиться тут на наступному етапі</span></div></div>
 <div class="f3side pn"><div class="pnh"><b>Попередні етапи</b><span class="x">лише перегляд</span></div><div class="f3hist" id="f3hist"></div>
 <div class="f3path" id="f3path"></div></div>
-<div class="f3work pn"><div class="t3tabs" id="t3tabs"></div><div class="f3body" id="f3body"></div></div>
+<div class="f3work pn"><div class="t3tabs" id="t3tabs"></div><div class="f3body" id="f3body"></div></div><input type="file" id="upI3" multiple style="display:none">
 </div></div>
 <div class="tst" id="toast"></div>
 
@@ -544,7 +556,7 @@ var SN={1:"Аналітика ділянок",2:"Контрактування",3
 var D=load(),cur="1",just=[];
 function load(){var b=null;try{var j=localStorage.getItem("zemlia2");if(j)b=JSON.parse(j)}catch(e){}
 if(!b){try{b=JSON.parse(localStorage.getItem("zemlia1")||"null")}catch(e){}b=b||JSON.parse(JSON.stringify(SEED));var s2=b2Seed();for(var k in s2)if(!b[k])b[k]=s2[k]}
-b3Seed(b);Object.keys(b).forEach(function(i){var d=b[i],r=parseD(d.v["Дата реєстрації наміру"]);if(r&&!d.v["Дата закінчення наміру"])d.v["Дата закінчення наміру"]=fmtD(intentPlus(r))});return b}
+b3Seed(b);b3Seed2(b);Object.keys(b).forEach(function(i){var d=b[i],r=parseD(d.v["Дата реєстрації наміру"]);if(r&&!d.v["Дата закінчення наміру"])d.v["Дата закінчення наміру"]=fmtD(intentPlus(r))});return b}
 function parseD(s){s=String(s||"");var m=/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/.exec(s);if(m)return new Date(+m[3],+m[2]-1,+m[1]);m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s);return m?new Date(+m[1],+m[2]-1,+m[3]):null}
 function fmtD(dt){return ("0"+dt.getDate()).slice(-2)+"."+("0"+(dt.getMonth()+1)).slice(-2)+"."+dt.getFullYear()}
 /* дата закінчення наміру = дата реєстрації + 2 місяці + 1 день */
@@ -560,6 +572,22 @@ P.forEach(function(x){if(b[x[0]])return;var d=JSON.parse(JSON.stringify(t));d.b=
 if(x[1].indexOf("КВ")===0)d.v["Область"]="Київська";d.inv=x[8];d.v["Дата реєстрації наміру"]=fmtD(parseD(isoOff(x[9]-45)));d.v["Дата закінчення наміру"]=fmtD(intentPlus(parseD(isoOff(x[9]-45))));d.v2["Узгоджена дата угоди"]=isoOff(x[9]);d.v2["Сума продажу"]=x[10];d.v2["Дата фактичної передачі"]=isoOff(x[9]+3);d.inb3=isoOff(x[9]+1);
 d.c2.push({s:5,t:"Угоду КП проведено, оригінал передано інвестору",a:"О. Панасюк",dt:fmtD(parseD(isoOff(x[9])))+" 15:20"});b[x[0]]=d});
 try{localStorage.setItem("zemlia3s","1")}catch(e){}}
+function ATT3S(){return ["Копія паспорта власника","Копія ідентифікаційного коду","Витяг з Державного реєстру речових прав","Довідка з реквізитами","Копія довіреності"]}
+function b3Seed2(b){try{if(localStorage.getItem("zemlia3s2"))return}catch(e){}var I=function(n){return isoOff(n)},S={
+"31":{v3:{"ДУ: відповідальний":"Діана","ДУ: тип документа":"Договір управління","ДУ: номер":"ДУ-118/26","ДУ: шаблон":"Стандартний","ДУ: дата узгодження":I(-110),"ДУ: нотаріус":"Приватний нотаріус Литвин О. М.","ДУ: дата підписання план":I(-104),"ДУ: дата підписання факт":I(-104),"ДУ: початок":I(-104),"ДУ: кінець":toISO(addM(parseD(I(-104)),120)),"ДУ: комісія":"Стандартна, 10% від оренди","ДУ: комісія %":"10",
+"ПП: відповідальний":"Діана","ПП: адреса орендаря":"08500, Київська обл., м. Фастів, вул. Миру, 12","ПП: дата формування":I(-112),"ПП: дата відправки":I(-111),"ПП: спосіб":"Укрпошта, рекомендований з повідомленням","ПП: трекінг":"1001234567890","ПП: дата отримання":I(-104),"ПП: додатки":ATT3S(),
+"ДО: напрям":"Переукладання договору","ДО: умови":"8% НГО","ДО: шаблон":"Кукурудза фактична","ДО: виконавець":"Катерина Шевченко","ДО: порядок":"Орендар, потім інвестор","ДО: хто реєструє":"Орендар","ДО: нові умови":"1,3 т кукурудзи / га за фактичною ціною","ДО: новий строк":"15 років","ДО: підготовлено":I(-60),"ДО: відправлено":I(-55),"ДО: підписав орендар":I(-30),"ДО: підписав інвестор":I(-21),"ДО: на реєстрації":I(-14),
+"Оплати":[{y:"2026",na:"23 400",pa:"23 400",pd:I(-20),s:"Таблиця орендаря",z:"Так",cn:"2 340",cp:"2 340"}]},files3:{mgmt:[{t:"Договір управління",ext:"PDF",fn:"DU-118-26.pdf",size:"2,1 МБ",date:fmtD(parseD(I(-104))),src:"Вручну"}],own:[{t:"Повідомлення про перехід права власності",ext:"PDF",fn:"povidomlennia.pdf",size:"0,4 МБ",date:fmtD(parseD(I(-111)))},{t:"Повідомлення про вручення",ext:"JPG",fn:"vruchennia.jpg",size:"1,1 МБ",date:fmtD(parseD(I(-104)))}]}},
+"32":{v3:{"ДУ: відповідальний":"Діана","ДУ: тип документа":"Договір управління","ДУ: номер":"ДУ-118/26","ДУ: шаблон":"Стандартний","ДУ: дата узгодження":I(-110),"ДУ: нотаріус":"Приватний нотаріус Литвин О. М.","ДУ: дата підписання план":I(-104),"ДУ: дата підписання факт":I(-104),"ДУ: початок":I(-104),"ДУ: кінець":toISO(addM(parseD(I(-104)),120)),"ДУ: комісія":"Стандартна, 10% від оренди","ДУ: комісія %":"10",
+"ПП: відповідальний":"Діана","ПП: дата формування":I(-109),"ПП: дата відправки":I(-108),"ПП: спосіб":"Нова пошта","ПП: додатки":ATT3S().slice(0,3),
+"ДО: умови":"8% НГО","ДО: листи":[{dt:fmtD(parseD(I(-6))),t:"Пропозиція продовжити / переукласти",c:"просять подовжити на старих умовах",r:"Потрібна відповідь"}],
+"Оплати":[{y:"2026",na:"24 300",pa:"24 300",pd:I(-20),s:"Таблиця орендаря",z:"Ні",cn:"2 430",cp:""}]}},
+"33":{v3:{"ДУ: відповідальний":"Ольга Романенко","ДУ: тип документа":"Договір управління","ДУ: дата узгодження":I(-5),"ДУ: дата підписання план":I(6),"ДУ: нотаріус":"Приватний нотаріус Бойко Н. В."}},
+"34":{v3:{"ДУ: відповідальний":"Діана","ДУ: тип документа":"Додаткова угода до договору управління","ДУ: номер":"ДУ-097/26-1","ДУ: основний":"ДУ-097/26 від 12.03.2026","ДУ: дата підписання план":I(-50),"ДУ: дата підписання факт":I(-50),"ДУ: початок":I(-50),"ДУ: кінець":toISO(addM(parseD(I(-50)),120)),"ДУ: комісія":"Знижена","ДУ: комісія %":"5",
+"ПП: дата відправки":I(-55),"ПП: дата отримання":I(-48),"ПП: додатки":ATT3S(),"ДО: дата закінчення":I(120),"ДО: умови":"7% НГО",
+"Оплати":[{y:"2025",na:"12 600",pa:"12 600",pd:I(-280),s:"Вручну",z:"Так",cn:"630",cp:"630"},{y:"2026",na:"13 000",pa:"13 000",pd:I(-15),s:"Viber / месенджер",z:"Так",cn:"650",cp:""}]}},
+"35":{v3:{"ПЗ: статус":"Інвестор хоче продати","ПЗ: ініціатор":"Інвестор просить продати","ПЗ: бажана ціна":"300 000 ₴"}}};
+Object.keys(S).forEach(function(i){if(b[i]&&!b[i].v3){b[i].v3=S[i].v3;if(S[i].files3)b[i].files3=S[i].files3}});try{localStorage.setItem("zemlia3s2","1")}catch(e){}}
 var PERS=["Серія і номер паспорта","ІПН","Сімейний стан","Місце роботи"];
 function multi(d){return (d.owners||[]).length>1}
 function pl(n,a,b,c){var m=n%100,u=n%10;return n+" "+((m>=11&&m<=14)?c:(u===1?a:((u>=2&&u<=4)?b:c)))}
@@ -747,7 +775,7 @@ var T={b1:"Блок 1 · Купівля землі",b2:"Блок 2 · Прода
 $("#crumb").textContent=T[id];sideOpen(false);window.scrollTo({top:0})}});
 $("#role").onchange=function(e){var r=e.target.value;document.body.classList.toggle("hide-cost",r!=="admin");
 $("#rlbl").textContent={admin:"Адміністратор",buyer:"Закупівельник",sales:"Менеджер з продажу",asset:"Керуючий активами"}[r]};
-$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");localStorage.removeItem("zemlia2");localStorage.removeItem("zemlia2_inv");localStorage.removeItem("zemlia3s");D=load();INV=loadInv();initFiles();kan();kan2();b3();toast("Демо-дані відновлено")}};
+$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");localStorage.removeItem("zemlia2");localStorage.removeItem("zemlia2_inv");localStorage.removeItem("zemlia3s");localStorage.removeItem("zemlia3s2");D=load();INV=loadInv();initFiles();kan();kan2();b3();toast("Демо-дані відновлено")}};
 var KAD=/\b(\d{10}):(\d{2}):(\d{3}):(\d{4})\b/,known=["1812345678:03:015:0042","1825182000:05:011:0088"];
 function fv(t,k){var m=t.match(new RegExp("^\\s*"+k+"\\s*:\\s*(.+)$","im"));return m?m[1].trim():null}
 function parse(){var t=$("#raw").value,o=[],hs=/#(нова_ділянка|дооцінка|відмова)/.exec(t);
@@ -1027,7 +1055,13 @@ function b3ids(){return Object.keys(D).filter(function(i){return D[i].b===3})}
 function ha3(d){return parseFloat((d.v["Площа ділянки"]||"0").replace(",","."))||0}
 function b3(){var ids=b3ids(),a=ids.reduce(function(x,i){return x+ha3(D[i])},0);
 $("#nb3").textContent=ids.length;$("#b3n").textContent=ids.length;$("#b3a").textContent=a.toFixed(2).replace(".",",")+" га";$("#b3cnt").textContent=pl(ids.length,"ділянка","ділянки","ділянок");
-$("#b3body").innerHTML=ids.map(function(i){var d=D[i],iv=invById(d.inv),dd=dealDate(d);return '<tr data-id3="'+i+'"><td class="mn"><b>'+d.uid+'</b></td><td class="mn">'+d.kad+'</td><td>'+(iv?iv.v.n:"—")+'</td><td>'+(d.v["Орендар"]||"—")+'</td><td>'+(d.v["Район"]||"—")+'</td><td>'+(d.v["Площа ділянки"]||"—")+'</td><td>'+(dd?fmtD(dd):"—")+'</td></tr>'}).join("")||'<tr><td colspan="7" style="text-align:center;color:var(--mu)">Ділянок ще немає</td></tr>'}
+var fi=$("#fi3").value||"",fo=$("#fo3").value||"",fy=$("#fy3").value||"";
+var opt=function(sel,first,L,cur){$(sel).innerHTML='<option value="">'+first+'</option>'+L.map(function(x){return '<option '+(x===cur?"selected":"")+'>'+x+'</option>'}).join("")};
+var uq=function(f){var o={};ids.forEach(function(i){var x=f(D[i]);if(x)o[x]=1});return Object.keys(o).sort()};
+opt("#fi3","Усі інвестори",uq(function(d){var iv=invById(d.inv);return iv&&iv.v.n}),fi);opt("#fo3","Усі орендарі",uq(function(d){return d.v["Орендар"]}),fo);opt("#fy3","Оренда до: усі роки",uq(function(d){var e=leaseEnd(d);return e?String(e.getFullYear()):""}),fy);
+var exp=ids.filter(function(i){var e=leaseEnd(D[i]);return e&&daysTo(e)<=365}).length;$("#b3exp").textContent=exp;
+var V=ids.filter(function(i){var d=D[i],iv=invById(d.inv),e=leaseEnd(d);return (!fi||(iv&&iv.v.n===fi))&&(!fo||d.v["Орендар"]===fo)&&(!fy||(e&&String(e.getFullYear())===fy))}).sort(function(a,b){return (leaseEnd(D[a])||9e15)-(leaseEnd(D[b])||9e15)});
+$("#b3body").innerHTML=V.map(function(i){var d=D[i],iv=invById(d.inv),e=leaseEnd(d),m=e?daysTo(e)/30.4:99,sm=st3(d,"mgmt"),so=st3(d,"own");return '<tr data-id3="'+i+'"><td class="mn"><b>'+d.uid+'</b></td><td class="mn">'+d.kad+'</td><td>'+(iv?iv.v.n:"—")+'</td><td>'+(d.v["Орендар"]||"—")+'</td><td>'+(d.v["Площа ділянки"]||"—")+'</td><td>'+(e?'<span class="st '+(m<=6?"r":(m<=12?"a":"m"))+'">'+fmtD(e)+'</span>':"—")+'</td><td><span class="st '+sm[1]+'">'+sm[0]+'</span></td><td><span class="st '+so[1]+'">'+so[0]+'</span></td></tr>'}).join("")||'<tr><td colspan="8" style="text-align:center;color:var(--mu)">Ділянок не знайдено</td></tr>';alerts3()}
 function openC3(id){cur3=id;var d=D[id],iv=invById(d.inv),dd=dealDate(d),v2=d.v2||{};
 $("#f3uid").textContent=d.uid;$("#f3kad").textContent=d.kad;$("#f3inv").textContent=iv?iv.v.n:"не вказано";$("#f3ore").textContent=d.v["Орендар"]||"не вказано";
 var fx=[[d.v["Площа ділянки"],"g"],[(d.v["Область"]||"")+" обл.",""],[(d.v["Район"]||"")+" р-н",""],[(d.v["Сільрада"]||"")+" с/р",""],[d.v["Нормативна грошова оцінка"]?"НГО "+d.v["Нормативна грошова оцінка"]:"","b"],[d.v["Термін оренди"]?"оренда "+d.v["Термін оренди"]:"","a"],[v2["Сума продажу"]?"сума КП "+v2["Сума продажу"]:"",""]];
@@ -1038,16 +1072,148 @@ $("#f3hist").innerHTML=H3.map(function(h,i){return '<button data-h3="'+h[0]+'"><
 var ie=intentEnd(d);
 $("#f3path").innerHTML='<div class="pp"><b>Блок 1 · Купівля</b><span>'+(d.v["Дата реєстрації наміру"]||"—")+'</span></div><div class="pp"><b>Блок 2 · Продаж інвестору</b><span>'+(dd?fmtD(dd):"—")+'</span></div><div class="pp cu"><b>Блок 3 · Земельний банк</b><span>'+(d.inb3?fmtD(parseD(d.inb3)):"—")+'</span></div>';
 tab3(tab3c);$("#fc3").classList.add("on");document.body.style.overflow="hidden"}
-function tab3(q){tab3c=q;$("#t3tabs").innerHTML=T3.map(function(t){return '<button data-t3="'+t[0]+'" class="'+(t[0]===q?"on":"")+'">'+t[1]+'</button>'}).join("");
-var t=T3.filter(function(x){return x[0]===q})[0];
-$("#f3body").innerHTML='<div class="f3empty"><b>'+t[1]+'</b><span>Чернетка вкладки. Поля додамо на наступному кроці.</span></div>'}
+/* ---------- Блок 3 · поля вкладок (за записом розмови з клієнтом) ---------- */
+var MGRS3=["","Діана","Ольга Романенко","Катерина Шевченко","Сергій Крамаренко"];
+var F3M=[["ДУ: відповідальний","Відповідальний за договір",0,"sel",MGRS3],
+["ДУ: тип документа","Тип документа",0,"sel",["","Договір управління","Додаткова угода до договору управління"]],
+["ДУ: номер","Номер договору / угоди",0,0,0,0,"напр. ДУ-118/26"],
+["ДУ: шаблон","Шаблон",0,"sel",["","Стандартний","Індивідуальний"]],
+["ДУ: дата узгодження","Узгоджено з інвестором",0,"date"],
+["ДУ: нотаріус","Нотаріус",0],
+["ДУ: дата підписання план","Дата підписання у нотаріуса (план)",0,"date"],
+["ДУ: дата підписання факт","Дата підписання (факт)",0,"date"],
+["ДУ: початок","Початок дії",0,"date"],
+["ДУ: кінець","Кінець дії",0,"date",0,0],
+["ДУ: комісія","Винагорода за управління",0,"sel",["","Стандартна, 10% від оренди","Знижена","Підвищена","Без комісії"]],
+["ДУ: комісія %","Ставка винагороди, %",0,0,0,1,"напр. 10"]];
+var F3O=[["ПП: відповідальний","Відповідальний",0,"sel",MGRS3],["ПП: адреса орендаря","Адреса орендаря (з Opendatabot)",0,"area"],
+["ПП: дата формування","Повідомлення сформовано",0,"date"],["ПП: дата відправки","Відправлено орендарю",0,"date"],
+["ПП: спосіб","Спосіб відправки",0,"sel",["","Укрпошта, рекомендований з повідомленням","Нова пошта","Особисто під підпис","Електронна пошта"]],
+["ПП: трекінг","Трекінг-номер",0,0,0,1],["ПП: дата отримання","Орендар отримав",0,"date"]];
+var ATT3=["Копія паспорта власника","Копія ідентифікаційного коду","Витяг з Державного реєстру речових прав","Довідка з реквізитами","Копія довіреності"];
+var F3L=[["ДО: дата закінчення","Діє до",0,"date"],["ДО: умови","Поточні умови оренди",0,0],["ДО: дата реєстрації","Дата державної реєстрації",0,"date",0,1]];
+var TPL3=["","Кукурудза середньорічна","Кукурудза фактична","Доларовий (АСТ)","Доларовий (інший)","Інший шаблон"];
+var STEPS3=[["ДО: підготовлено","Договір підготовлено"],["ДО: відправлено","Відправлено на підписання"],["ДО: підписав орендар","Підписано орендарем"],["ДО: підписав інвестор","Підписано інвестором"],["ДО: на реєстрації","Подано на реєстрацію"],["ДО: зареєстровано","Зареєстровано"]];
+var F3S=[["ПЗ: статус","Статус",0,"sel",["Не продається","Інвестор хоче продати","Шукаємо покупця","Покупця знайдено","Угода проведена"]],
+["ПЗ: ініціатор","Ініціатор",0,"sel",["","Інвестор просить продати","Пропозиція компанії (ребаланс)"]],
+["ПЗ: бажана ціна","Бажана ціна продавця",0],["ПЗ: покупець","Покупець — інвестор",0],
+["ПЗ: ціна","Ціна продажу",0],["ПЗ: винагорода","Винагорода компанії",0],["ПЗ: дата","Дата угоди",0,"date"],
+["ПЗ: коментар","Ціль / умови",0,"area",0,1,"напр. кошти спрямувати на купівлю нових ділянок"]];
+var LT3=["","Пропозиція продовжити / переукласти","Додаткова угода від орендаря","Повідомлення про зміну умов","Інше"];
+var LR3=["Потрібна відповідь","Відповіли","Відхилили","Без реакції"];
+
+function v3(d){return d.v3||(d.v3={})}
+function f3(d,k){return d.files3&&d.files3[k]||[]}
+function addM(dt,m){var r=new Date(dt);r.setMonth(r.getMonth()+m);return r}
+function leaseEnd(d){var v=v3(d),x=parseD(v["ДО: дата закінчення"]);if(x)return x;var m=/(\d{2}\.\d{2}\.\d{4})/.exec(d.v["Термін оренди"]||"");return m?parseD(m[1]):null}
+function ownDeadline(d){var dd=dealDate(d);return dd?addM(dd,1):null}
+function st3(d,k){var v=v3(d),t;
+if(k==="mgmt"){if(v["ДУ: дата підписання факт"])return["Підписано","g"];if(v["ДУ: дата підписання план"])return["Підписання "+ddmm(parseD(v["ДУ: дата підписання план"])),"a"];if(v["ДУ: відповідальний"])return["Готується","a"];return["Не розпочато","r"]}
+if(k==="own"){if(v["ПП: дата отримання"])return["Орендар отримав","g"];if(v["ПП: дата відправки"])return["Відправлено","a"];var dl=ownDeadline(d);if(dl){t=daysTo(dl);return t<0?["Прострочено на "+(-t)+" дн.","r"]:["Відправити до "+ddmm(dl),t<=7?"r":"a"]}return["Не відправлено","r"]}
+if(k==="lease"){var e=leaseEnd(d),ml=e?Math.round(daysTo(e)/30.4):99,ns=v["ДО: лист про неподовження"];
+var need=(v["ДО: листи"]||[]).filter(function(x){return x.r==="Потрібна відповідь"}).length;
+if(e&&ml<=6&&!ns&&!v["ДО: зареєстровано"])return["Строк спливає "+fmtD(e),"r"];
+if(need)return["Лист орендаря без відповіді","r"];
+if(v["ДО: напрям"]==="Переукладання договору"){if(v["ДО: зареєстровано"])return["Новий договір зареєстровано","g"];var s=STEPS3.filter(function(x){return v[x[0]]}).pop();return["Переукладання · "+(s?s[1].toLowerCase():"старт"),"a"]}
+return["Перемовини","m"]}
+if(k==="pay"){var P=v["Оплати"]||[];if(!P.length)return["Немає даних","m"];if(P.some(function(r){return money(r.cn)>0&&!money(r.cp)}))return["Борг по комісії","r"];if(P.some(function(r){return r.z!=="Так"}))return["Потрібна звірка","a"];return["Звірено","g"]}
+if(k==="resale"){var x=v["ПЗ: статус"]||"Не продається";return[x,x==="Не продається"?"m":(x==="Угода проведена"?"g":"a")]}}
+
+function chk3(key,lbl,on){return '<label class="ck3"><input type="checkbox" data-src="chk" data-k="'+key+'" '+(on?"checked":"")+'><span>'+lbl+'</span></label>'}
+function files3(d,k){var L=f3(d,k);return '<div class="fs">Документи вкладки<span class="ln2"></span><span class="fsn">'+plF(L.length)+'</span></div>'+
+(L.map(function(f,i){return '<div class="doc"><div class="e '+(IMGE.indexOf(f.ext)>=0?"i":"")+'">'+f.ext+'</div><div class="mid"><b>'+f.t+'</b><small>'+f.fn+' · '+f.size+' · '+f.date+'</small></div><span class="sc">'+(f.src||"Вручну")+'</span><button class="rmf" data-r3="'+k+'" data-ri="'+i+'" title="Видалити файл">X</button></div>'}).join("")||'<div class="add" style="margin-bottom:8px">Файлів ще немає</div>')+
+'<button class="up" data-up3="'+k+'">Завантажити документ</button>'}
+function sec(t,n){return '<div class="fs">'+t+'<span class="ln2"></span>'+(n?'<span class="fsn">'+n+'</span>':"")+'</div>'}
+function bar3(s,txt){return '<div class="mbar3 '+s[1]+'"><b>'+s[0]+'</b><span>'+txt+'</span></div>'}
+function g2(L,v,o){return '<div class="g2">'+L.map(function(f){return fld2("v3",f,v[f[0]],o)}).join("")+'</div>'}
+
+function pane3(d,k){var v=v3(d),h="";
+if(k==="mgmt"){
+h+=bar3(st3(d,k),"Договір нотаріальний. Один договір часто охоплює кілька ділянок інвестора — вкажіть той самий номер у кожній картці.");
+h+=sec("Документ")+g2(F3M.slice(0,4),v);
+if(v["ДУ: тип документа"]==="Додаткова угода до договору управління")h+='<div class="g2" style="margin-top:10px">'+fld2("v3",["ДУ: основний","До якого договору (номер і дата)",0],v["ДУ: основний"],{wd:1})+'</div>';
+var no=v["ДУ: номер"],same=no?b3ids().filter(function(i){return D[i]!==d&&v3(D[i])["ДУ: номер"]===no}):[];
+if(no)h+='<div class="same3">Цей договір також у ділянках: '+(same.length?same.map(function(i){return '<span class="tg g" data-id3="'+i+'">'+D[i].uid+'</span>'}).join(" "):"<span>інших ділянок з номером "+no+" немає</span>")+'</div>';
+h+=sec("Підписання")+g2(F3M.slice(4,8),v)+sec("Строк дії","базово 10 років")+g2(F3M.slice(8,10),v)+sec("Винагорода")+g2(F3M.slice(10),v);
+h+=files3(d,k)}
+if(k==="own"){var dl=ownDeadline(d);
+h+=bar3(st3(d,k),"Повідомлення орендарю — протягом місяця від дати набуття права власності"+(dl?" (до "+fmtD(dl)+")":"")+". Цей етап не залежить від договору управління.");
+h+=sec("Орендар")+'<div class="g2">'+fld2("x",["Орендар"],d.v["Орендар"],{ro:1})+F3O.slice(0,1).map(function(f){return fld2("v3",f,v[f[0]])}).join("")+'</div><div class="g2" style="margin-top:10px">'+fld2("v3",F3O[1],v[F3O[1][0]],{wd:1})+'</div>';
+h+=sec("Відправка")+g2(F3O.slice(2),v);
+h+=sec("Додатки до повідомлення",(v["ПП: додатки"]||[]).length+" з "+ATT3.length)+'<div class="cks3">'+ATT3.map(function(a){return chk3("ПП: додатки|"+a,a,(v["ПП: додатки"]||[]).indexOf(a)>=0)}).join("")+'</div>';
+h+='<button class="btn soon3" disabled>Сформувати повідомлення за шаблоном · буде пізніше</button>';
+h+=files3(d,k)}
+if(k==="lease"){var e=leaseEnd(d),mode=v["ДО: напрям"]||"Без змін — ведемо перемовини";
+h+=bar3(st3(d,k),e?"Поточний договір діє до "+fmtD(e)+" · залишилось "+Math.max(0,Math.round(daysTo(e)/30.4))+" міс.":"Вкажіть дату закінчення поточного договору.");
+h+=sec("Поточний договір")+'<div class="g2">'+fld2("x",["Орендар"],d.v["Орендар"],{ro:1})+F3L.map(function(f){return fld2("v3",f,f[0]==="ДО: дата закінчення"?(v[f[0]]||(e?toISO(e):"")):v[f[0]])}).join("")+'</div>';
+h+=sec("Напрям роботи")+'<div class="seg3">'+["Без змін — ведемо перемовини","Переукладання договору"].map(function(x){return '<button data-mode3="'+x+'" class="'+(x===mode?"on":"")+'">'+x+'</button>'}).join("")+'</div>';
+if(mode==="Переукладання договору"){
+h+='<div class="g2" style="margin-top:12px">'+fld2("v3",["ДО: шаблон","Шаблон договору",0,"sel",TPL3],v["ДО: шаблон"])+fld2("v3",["ДО: виконавець","Виконавець (готує договір)",0,"sel",MGRS3],v["ДО: виконавець"])+
+fld2("v3",["ДО: порядок","Хто підписує першим",0,"sel",["","Орендар, потім інвестор","Інвестор, потім орендар"]],v["ДО: порядок"])+fld2("v3",["ДО: хто реєструє","Хто реєструє",0,"sel",["","Орендар","Управитель (ми)"]],v["ДО: хто реєструє"])+
+fld2("v3",["ДО: нові умови","Нові умови",0],v["ДО: нові умови"])+fld2("v3",["ДО: новий строк","Строк нового договору",0,"sel",["","7 років","10 років","15 років","Інший"]],v["ДО: новий строк"])+'</div>';
+h+=sec("Етапи переукладання")+'<div class="tl3">'+STEPS3.map(function(s,i){var on=!!v[s[0]];return '<div class="tl3r '+(on?"ok":"")+'"><span class="n">'+(i+1)+'</span><b>'+s[1]+'</b>'+fld2("v3",[s[0],"дата",0,"date",0,1],v[s[0]])+'</div>'}).join("")+'</div>'}
+h+=sec("Листи від орендаря",pl((v["ДО: листи"]||[]).length,"лист","листи","листів"));
+h+=(v["ДО: листи"]||[]).map(function(x,i){return '<div class="let3"><span class="tg '+(x.r==="Потрібна відповідь"?"r":"g")+'">'+x.dt+'</span><b>'+x.t+'</b><span class="c">'+(x.c||"")+'</span><select data-src="letr" data-i="'+i+'">'+LR3.map(function(o){return '<option '+(o===x.r?"selected":"")+'>'+o+'</option>'}).join("")+'</select></div>'}).join("");
+h+='<div class="letn"><input type="date" id="l3d"><select id="l3t">'+LT3.map(function(o){return '<option value="'+o+'">'+(o||"— тип листа —")+'</option>'}).join("")+'</select><input id="l3c" placeholder="Коротко, що просять"><button class="btn" id="l3add">Додати відмітку</button></div>';
+h+=sec("Контроль строку")+'<div class="g2">'+fld2("v3",["ДО: нагадати за","Нагадати про закінчення за",0,"sel",["6 місяців","3 місяці","2 місяці"]],v["ДО: нагадати за"]||"6 місяців")+fld2("v3",["ДО: лист про неподовження","Лист про неподовження відправлено",0,"date",0,1],v["ДО: лист про неподовження"])+'</div>';
+h+='<div class="hint">За законом лист про неподовження — не пізніше ніж за 30 днів. Картка стає червоною за обраний строк до закінчення, якщо лист не відправлено. SMS-нагадування керівнику додамо разом із Telegram-сповіщеннями.</div>';
+h+=files3(d,k)}
+if(k==="pay"){var P=v["Оплати"]||[],tc=0,tp=0,tcm=0;P.forEach(function(r){tc+=money(r.na);tp+=money(r.pa);tcm+=money(r.cn)});
+h+=bar3(st3(d,k),"Умови винагороди: "+(v["ДУ: комісія"]||"не вказані у вкладці «Договір управління»")+(v["ДУ: комісія %"]?" · "+v["ДУ: комісія %"]+"%":""));
+h+=sec("Оренда й винагорода по роках",pl(P.length,"рік","роки","років"));
+h+='<div class="pt3w"><table class="pt3"><thead><tr><th>Рік</th><th>Нараховано</th><th>Виплачено орендарем</th><th>Дата виплати</th><th>Джерело</th><th>Звірено з інвестором</th><th>Винагорода</th><th>Сплачено</th><th></th></tr></thead><tbody>'+
+P.map(function(r,i){var debt=money(r.cn)>0&&!money(r.cp);return '<tr class="'+(debt?"debt":"")+'"><td><b>'+r.y+'</b></td>'+["na","pa"].map(function(c){return '<td><input data-src="pay" data-i="'+i+'" data-k="'+c+'" value="'+(r[c]||"")+'" placeholder="—"></td>'}).join("")+
+'<td><input type="date" data-src="pay" data-i="'+i+'" data-k="pd" value="'+(r.pd||"")+'"></td><td><select data-src="pay" data-i="'+i+'" data-k="s">'+["","Таблиця орендаря","Viber / месенджер","Вручну"].map(function(o){return '<option '+(o===r.s?"selected":"")+'>'+o+'</option>'}).join("")+'</select></td>'+
+'<td><select data-src="pay" data-i="'+i+'" data-k="z">'+["","Так","Ні","Розбіжність"].map(function(o){return '<option '+(o===r.z?"selected":"")+'>'+o+'</option>'}).join("")+'</select></td>'+
+'<td><input data-src="pay" data-i="'+i+'" data-k="cn" value="'+(r.cn||"")+'" placeholder="авто"></td><td><input data-src="pay" data-i="'+i+'" data-k="cp" value="'+(r.cp||"")+'" placeholder="—"></td><td>'+(debt?'<span class="tg r">борг</span>':"")+'</td></tr>'}).join("")+
+'</tbody><tfoot><tr><td>Разом</td><td>'+fmtM(tc)+'</td><td>'+fmtM(tp)+'</td><td></td><td></td><td></td><td>'+fmtM(tcm)+'</td><td></td><td></td></tr></tfoot></table></div>';
+h+='<div class="letn"><button class="btn" id="p3add">+ Додати рік</button><button class="btn soon3" disabled>Імпорт таблиці орендаря · буде пізніше</button></div>';
+h+='<div class="hint">Об\'єкт — ділянка: по кожній ділянці фіксуємо, скільки оренди прийшло за рік. Звіт по інвестору збирається з усіх його ділянок — це основа для майбутнього кабінету інвестора. Винагорода рахується автоматично від виплаченої суми за ставкою з договору управління.</div>';
+h+=files3(d,k)}
+if(k==="resale"){h+=bar3(st3(d,k),"Продаж ділянки всередині пулу: від одного інвестора іншому.");
+h+=sec("Перепродаж")+g2(F3S,v);
+h+='<div class="hint">Чернетка: умови й порядок цього розділу клієнт уточнить пізніше.</div>'+files3(d,k)}
+return h}
+
+function tab3(q){tab3c=q;var d=D[cur3];
+$("#t3tabs").innerHTML=T3.map(function(t){var s=st3(d,t[0]);return '<button data-t3="'+t[0]+'" class="'+(t[0]===q?"on":"")+'">'+t[1]+'<i class="dt3 '+s[1]+'" title="'+s[0]+'"></i></button>'}).join("");
+$("#f3body").innerHTML=pane3(d,q);var ab=$("#t3tabs .on");if(ab&&ab.scrollIntoView)ab.scrollIntoView({block:"nearest",inline:"center"})}
+function ref3(){var d=D[cur3];$$("#t3tabs button").forEach(function(b){var s=st3(d,b.dataset.t3),i=b.querySelector("i");i.className="dt3 "+s[1];i.title=s[0]});var m=$("#f3body .mbar3"),s=st3(d,tab3c);if(m){m.className="mbar3 "+s[1];m.querySelector("b").textContent=s[0]}}
+
+/* введення в картці Блоку 3 */
+function edit3(e){var el=e.target,src=el.dataset.src;if(!src||!cur3)return;var d=D[cur3],v=v3(d),val=(el.value||"").trim();
+if(src==="v3"){if(val)v[el.dataset.k]=val;else delete v[el.dataset.k];
+if(el.dataset.k==="ДУ: дата підписання факт"&&val&&!v["ДУ: початок"]){v["ДУ: початок"]=val;v["ДУ: кінець"]=toISO(addM(parseD(val),120))}
+if(el.dataset.k==="ДУ: початок"&&val&&!v["ДУ: кінець"])v["ДУ: кінець"]=toISO(addM(parseD(val),120))}
+else if(src==="chk"){var p=el.dataset.k.split("|"),L=v[p[0]]||(v[p[0]]=[]),ix=L.indexOf(p[1]);if(el.checked&&ix<0)L.push(p[1]);if(!el.checked&&ix>=0)L.splice(ix,1)}
+else if(src==="pay"){var r=v["Оплати"][+el.dataset.i];r[el.dataset.k]=val;if(el.dataset.k==="pa"&&!r.cnm){var pc=parseFloat((v["ДУ: комісія %"]||"").replace(",","."))||(v["ДУ: комісія"]==="Без комісії"?0:10);r.cn=money(val)?Math.round(money(val)*pc/100).toLocaleString("uk-UA"):""}if(el.dataset.k==="cn")r.cnm=1}
+else if(src==="letr"){v["ДО: листи"][+el.dataset.i].r=val}
+else return;
+save();b3();if(e.type==="change"&&(el.tagName==="SELECT"||el.type==="date"||el.type==="checkbox"||src==="pay")){var y=$("#f3body").scrollTop;tab3(tab3c);$("#f3body").scrollTop=y}else ref3()}
+$("#fc3").addEventListener("input",edit3);$("#fc3").addEventListener("change",edit3);
+document.body.addEventListener("click",function(e){if(!cur3)return;var d=D[cur3],v=v3(d),t;
+if(t=e.target.closest("[data-mode3]")){v["ДО: напрям"]=t.dataset.mode3;save();tab3("lease");b3();return}
+if(e.target.id==="l3add"){var dt=$("#l3d").value,tp=$("#l3t").value;if(!dt||!tp){toast("Вкажіть дату й тип листа");return}(v["ДО: листи"]=v["ДО: листи"]||[]).push({dt:fmtD(parseD(dt)),t:tp,c:$("#l3c").value.trim(),r:"Потрібна відповідь"});save();tab3("lease");b3();toast("Відмітку про лист додано — потрібна відповідь");return}
+if(e.target.id==="p3add"){var P=v["Оплати"]=v["Оплати"]||[],y=P.length?(+P[P.length-1].y+1):new Date().getFullYear();P.push({y:String(y)});save();tab3("pay");return}
+if(t=e.target.closest("[data-up3]")){upK3=t.dataset.up3;$("#upI3").click();return}
+if(t=e.target.closest("[data-r3]")){d.files3[t.dataset.r3].splice(+t.dataset.ri,1);save();tab3(tab3c);return}},true);
+var upK3=null;
+var DOC3={mgmt:"Договір управління",own:"Повідомлення про перехід права власності",lease:"Договір оренди",pay:"Звірка / відомість орендаря",resale:"Договір купівлі-продажу"};
+$("#upI3").onchange=function(e){var d=D[cur3];if(!d||!upK3||!e.target.files.length)return;d.files3=d.files3||{};var L=d.files3[upK3]=d.files3[upK3]||[];
+Array.prototype.slice.call(e.target.files).forEach(function(f){L.push({t:DOC3[upK3],ext:(f.name.split(".").pop()||"FILE").toUpperCase().slice(0,4),fn:f.name,size:(f.size/1048576).toFixed(1).replace(".",",")+" МБ",date:fmtD(new Date()),src:"Вручну"})});
+e.target.value="";save();tab3(tab3c);toast("Документ додано")};
+
+/* сповіщення по всіх ділянках банку */
+function alerts3(){var A=[];b3ids().forEach(function(i){var d=D[i];["own","lease","pay"].forEach(function(k){var s=st3(d,k);if(s[1]==="r")A.push([i,d.uid,s[0],{own:"Перехід права власності",lease:"Договір оренди",pay:"Оплата"}[k],k])})});
+$("#al3").innerHTML=A.length?A.map(function(a){return '<div class="al3" data-id3="'+a[0]+'" data-go3="'+a[4]+'"><b>'+a[1]+'</b><span>'+a[3]+'</span><em>'+a[2]+'</em></div>'}).join(""):'<div class="add">Термінових питань немає</div>';$("#al3n").textContent=A.length}
+
 function close3(){$("#fc3").classList.remove("on");document.body.style.overflow="";cur3=null}
 $("#f3cls").onclick=close3;$("#f3back").onclick=close3;
 /* попередні етапи: відкривається картка Блоку 2 в режимі перегляду */
 function openHist(id,q){openC2(id);var dr=$("#drw2");dr.classList.add("hist");
 $$("#drw2 .drb input,#drw2 .drb select,#drw2 .drb textarea").forEach(function(x){x.disabled=true});
 $("#eSt").textContent="Блок 2 · завершено";$("#eSt").className="st g";$("#eInt").style.display="none";tab2(q)}
-document.body.addEventListener("click",function(e){var r=e.target.closest("[data-id3]");if(r){openC3(r.dataset.id3);return}
+document.body.addEventListener("click",function(e){var r=e.target.closest("[data-id3]");if(r){if(r.dataset.go3)tab3c=r.dataset.go3;openC3(r.dataset.id3);return}
 var t=e.target.closest("[data-t3]");if(t){tab3(t.dataset.t3);return}
 var h=e.target.closest("[data-h3]");if(h&&cur3){openHist(cur3,h.dataset.h3);return}
 var b=e.target.closest("[data-tb3]");if(b){e.stopPropagation();toB3(b.dataset.tb3)}},true);
@@ -1055,5 +1221,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("#drw2")
 /* перехід з Блоку 2 після угоди КП */
 function toB3(id){var d=D[id];if(!d||d.b!==2||d.s2!==5)return;var r=readiness(d),ok=r.filter(function(x){return x[1]}).length;
 d.b=3;d.inb3=toISO(new Date());close2();kan2();b3();toast(d.uid+" передано в Земельний банк"+(ok<r.length?" · перевірка угоди: "+ok+"/"+r.length:""))}
+["#fi3","#fo3","#fy3"].forEach(function(x){$(x).onchange=b3});
 initFiles();kan();kan2();b3();parse();
 </script></body></html>
