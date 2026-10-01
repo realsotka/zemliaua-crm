@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZEMLIA.UA CRM</title>
+<html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZEMLIA.UA CRM</title><link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"><script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
 :root{--g9:#12301f;--g7:#22563b;--g6:#2e6b4a;--gd:#c9a227;--bg:#f4f6f2;--ln:#e2e7dd;--tx:#17211b;--mu:#6d7a70;--m2:#98a49b;--bl:#2f6f9f;--rd:#b5453b;--rb:#fdf2f1;--rd2:#f0cfcb;--am:#c98a1e;--sh:0 1px 2px rgba(18,48,31,.06),0 8px 24px rgba(18,48,31,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -297,6 +297,18 @@ textarea#raw{min-height:170px}
 .t3tabs{display:flex;padding:0 14px;border-bottom:1px solid var(--ln);overflow-x:auto}.t3tabs button{padding:13px 13px;font-size:13px;font-weight:600;color:var(--mu);border-bottom:2px solid transparent;white-space:nowrap}.t3tabs button.on{color:var(--g7);border-bottom-color:var(--g7)}
 .f3body{flex:1;padding:18px 20px;overflow:auto}
 .f3empty{border:1px dashed #c9d3c8;border-radius:12px;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:var(--mu);font-size:12.5px;padding:20px}.f3empty b{color:var(--tx);font-size:15px}
+.nav .n.pil{background:#d9c27a;color:#2a2205;font-size:9.5px}
+.mpg{display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start}.mpmw{position:relative;overflow:hidden;padding:0}#mpmap{height:calc(100vh - 210px);min-height:460px}
+.mpsw{display:inline-flex;border:1px solid var(--ln);border-radius:10px;overflow:hidden;gap:0}.mpsw button{padding:9px 14px;font-size:12.5px;font-weight:600;color:var(--mu);background:#fff}.mpsw button.on{background:var(--g7);color:#fff}
+.mpleg{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94);border:1px solid var(--ln);border-radius:10px;padding:9px 11px;font-size:11.5px;display:flex;flex-direction:column;gap:4px}.mpleg b{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em}.mpleg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}.mpleg .dsh{color:var(--m2);margin-top:2px}
+.mpdraw{display:none;position:absolute;left:12px;right:12px;bottom:34px;background:#fff;border:1px solid var(--ln);border-radius:12px;padding:10px 12px;gap:8px;align-items:center;flex-wrap:wrap;box-shadow:0 6px 24px rgba(0,0,0,.12)}.mpdraw.on{display:flex}.mpdraw span{flex:1;font-size:12.5px;font-weight:600;min-width:200px}.mpdraw b{font-size:12px;color:var(--mu)}
+.mps{display:flex;flex-direction:column;gap:16px}.mpk{padding:10px 16px;font-size:12.5px;color:var(--mu);border-bottom:1px solid var(--ln)}.mpk b{color:var(--tx)}.mpk .r{color:var(--rd);font-weight:600}
+.mpi{display:flex;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--ln);cursor:pointer}.mpi:last-child{border-bottom:none}.mpi:hover,.mpi.on{background:#f4f6f2}.mpi>i{width:10px;height:10px;border-radius:3px;flex-shrink:0;border:1px solid rgba(0,0,0,.25)}.mpi>span:not(.tg){flex:1;min-width:0}.mpi b{display:block;font-family:Menlo,monospace;font-size:12px}.mpi small{display:block;font-size:11px;color:var(--mu)}.mpi em{font-style:normal;color:var(--rd);font-weight:600}.mpi.off{cursor:default}.mpi.off .btn{padding:6px 9px;font-size:11.5px}
+.mpop b{font-family:Menlo,monospace;font-size:13px;display:block}.mpop .mn{font-size:11px;color:var(--mu)}.mpop dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:8px 0;font-size:12px}.mpop dt{color:var(--mu)}.mpop dd{margin:0;font-weight:600}.mpb{display:flex;gap:6px;flex-wrap:wrap}.mpb .btn{padding:7px 10px;font-size:12px;text-decoration:none}
+.maplibregl-popup-content{border-radius:12px;padding:12px 14px;font-family:inherit}
+.f3map.has{padding:0;overflow:hidden;border-style:solid;position:relative;justify-content:flex-start}#mini3{width:100%;height:100%;min-height:150px;position:absolute;inset:0}.f3map .mcap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:6px 9px;background:rgba(18,32,24,.72);color:#fff;font-size:11px}.f3map .mcap button{color:#f2c94c;font-weight:700;font-size:11px}.f3map .btn{margin-top:6px;padding:6px 10px;font-size:11.5px}
+@media(max-width:1100px){.mpg{grid-template-columns:1fr}#mpmap{height:58vh;min-height:360px}}
+@media(max-width:700px){.mpleg{font-size:10.5px;padding:7px 9px;top:auto;bottom:30px}.mpleg .dsh{display:none}}
 .lnk3{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:18px;padding:10px 12px;border:1px dashed #c9d3c8;border-radius:10px;font-size:12.5px;color:var(--mu)}.lnk3 b{color:var(--tx)}
 .sub3{font-size:11.5px;font-weight:700;color:var(--mu);margin:12px 0 7px}.doc .mid select{border:none;background:transparent;font-size:13px;font-weight:700;padding:0;max-width:100%}
 .flt3{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid var(--ln);flex-wrap:wrap;align-items:center}.flt3 select{border:1px solid var(--ln);border-radius:8px;padding:7px 9px;font-size:12.5px;background:#fff}.flt3 .x{margin-left:auto;font-size:11px;color:var(--m2)}
@@ -328,7 +340,8 @@ textarea#raw{min-height:170px}
 <div><div class="nl">Блоки</div><nav class="nav">
 <a href="#" class="on" data-go="b1">Купівля землі <span class="n" id="nb1">6</span></a>
 <a href="#" data-go="b2">Продаж інвестору <span class="n" id="nb2">0</span></a>
-<a href="#" data-go="b3">Земельний банк <span class="n" id="nb3">0</span></a></nav></div>
+<a href="#" data-go="b3">Земельний банк <span class="n" id="nb3">0</span></a>
+<a href="#" data-go="mp">Карта земельного банку <span class="n pil">пілот</span></a></nav></div>
 <div><div class="nl">Робота</div><nav class="nav">
 <a href="#" data-go="tgp">Telegram-інбокс <span class="n">3</span></a>
 <a href="#" data-go="an">Аналітика</a>
@@ -451,6 +464,15 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="hint">34% банку вже приведено до ринкових ставок.</div></div></div>
 </div></div></section>
 
+<section class="wrap" id="mp">
+<div class="hr"><div><div class="h1">Карта земельного банку</div><div class="sub">Пілот на 3 реальних ділянках з бази · форма контуру з кадастрового плану витягу ДЗК</div></div>
+<div class="ac mpsw"><button data-mbase="sat" class="on">Супутник</button><button data-mbase="osm">Схема</button></div></div>
+<div class="mpg"><div class="mpmw pn"><div id="mpmap"></div>
+<div class="mpdraw" id="mpdraw"><span></span><b></b><button class="btn" id="mpundo">Крок назад</button><button class="btn" id="mpcancel">Скасувати</button><button class="btn bp" id="mpok">Зберегти контур</button></div>
+<div class="mpleg"><b>Стан договору оренди</b><span><i style="background:#3fbf6f"></i>новий зареєстровано</span><span><i style="background:#f2b632"></i>переукладання</span><span><i style="background:#ff5a4a"></i>потребує уваги</span><span><i style="background:#e9eee9;border:1px solid #9aa59d"></i>перемовини</span><span class="dsh">пунктир — наближений контур</span></div></div>
+<div class="mps"><div class="pn"><div class="pnh"><b>Ділянки на карті</b></div><div class="flt3"><select id="mfi"></select><select id="mfo"></select></div><div class="mpk" id="mpk"></div><div id="mpon"></div></div>
+<div class="pn"><div class="pnh"><b>Немає на карті</b></div><div id="mpoff"></div><div class="hint" style="margin:10px 14px 14px">Контур можна намалювати по супутнику або завантажити файл GeoJSON / KML (WGS84) від землевпорядника. Імпортований файл позначається як точний контур.</div></div></div></div>
+<input type="file" id="mpfile" accept=".geojson,.json,.kml" style="display:none"></section>
 <section class="wrap" id="an">
 <div class="hr"><div><div class="h1">Аналітика</div><div class="sub">Крос-блокові звіти на матеріалізованих в ю</div></div></div>
 <div class="kpis">
@@ -522,7 +544,7 @@ IMG_2841.HEIC (11,2 МБ)</div>
 <div class="f3grid">
 <div class="f3hd pn"><div class="f3main"><div class="f3k"><label>Ідентифікатор ділянки</label><b class="mn" id="f3uid"></b></div><div class="f3k"><label>Кадастровий номер</label><b class="mn" id="f3kad"></b></div><div class="f3k"><label>Інвестор</label><b id="f3inv"></b></div><div class="f3k"><label>Орендар</label><b id="f3ore"></b></div>
 <div class="f3facts" id="f3facts"></div></div>
-<div class="f3map"><svg viewBox="0 0 120 80" width="120" height="80" aria-hidden="true"><path d="M8 62 L30 14 L92 8 L112 52 L60 72 Z" fill="none" stroke="#9fb3a3" stroke-width="1.2" stroke-dasharray="4 3"/></svg><b>Карта ділянки</b><span>з'явиться тут на наступному етапі</span></div></div>
+<div class="f3map" id="f3map"><svg viewBox="0 0 120 80" width="120" height="80" aria-hidden="true"><path d="M8 62 L30 14 L92 8 L112 52 L60 72 Z" fill="none" stroke="#9fb3a3" stroke-width="1.2" stroke-dasharray="4 3"/></svg><b>Карта ділянки</b><span>з'явиться тут на наступному етапі</span></div></div>
 <div class="f3side pn"><div class="pnh"><b>Попередні етапи</b><span class="x">лише перегляд</span></div><div class="f3hist" id="f3hist"></div>
 <div class="f3path" id="f3path"></div></div>
 <div class="f3work pn"><div class="t3tabs" id="t3tabs"></div><div class="f3body" id="f3body"></div></div><input type="file" id="upI3" multiple style="display:none">
@@ -558,12 +580,26 @@ var SN={1:"Аналітика ділянок",2:"Контрактування",3
 var D=load(),cur="1",just=[];
 function load(){var b=null;try{var j=localStorage.getItem("zemlia2");if(j)b=JSON.parse(j)}catch(e){}
 if(!b){try{b=JSON.parse(localStorage.getItem("zemlia1")||"null")}catch(e){}b=b||JSON.parse(JSON.stringify(SEED));var s2=b2Seed();for(var k in s2)if(!b[k])b[k]=s2[k]}
-b3Seed(b);b3Seed2(b);Object.keys(b).forEach(function(i){var d=b[i],r=parseD(d.v["Дата реєстрації наміру"]);if(r&&!d.v["Дата закінчення наміру"])d.v["Дата закінчення наміру"]=fmtD(intentPlus(r))});return b}
+b3Seed(b);b3Seed2(b);b3Seed3(b);Object.keys(b).forEach(function(i){var d=b[i],r=parseD(d.v["Дата реєстрації наміру"]);if(r&&!d.v["Дата закінчення наміру"])d.v["Дата закінчення наміру"]=fmtD(intentPlus(r))});return b}
 function parseD(s){s=String(s||"");var m=/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/.exec(s);if(m)return new Date(+m[3],+m[2]-1,+m[1]);m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s);return m?new Date(+m[1],+m[2]-1,+m[3]):null}
 function fmtD(dt){return ("0"+dt.getDate()).slice(-2)+"."+("0"+(dt.getMonth()+1)).slice(-2)+"."+dt.getFullYear()}
 /* дата закінчення наміру = дата реєстрації + 2 місяці + 1 день */
 function intentPlus(dt){var y=dt.getFullYear(),m=dt.getMonth()+2,last=new Date(y,m+1,0).getDate(),r=new Date(y,m,Math.min(dt.getDate(),last));r.setDate(r.getDate()+1);return r}
 function save(){try{localStorage.setItem("zemlia2",JSON.stringify(D))}catch(e){}}
+/* ---------- Пілот карти: 3 реальні ділянки з бази клієнта ---------- */
+function PILOTD(){var GEO0301=[[29.544892, 50.3665474], [29.5446605, 50.3656954], [29.5448564, 50.3656159], [29.5447317, 50.365207], [29.5502881, 50.3647298], [29.5506265, 50.3660476], [29.544892, 50.3665474]],GEO0042=[[29.6183748, 50.3130606], [29.617859, 50.312788], [29.6149248, 50.3108574], [29.6164364, 50.3099034], [29.6169165, 50.3101646], [29.619584, 50.3119363], [29.6183748, 50.3130606]],GEO0049=[[29.5394185, 50.249274], [29.5382176, 50.248811], [29.538094, 50.248811], [29.5380233, 50.2487432], [29.538924, 50.2436609], [29.5403722, 50.2438303], [29.5394185, 50.249274]];
+var PILOT=[
+["36","Ж00708БРУ","1820982500:03:000:0301","Містечківська","6,0607 га","72 104 ₴","ip1","2025-01-29","300 000 ₴",GEO0301,{"ДУ: тип документа":"Договір управління","ДУ: шаблон":"Стандартний","ДУ: дата підписання факт":"2025-11-27","ДУ: початок":"2025-11-27","ДУ: кінець":"2035-11-27","ДУ: комісія":"Стандартна, 10% від оренди","ДУ: комісія %":"10","ДО: умови":"2023 — 3 250, 2024 — 3 500, 2025 — 3 700 ₴/га (при $ до 60)","Оплати":[{y:"2025",na:"26 500",pa:"25 850",s:"Таблиця орендаря",z:"",cn:"2 585",cp:""}]},"НВ-9954702612024 від 25.11.2024"],
+["37","без ID · №45","1820982600:04:000:0042","Лазарівська","5,1316 га","63 757 ₴","ip2","2022-11-21","280 000 ₴",GEO0042,{"ДО: умови":"2023 — 3 250, 2024 — 3 500, 2025 — 3 700 ₴/га (при $ до 60)","Оплати":[{y:"2024",na:"17 961",pa:"17 961",s:"Таблиця орендаря",z:"Так",cn:"1 796",cp:"1 796"},{y:"2025",na:"25 900",pa:"25 900",s:"Таблиця орендаря",z:"",cn:"2 590",cp:""}]},"НВ-1800567732022 від 19.09.2022"],
+["38","Ж00221БРУ","1820982700:02:000:0049","Морозівська","6,1869 га","—","ip3","2023-09-26","340 000 ₴",GEO0049,{"ДО: умови":"2023 — 3 250, 2024 — 3 500, 2025 — 3 700 ₴/га (при $ до 60)","Оплати":[{y:"2024",na:"21 654",pa:"21 654",s:"Таблиця орендаря",z:"Так",cn:"2 165",cp:"2 165"},{y:"2025",na:"25 900",pa:"25 900",s:"Таблиця орендаря",z:"",cn:"2 590",cp:""}]},"витяг ДЗК (дата в назві файлу відсутня)"]];
+var PILOTINV=[{id:"ip1",v:{n:"Інвестор П-1 (пілот)"},files:[]},{id:"ip2",v:{n:"Інвестор П-2 (пілот)"},files:[]},{id:"ip3",v:{n:"Інвестор П-3 (пілот)"},files:[]}];
+return {P:PILOT,I:PILOTINV}}
+function b3Seed3(b){try{if(localStorage.getItem("zemlia3s3"))return}catch(e){}var t=b2Seed()["26"];
+PILOTD().P.forEach(function(x){if(b[x[0]])return;var d=JSON.parse(JSON.stringify(t));d.b=3;d.pilot=1;d.uid=x[1];d.kad=x[2];d.pib="Попередній власник (пілот)";d.owners=[];d.c2=[];d.files=[];d.docs=0;
+d.v={"Кадастровий номер":x[2],"Область":"Житомирська","Район":"Брусилівський","Сільрада":x[3],"Площа ділянки":x[4],"Нормативна грошова оцінка":x[5],"Орендар":"ТОВ Агрофірма Брусилів","Термін оренди":"до 31.12.2029","ПІБ":"Попередній власник (пілот)","Ідентифікатор ділянки":x[1]};
+d.inv=x[6];d.v2={"Узгоджена дата угоди":x[7],"Сума продажу":x[8]};d.inb3=x[7];d.v3=x[10];
+d.geo={c:x[9],src:"Форма — кадастровий план із витягу ДЗК "+x[11]+"; прив'язка — орієнтовна точка",q:"Наближений",dt:"01.10.2026"};b[x[0]]=d});
+try{localStorage.setItem("zemlia3s3","1")}catch(e){}}
 function b3Seed(b){try{if(localStorage.getItem("zemlia3s"))return}catch(e){}var t=b2Seed()["26"],P=[
 ["31","ЖТ05541ПОП","1824780600:02:000:0196","Попільнянський","Білківська","3,25 га","ТОВ Фастів агро","до 31.12.2043","i1",-120,"312 000 ₴"],
 ["32","ЖТ05542ПОП","1824755400:07:000:0051","Попільнянський","Корнинська","3,38 га","ТОВ Фастів агро","до 31.12.2044","i1",-118,"330 000 ₴"],
@@ -773,11 +809,12 @@ $("#upI").onchange=function(e){if(e.target.files.length)addFiles(cur,e.target.fi
 $$(".nav a").forEach(function(a){a.onclick=function(e){e.preventDefault();var id=a.dataset.go;if(!id)return;
 $$(".nav a").forEach(function(x){x.classList.remove("on")});a.classList.add("on");
 $$(".wrap").forEach(function(p){p.classList.toggle("on",p.id===id)});
-var T={b1:"Блок 1 · Купівля землі",b2:"Блок 2 · Продаж інвестору",b3:"Блок 3 · Земельний банк",tgp:"Telegram-інбокс",an:"Аналітика",stp:"Налаштування"};
+if(id==="mp")setTimeout(initMap,30);
+var T={mp:"Карта земельного банку",b1:"Блок 1 · Купівля землі",b2:"Блок 2 · Продаж інвестору",b3:"Блок 3 · Земельний банк",tgp:"Telegram-інбокс",an:"Аналітика",stp:"Налаштування"};
 $("#crumb").textContent=T[id];sideOpen(false);window.scrollTo({top:0})}});
 $("#role").onchange=function(e){var r=e.target.value;document.body.classList.toggle("hide-cost",r!=="admin");
 $("#rlbl").textContent={admin:"Адміністратор",buyer:"Закупівельник",sales:"Менеджер з продажу",asset:"Керуючий активами"}[r]};
-$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");localStorage.removeItem("zemlia2");localStorage.removeItem("zemlia2_inv");localStorage.removeItem("zemlia3s");localStorage.removeItem("zemlia3s2");D=load();INV=loadInv();initFiles();kan();kan2();b3();toast("Демо-дані відновлено")}};
+$("#reset").onclick=function(){if(confirm("Скинути всі зміни й повернути демо-дані?")){localStorage.removeItem("zemlia1");localStorage.removeItem("zemlia2");localStorage.removeItem("zemlia2_inv");localStorage.removeItem("zemlia3s");localStorage.removeItem("zemlia3s2");localStorage.removeItem("zemlia3s3");D=load();INV=loadInv();initFiles();kan();kan2();b3();toast("Демо-дані відновлено")}};
 var KAD=/\b(\d{10}):(\d{2}):(\d{3}):(\d{4})\b/,known=["1812345678:03:015:0042","1825182000:05:011:0088"];
 function fv(t,k){var m=t.match(new RegExp("^\\s*"+k+"\\s*:\\s*(.+)$","im"));return m?m[1].trim():null}
 function parse(){var t=$("#raw").value,o=[],hs=/#(нова_ділянка|дооцінка|відмова)/.exec(t);
@@ -824,7 +861,7 @@ var INVSEED=[
 {id:"i2",v:{n:"Ковальчук Олена Василівна",ph:"+380 50 118 64 03",em:"olena.kovalchuk@ukr.net",bd:"1976-11-02",p:"",c:"2791203348",reg:"",inc:"",poa:"",sp:"",mc:"",bank:""},files:[]},
 {id:"i3",v:{n:"ТОВ «Агроінвест Полісся»",ph:"+380 44 590 70 12",em:"office@agroinvest-p.com.ua",bd:"",p:"—",c:"45123098",reg:"м. Житомир, вул. Київська, 77",inc:"Статутний капітал, фінзвіт 2025",poa:"Довіреність на директора № 14/25",sp:"—",mc:"",bank:"UA60 3204 7800 0002 6000 5501 2233 4, АТ «Ощадбанк»"},files:[{t:"Банківські реквізити",ext:"PDF",fn:"rekvizyty.pdf",size:"0,2 МБ",date:"18.09.2026",src:"Вручну"}]}];
 function loadInv(){try{var j=localStorage.getItem("zemlia2_inv");if(j)return JSON.parse(j)}catch(e){}return JSON.parse(JSON.stringify(INVSEED))}
-var INV=loadInv();
+var INV=loadInv();PILOTD().I.forEach(function(x){if(!invById(x.id))INV.push(x)});
 function saveInv(){try{localStorage.setItem("zemlia2_inv",JSON.stringify(INV))}catch(e){}}
 function invById(id){for(var i=0;i<INV.length;i++)if(INV[i].id===id)return INV[i];return null}
 
@@ -1073,7 +1110,7 @@ var nd=(d.files||[]).length+(iv?(iv.files||[]).length:0);
 $("#f3hist").innerHTML=H3.map(function(h,i){return '<button data-h3="'+h[0]+'"><i>'+(i+1)+'</i><span><b>'+h[1]+""+'</b><small>'+h[2]+'</small></span></button>'}).join("");
 var ie=intentEnd(d);
 $("#f3path").innerHTML='<div class="pp"><b>Блок 1 · Купівля</b><span>'+(d.v["Дата реєстрації наміру"]||"—")+'</span></div><div class="pp"><b>Блок 2 · Продаж інвестору</b><span>'+(dd?fmtD(dd):"—")+'</span></div><div class="pp cu"><b>Блок 3 · Земельний банк</b><span>'+(d.inb3?fmtD(parseD(d.inb3)):"—")+'</span></div>';
-tab3(tab3c);$("#fc3").classList.add("on");document.body.style.overflow="hidden"}
+tab3(tab3c);$("#fc3").classList.add("on");document.body.style.overflow="hidden";setTimeout(function(){mini3(d)},60)}
 /* ---------- Блок 3 · поля вкладок (за записом розмови з клієнтом) ---------- */
 var MGRS3=["","Діана","Ольга Романенко","Катерина Шевченко","Сергій Крамаренко"];
 var F3M=[["ДУ: відповідальний","Відповідальний за договір",0,"sel",MGRS3],
@@ -1223,7 +1260,72 @@ e.target.value="";save();tab3("docs");var sx=$("#ds3_"+upK3);if(sx)sx.scrollInto
 /* сповіщення по всіх ділянках банку */
 function alerts3(){var A=[];b3ids().forEach(function(i){var d=D[i];["own","lease","pay"].forEach(function(k){var s=st3(d,k);if(s[1]==="r")A.push([i,d.uid,s[0],{own:"Перехід права власності",lease:"Договір оренди",pay:"Оплата"}[k],k])})});
 $("#al3").innerHTML=A.length?A.map(function(a){return '<div class="al3" data-id3="'+a[0]+'" data-go3="'+a[4]+'"><b>'+a[1]+'</b><span>'+a[3]+'</span><em>'+a[2]+'</em></div>'}).join(""):'<div class="add">Термінових питань немає</div>';$("#al3n").textContent=A.length}
+/* ---------- Карта земельного банку (пілот) ---------- */
+var MAPS={sat:{n:"Супутник",t:["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],a:"Esri World Imagery"},osm:{n:"Схема",t:["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],a:"© OpenStreetMap"}};
+var MCOL={g:"#3fbf6f",a:"#f2b632",r:"#ff5a4a",m:"#e9eee9"};
+function mStyle(k){var s=MAPS[k];return {version:8,sources:{bg:{type:"raster",tiles:s.t,tileSize:256,attribution:s.a,maxzoom:19}},layers:[{id:"bg",type:"raster",source:"bg"}]}}
+function ringArea(c){var R=6378137,a=0;for(var i=0;i<c.length-1;i++){var p1=c[i],p2=c[i+1];a+=(p2[0]-p1[0])*Math.PI/180*(2+Math.sin(p1[1]*Math.PI/180)+Math.sin(p2[1]*Math.PI/180))}return Math.abs(a*R*R/2)/1e4}
+function bboxOf(c){var b=[180,90,-180,-90];c.forEach(function(p){b[0]=Math.min(b[0],p[0]);b[1]=Math.min(b[1],p[1]);b[2]=Math.max(b[2],p[0]);b[3]=Math.max(b[3],p[1])});return b}
+function haNum(s){return parseFloat(String(s||"").replace(/[^\d,\.]/g,"").replace(",","."))||0}
+function geoFC(ids){return {type:"FeatureCollection",features:ids.filter(function(i){return D[i].geo}).map(function(i){var d=D[i],s=st3(d,"lease");return {type:"Feature",properties:{id:i,col:MCOL[s[1]]||MCOL.m,q:d.geo.q==="Точний"?0:1},geometry:{type:"Polygon",coordinates:[d.geo.c]}}})}}
+var MAP=null,mBase="sat",mSel=null,drawPts=null,drawFor=null;
+function mpIds(){var fi=$("#mfi").value,fo=$("#mfo").value;return b3ids().filter(function(i){var d=D[i],iv=invById(d.inv);return (!fi||(iv&&iv.v.n===fi))&&(!fo||d.v["Орендар"]===fo)})}
+function mpList(){var ids=mpIds(),on=ids.filter(function(i){return D[i].geo}),off=ids.filter(function(i){return !D[i].geo}),ha=0;on.forEach(function(i){ha+=haNum(D[i].v["Площа ділянки"])});
+$("#mpk").innerHTML='<b>'+on.length+'</b> на карті · <b>'+ha.toFixed(2).replace(".",",")+' га</b> · <span class="'+(off.length?"r":"")+'">'+off.length+' без контуру</span>';
+$("#mpon").innerHTML=on.map(function(i){var d=D[i],s=st3(d,"lease"),ca=ringArea(d.geo.c),da=haNum(d.v["Площа ділянки"]),df=da?Math.abs(ca-da)/da*100:0;return '<div class="mpi '+(mSel===i?"on":"")+'" data-mp="'+i+'"><i style="background:'+(MCOL[s[1]]||MCOL.m)+'"></i><span><b>'+d.uid+'</b><small>'+d.kad+'</small><small>'+d.v["Сільрада"]+' · '+d.v["Площа ділянки"]+' · контур '+ca.toFixed(2).replace(".",",")+' га'+(df>2?' <em>розбіжність '+df.toFixed(1)+'%</em>':'')+'</small></span><span class="tg '+(d.geo.q==="Точний"?"g":"a")+'">'+d.geo.q.toLowerCase()+'</span></div>'}).join("")||'<div class="add">Немає ділянок з контуром</div>';
+$("#mpoff").innerHTML=off.map(function(i){var d=D[i];return '<div class="mpi off"><span><b>'+d.uid+'</b><small>'+d.kad+'</small></span><button class="btn" data-draw="'+i+'">Намалювати</button><button class="btn" data-imp="'+i+'">Файл</button></div>'}).join("")||'<div class="add">Усі ділянки мають контур</div>';
+if(MAP&&MAP.getSource("p")){var fc=geoFC(ids);MAP.getSource("p").setData(fc);MAP.getSource("pc").setData(ptFC(fc))}}
+function mpFilters(){var ids=b3ids(),uq=function(f){var o={};ids.forEach(function(i){var x=f(D[i]);if(x)o[x]=1});return Object.keys(o).sort()};
+[["#mfi","Усі інвестори",uq(function(d){var iv=invById(d.inv);return iv&&iv.v.n})],["#mfo","Усі орендарі",uq(function(d){return d.v["Орендар"]})]].forEach(function(x){var c=$(x[0]).value;$(x[0]).innerHTML='<option value="">'+x[1]+'</option>'+x[2].map(function(o){return '<option '+(o===c?"selected":"")+'>'+o+'</option>'}).join("")})}
+function ptFC(fc){return {type:"FeatureCollection",features:fc.features.map(function(f){var b=bboxOf(f.geometry.coordinates[0]);return {type:"Feature",properties:f.properties,geometry:{type:"Point",coordinates:[(b[0]+b[2])/2,(b[1]+b[3])/2]}}})}}
+function addPLayers(){var fc=geoFC(mpIds());MAP.addSource("p",{type:"geojson",data:fc});MAP.addSource("pc",{type:"geojson",data:ptFC(fc)});
+MAP.addLayer({id:"pf",type:"fill",source:"p",paint:{"fill-color":["get","col"],"fill-opacity":0.28}});
+MAP.addLayer({id:"plc",type:"line",source:"p",paint:{"line-color":"#14261b","line-width":4,"line-opacity":0.55}});
+MAP.addLayer({id:"pl",type:"line",source:"p",paint:{"line-color":["get","col"],"line-width":2.4,"line-dasharray":[3,2]}});
+MAP.addLayer({id:"pcc",type:"circle",source:"pc",maxzoom:13.5,paint:{"circle-radius":8,"circle-color":["get","col"],"circle-stroke-color":"#14261b","circle-stroke-width":2}});
+MAP.on("click","pcc",function(e){if(drawPts)return;flyTo(e.features[0].properties.id)});
+MAP.addSource("dr",{type:"geojson",data:{type:"FeatureCollection",features:[]}});
+MAP.addLayer({id:"drl",type:"line",source:"dr",paint:{"line-color":"#fff","line-width":2}});MAP.addLayer({id:"drp",type:"circle",source:"dr",paint:{"circle-radius":4,"circle-color":"#fff","circle-stroke-color":"#1f5a3a","circle-stroke-width":2}})}
+function initMap(){mpFilters();mpList();if(MAP){setTimeout(function(){MAP.resize()},50);return}
+if(!window.maplibregl){$("#mpmap").innerHTML='<div class="add" style="margin:20px">Бібліотека карти не завантажилась. Перевірте інтернет.</div>';return}
+MAP=new maplibregl.Map({container:"mpmap",style:mStyle(mBase),center:[29.58,50.30],zoom:10.5,attributionControl:{compact:true}});
+MAP.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");MAP.addControl(new maplibregl.ScaleControl({unit:"metric"}),"bottom-left");
+MAP.on("load",function(){addPLayers();fitAll()});
+MAP.on("click","pf",function(e){if(drawPts)return;showPop(e.features[0].properties.id,e.lngLat)});
+MAP.on("mouseenter","pf",function(){MAP.getCanvas().style.cursor="pointer"});MAP.on("mouseleave","pf",function(){MAP.getCanvas().style.cursor=""});
+MAP.on("click",function(e){if(!drawPts)return;drawPts.push([+e.lngLat.lng.toFixed(7),+e.lngLat.lat.toFixed(7)]);drawUpd()})}
+function fitAll(){var c=[];mpIds().forEach(function(i){if(D[i].geo)c=c.concat(D[i].geo.c)});if(c.length){var b=bboxOf(c);MAP.fitBounds([[b[0],b[1]],[b[2],b[3]]],{padding:60,maxZoom:15,duration:0})}}
+var mPop=null;
+function showPop(i,ll){var d=D[i],iv=invById(d.inv),e=leaseEnd(d),s=st3(d,"lease"),ca=ringArea(d.geo.c);mSel=i;mpList();
+if(mPop)mPop.remove();mPop=new maplibregl.Popup({maxWidth:"300px"}).setLngLat(ll).setHTML('<div class="mpop"><b>'+d.uid+'</b><span class="mn">'+d.kad+'</span><dl><dt>Інвестор</dt><dd>'+(iv?iv.v.n:"—")+'</dd><dt>Орендар</dt><dd>'+(d.v["Орендар"]||"—")+'</dd><dt>Площа</dt><dd>'+d.v["Площа ділянки"]+' (контур '+ca.toFixed(2).replace(".",",")+')</dd><dt>Оренда до</dt><dd>'+(e?fmtD(e):"—")+'</dd><dt>Стан оренди</dt><dd>'+s[0]+'</dd><dt>Контур</dt><dd>'+d.geo.q+'</dd></dl><div class="mpb"><button class="btn bp" data-id3="'+i+'">Відкрити картку</button><a class="btn" target="_blank" rel="noopener" href="https://e.land.gov.ua/back/cadaster/?cad_num='+d.kad+'">Витяг ДЗК ↗</a></div></div>').addTo(MAP)}
+function flyTo(i){var d=D[i];if(!d.geo||!MAP)return;var b=bboxOf(d.geo.c);MAP.fitBounds([[b[0],b[1]],[b[2],b[3]]],{padding:80,maxZoom:16});var c=[(b[0]+b[2])/2,(b[1]+b[3])/2];showPop(i,c)}
+function drawUpd(){var f=[];if(drawPts.length)f.push({type:"Feature",geometry:{type:"LineString",coordinates:drawPts.concat(drawPts.length>2?[drawPts[0]]:[])}});drawPts.forEach(function(p){f.push({type:"Feature",geometry:{type:"Point",coordinates:p}})});MAP.getSource("dr").setData({type:"FeatureCollection",features:f});$("#mpdraw b").textContent=drawPts.length+" точок"}
+function drawStart(i){if(mPop)mPop.remove();drawFor=i;drawPts=[];$("#mpdraw").classList.add("on");$("#mpdraw span").textContent="Контур для "+D[i].uid+": клікайте по кутах ділянки на карті";MAP.getCanvas().style.cursor="crosshair";drawUpd()}
+function drawEnd(ok){if(ok){if(drawPts.length<3){toast("Потрібно щонайменше 3 точки");return}var c=drawPts.concat([drawPts[0]]);D[drawFor].geo={c:c,src:"Намальовано вручну на карті",q:"Наближений",dt:fmtD(new Date())};save();toast("Контур збережено · "+ringArea(c).toFixed(2).replace(".",",")+" га")}
+drawPts=null;$("#mpdraw").classList.remove("on");MAP.getCanvas().style.cursor="";MAP.getSource("dr").setData({type:"FeatureCollection",features:[]});mpList();if(ok)flyTo(drawFor)}
+function parseGeo(txt,name){var c=null;try{if(/\.kml$/i.test(name)||/<kml/i.test(txt)){var x=new DOMParser().parseFromString(txt,"text/xml"),e=x.getElementsByTagName("coordinates")[0];c=e.textContent.trim().split(/\s+/).map(function(s){var p=s.split(",");return [+p[0],+p[1]]})}
+else{var j=JSON.parse(txt),g=j.type==="FeatureCollection"?j.features[0].geometry:(j.type==="Feature"?j.geometry:j);c=g.type==="MultiPolygon"?g.coordinates[0][0]:g.coordinates[0]}}catch(err){return null}
+if(!c||c.length<3||Math.abs(c[0][0])>180||Math.abs(c[0][1])>90)return null;if(c[0][0]!==c[c.length-1][0]||c[0][1]!==c[c.length-1][1])c.push(c[0]);return c}
+var impFor=null;
+document.body.addEventListener("click",function(e){var t;
+if(t=e.target.closest("[data-mp]")){flyTo(t.dataset.mp);return}
+if(t=e.target.closest("[data-draw]")){drawStart(t.dataset.draw);return}
+if(t=e.target.closest("[data-imp]")){impFor=t.dataset.imp;$("#mpfile").click();return}
+if(t=e.target.closest("[data-mbase]")){mBase=t.dataset.mbase;$$("[data-mbase]").forEach(function(b){b.classList.toggle("on",b===t)});MAP.setStyle(mStyle(mBase));MAP.once("styledata",function(){addPLayers()});return}
+if(e.target.id==="mpok"){drawEnd(true);return}if(e.target.id==="mpcancel"){drawEnd(false);return}
+if(e.target.id==="mpundo"){if(drawPts&&drawPts.length){drawPts.pop();drawUpd()}return}
+if(t=e.target.closest("[data-tomap]")){var id=t.dataset.tomap;close3();goView("mp");setTimeout(function(){if(D[id].geo)flyTo(id)},350);return}});
+$("#mpfile").onchange=function(e){var f=e.target.files[0];if(!f||!impFor)return;var r=new FileReader();r.onload=function(){var c=parseGeo(r.result,f.name);if(!c){toast("Не вдалося прочитати контур. Потрібен GeoJSON або KML у WGS84");return}D[impFor].geo={c:c,src:"Файл "+f.name,q:"Точний",dt:fmtD(new Date())};save();mpList();flyTo(impFor);toast("Контур імпортовано · "+ringArea(c).toFixed(2).replace(".",",")+" га")};r.readAsText(f);e.target.value=""};
+["#mfi","#mfo"].forEach(function(x){$(x).onchange=function(){mpList();if(MAP)fitAll()}});
+/* мінікарта в картці Блоку 3 */
+var MINI=null;
+function mini3(d){var box=$("#f3map");if(MINI){MINI.remove();MINI=null}
+if(!d.geo||!window.maplibregl){box.innerHTML='<svg viewBox="0 0 120 80" width="120" height="80" aria-hidden="true"><path d="M8 62 L30 14 L92 8 L112 52 L60 72 Z" fill="none" stroke="#9fb3a3" stroke-width="1.2" stroke-dasharray="4 3"/></svg><b>Контуру ще немає</b><button class="btn" data-tomap="'+cur3+'">Додати на карті</button>';box.classList.remove("has");return}
+box.classList.add("has");box.innerHTML='<div id="mini3"></div><div class="mcap"><span>'+d.geo.q+' контур · '+ringArea(d.geo.c).toFixed(2).replace(".",",")+' га</span><button data-tomap="'+cur3+'">На карті ›</button></div>';
+var b=bboxOf(d.geo.c);MINI=new maplibregl.Map({container:"mini3",style:mStyle("sat"),bounds:[[b[0],b[1]],[b[2],b[3]]],fitBoundsOptions:{padding:18},interactive:false,attributionControl:false});
+MINI.on("load",function(){MINI.addSource("p",{type:"geojson",data:{type:"Feature",geometry:{type:"Polygon",coordinates:[d.geo.c]}}});MINI.addLayer({id:"f",type:"fill",source:"p",paint:{"fill-color":"#f2c94c","fill-opacity":0.25}});MINI.addLayer({id:"l",type:"line",source:"p",paint:{"line-color":"#f2c94c","line-width":2}})})}
 
+function goView(id){var a=document.querySelector('.nav a[data-go="'+id+'"]');if(a)a.click()}
 function close3(){$("#fc3").classList.remove("on");document.body.style.overflow="";cur3=null}
 $("#f3cls").onclick=close3;$("#f3back").onclick=close3;
 /* попередні етапи: відкривається картка Блоку 2 в режимі перегляду */
