@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZEMLIA.UA CRM</title><link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"><script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><script>(function(){var t=localStorage.getItem("zm_theme")||"pole";document.documentElement.setAttribute("data-theme",t)})()</script>
 <style>
 :root{--g9:#12301f;--g7:#22563b;--g6:#2e6b4a;--gd:#c9a227;--bg:#f4f6f2;--ln:#e2e7dd;--tx:#17211b;--mu:#6d7a70;--m2:#98a49b;--bl:#2f6f9f;--rd:#b5453b;--rb:#fdf2f1;--rd2:#f0cfcb;--am:#c98a1e;--sh:0 1px 2px rgba(18,48,31,.06),0 8px 24px rgba(18,48,31,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -334,6 +335,113 @@ textarea#raw{min-height:170px}
 @media(max-width:1100px){.kan.k5{grid-template-columns:1fr;overflow:visible}}
 @media(max-width:900px){.cnew{flex-direction:column;align-items:stretch}.g3{grid-template-columns:1fr}.invsel{flex-direction:column}#drw2 .stp div{font-size:9.5px}}
 .f3hold{display:block;font-size:11.5px;font-weight:500;color:var(--mu);margin-top:2px}
+/* ===== Тема «Поле» (скло і світло) — вмикається html[data-theme=pole] ===== */
+html[data-theme=pole]{--bg:transparent;--ln:rgba(120,110,70,.16);--tx:#1F2A1E;--mu:#55634F;--m2:#8C9686;--g7:#2F6B2B;--g6:#4E9A45;--gd:#E0A44A;--am:#E0A44A;--bl:#3F7FB3;--sh:0 4px 18px rgba(60,50,20,.08);--glass:rgba(255,255,255,.55);--glass2:rgba(255,255,255,.82);--gb:1px solid rgba(255,255,255,.75)}
+html[data-theme=pole] body{font-family:Manrope,Inter,-apple-system,'Segoe UI',Roboto,sans-serif;min-height:100vh;background:radial-gradient(900px 460px at 88% 0%,rgba(255,226,160,.9),transparent 65%),radial-gradient(760px 520px at 8% 0%,rgba(178,214,236,.85),transparent 70%),linear-gradient(180deg,#CFE3EE 0%,#EAE4CF 42%,#DCC683 74%,#C2A956 100%);background-attachment:fixed}
+html[data-theme=pole] body:before{content:'';position:fixed;left:0;right:0;bottom:0;height:34vh;pointer-events:none;z-index:0;background:repeating-linear-gradient(100deg,rgba(150,120,40,.14) 0 3px,transparent 3px 22px);-webkit-mask:linear-gradient(transparent,#000);mask:linear-gradient(transparent,#000)}
+html[data-theme=pole] .app{position:relative;z-index:1;gap:16px;padding:16px}
+/* скляні поверхні */
+html[data-theme=pole] .side,html[data-theme=pole] .top,html[data-theme=pole] .kpi,html[data-theme=pole] .col,html[data-theme=pole] .pn,html[data-theme=pole] .lot,html[data-theme=pole] .soon{background:var(--glass);-webkit-backdrop-filter:blur(24px) saturate(1.3);backdrop-filter:blur(24px) saturate(1.3);border:var(--gb);box-shadow:0 10px 36px rgba(80,70,30,.10),inset 0 1px 0 rgba(255,255,255,.8)}
+/* сайдбар */
+html[data-theme=pole] .side{color:var(--tx);border-radius:26px;top:16px;height:calc(100vh - 32px)}
+html[data-theme=pole] .lm{background:linear-gradient(135deg,#7FB069,#3E7B3A);color:#fff;border-radius:13px;width:38px;height:38px;box-shadow:0 6px 16px rgba(62,123,58,.35)}
+html[data-theme=pole] .lt b{color:var(--tx)}html[data-theme=pole] .lt span,html[data-theme=pole] .sf span{color:var(--mu)}
+html[data-theme=pole] .nl{color:var(--mu);letter-spacing:.04em;text-transform:none;font-size:11px;font-weight:700}
+html[data-theme=pole] .nav a{color:#36452F;border-radius:14px}
+html[data-theme=pole] .nav a:hover{background:rgba(255,255,255,.55);color:var(--tx)}
+html[data-theme=pole] .nav a.on{background:#fff;color:var(--tx);font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+html[data-theme=pole] .nav a .n{background:rgba(255,255,255,.7);color:var(--mu)}
+html[data-theme=pole] .nav a.on .n{background:#E3F0D9;color:var(--g7)}
+html[data-theme=pole] .nav .n.pil{background:#FFF0CC;color:#8A6412}
+html[data-theme=pole] .sf{border-top:0;background:rgba(255,255,255,.6);border-radius:18px;padding:10px}
+html[data-theme=pole] .sf b{color:var(--tx)}
+html[data-theme=pole] .avt{background:linear-gradient(135deg,#F6D486,#E0A44A);color:#2a2205}
+/* верхня панель */
+html[data-theme=pole] .top{border-radius:20px;margin:0 0 4px;top:16px;padding:11px 16px}
+html[data-theme=pole] .sr input,html[data-theme=pole] .rp select{background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9);border-radius:14px}
+html[data-theme=pole] .wrap{padding:18px 4px 60px}
+html[data-theme=pole] .h1{font-size:30px;font-weight:800;letter-spacing:-.03em}
+/* кнопки, чипи */
+html[data-theme=pole] .btn{border-radius:14px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9)}
+html[data-theme=pole] .btn:hover{background:#fff;border-color:#fff}
+html[data-theme=pole] .bp{background:#1F2A1E;color:#fff;border-color:#1F2A1E;box-shadow:0 8px 20px rgba(31,42,30,.25)}
+html[data-theme=pole] .bp:hover{background:#2c3a2a;border-color:#2c3a2a}
+html[data-theme=pole] .bg2{background:#E0A44A;color:#2a2205;border-color:#E0A44A}
+html[data-theme=pole] .chip{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9);border-radius:20px}
+html[data-theme=pole] .chip.on{background:#fff;color:var(--g7);border-color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+html[data-theme=pole] .chip.r{background:#FBE0D6;border-color:#FBE0D6;color:#B5452F}
+/* KPI */
+html[data-theme=pole] .kpi{border-radius:22px;padding:16px 18px}
+html[data-theme=pole] .kpi .l{text-transform:none;letter-spacing:0;font-weight:700;font-size:12px}
+html[data-theme=pole] .kpi .v{font-size:30px;font-weight:800;letter-spacing:-.02em}
+html[data-theme=pole] .kpi.acc{border-left:var(--gb)}
+html[data-theme=pole] .kpi .d.w{color:#C0562E}
+/* канбан */
+html[data-theme=pole] .col{border-radius:26px;padding:14px}
+html[data-theme=pole] .col.over{background:rgba(227,240,217,.75);border:2px dashed var(--g6)}
+html[data-theme=pole] .ch{border-bottom:0}
+html[data-theme=pole] .ch .nm{width:10px;height:10px;border-radius:50%;font-size:0}
+html[data-theme=pole] .ch b{font-size:15px}
+html[data-theme=pole] .ch .sm{padding-left:18px}
+html[data-theme=pole] .ch .ct{background:#fff;border-radius:10px;color:var(--tx);font-weight:700}
+html[data-theme=pole] .pc{background:var(--glass2);border:1px solid rgba(255,255,255,.9);border-radius:18px;box-shadow:0 4px 18px rgba(60,50,20,.07)}
+html[data-theme=pole] .pc:hover{border-color:#fff;box-shadow:0 10px 28px rgba(60,50,20,.12)}
+html[data-theme=pole] .pc.ms{border-left:1px solid rgba(255,255,255,.9);box-shadow:inset 3px 0 0 #F2B8A6,0 4px 18px rgba(60,50,20,.07)}
+html[data-theme=pole] .pc .kd{font-family:'JetBrains Mono',Menlo,monospace;font-size:12.5px}
+html[data-theme=pole] .pc.hot{background:#FFF8E6;border-color:#F1D28F;box-shadow:0 0 0 3px rgba(224,164,74,.2)}
+html[data-theme=pole] .tg{border-radius:20px;padding:4px 10px;background:#F1EFE6;color:#4E5C49;font-weight:600}
+html[data-theme=pole] .tg.g{background:#E3F0D9;color:#356B2C}html[data-theme=pole] .tg.a{background:#FFF0CC;color:#8A6412}
+html[data-theme=pole] .tg.r{background:#FBE0D6;color:#B5452F}html[data-theme=pole] .tg.b{background:#E3EEF7;color:#2F5D86}
+html[data-theme=pole] .pf{border-top:0;padding-top:4px}
+html[data-theme=pole] .pf .pr{font-size:16px;font-weight:800;white-space:nowrap}html[data-theme=pole] .pf .pr.no{font-size:12px;font-weight:600;color:var(--m2)}
+html[data-theme=pole] .pf .w2{background:#1F2A1E;width:28px;height:28px}
+html[data-theme=pole] .fl .br{height:6px;border-radius:6px;background:#ECE8DA}
+html[data-theme=pole] .fl .br i{border-radius:6px;background:linear-gradient(90deg,#E0A44A,#7FB069)}
+html[data-theme=pole] .fl .br i.w{background:linear-gradient(90deg,#E58F6F,#E0A44A)}
+html[data-theme=pole] .pf .mv,html[data-theme=pole] .pf .mv.tb{background:#E3F0D9;border-radius:12px}
+html[data-theme=pole] .add,html[data-theme=pole] .addo,html[data-theme=pole] .up{border-color:rgba(120,110,70,.3);border-radius:14px;background:rgba(255,255,255,.35)}
+html[data-theme=pole] .tgi{background:rgba(255,255,255,.75);border-radius:18px}
+html[data-theme=pole] .hint{background:rgba(255,255,255,.5);border-left-color:var(--g6);border-radius:0 14px 14px 0}
+/* панелі, таблиці */
+html[data-theme=pole] .pn{border-radius:22px}
+html[data-theme=pole] .pnh{border-bottom-color:var(--ln)}
+html[data-theme=pole] th{background:rgba(255,255,255,.45)}
+html[data-theme=pole] tbody tr:hover,html[data-theme=pole] .t3 tbody tr:hover td{background:rgba(255,255,255,.5)}
+html[data-theme=pole] .ti,html[data-theme=pole] .tt{background:rgba(255,255,255,.7);border-radius:14px}
+html[data-theme=pole] .lot{border-radius:22px}
+html[data-theme=pole] .lot .ph{background:linear-gradient(160deg,#CFE3EE 0%,#E9D9A0 55%,#B8A049 100%)}
+/* картка ділянки та повноекранний режим */
+html[data-theme=pole] .scr{background:rgba(60,70,40,.28);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+html[data-theme=pole] .dr{background:rgba(252,250,244,.96);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-radius:26px 0 0 26px;box-shadow:-20px 0 60px rgba(60,50,20,.18)}
+html[data-theme=pole] .stp,html[data-theme=pole] .f3top{background:transparent}
+html[data-theme=pole] .fld{background:rgba(255,255,255,.7);border-radius:12px}
+html[data-theme=pole] .fld:focus-within{background:#fff}
+html[data-theme=pole] .fld.emp{background:#FDF0EB;border-color:#F3CFC2}
+html[data-theme=pole] .own,html[data-theme=pole] .oit,html[data-theme=pole] .doc{border-radius:14px;background:rgba(255,255,255,.7)}
+html[data-theme=pole] .ownh{background:rgba(255,255,255,.5)}
+html[data-theme=pole] .fc3{background:linear-gradient(180deg,#DCE9EF 0%,#EFE9D6 55%,#E2CF94 100%)}
+html[data-theme=pole] .f3top{border-bottom:1px solid var(--ln)}
+html[data-theme=pole] .tst{background:#1F2A1E;border-radius:14px}
+html[data-theme=pole] .mpsw,html[data-theme=pole] .seg3{border-radius:14px}
+html[data-theme=pole] .mpsw button.on,html[data-theme=pole] .seg3 button.on{background:#1F2A1E}
+/* перемикач теми */
+.thsw{display:flex;gap:4px;padding:4px;border-radius:12px;background:rgba(255,255,255,.08)}
+.thsw button{flex:1;padding:7px 6px;border-radius:9px;font-size:11.5px;font-weight:600;color:#c6d5cb}
+.thsw button.on{background:var(--g7);color:#fff}
+html[data-theme=pole] .thsw{background:rgba(255,255,255,.55)}
+html[data-theme=pole] .thsw button{color:var(--mu)}
+html[data-theme=pole] .thsw button.on{background:#fff;color:var(--tx);box-shadow:0 3px 10px rgba(0,0,0,.06)}
+.side .sf{margin-top:0}.thsw{margin-top:auto}
+@media(max-width:900px){
+html[data-theme=pole] .app{padding:10px;gap:10px}
+html[data-theme=pole] .side{top:10px;left:10px;height:calc(100vh - 20px);background:rgba(250,248,240,.94);transform:translateX(calc(-100% - 24px))}html[data-theme=pole] .side.on{transform:none}
+html[data-theme=pole] .top{top:10px;border-radius:16px}
+html[data-theme=pole] .wrap{padding:14px 0 72px}
+html[data-theme=pole] .h1{font-size:22px}
+html[data-theme=pole] .kpi .v{font-size:22px}
+html[data-theme=pole] .kpi{border-radius:18px}
+html[data-theme=pole] .dr{border-radius:0}
+}
 </style></head><body>
 <div class="app">
 <aside class="side">
@@ -347,6 +455,7 @@ textarea#raw{min-height:170px}
 <a href="#" data-go="tgp">Telegram-інбокс <span class="n">3</span></a>
 <a href="#" data-go="an">Аналітика</a>
 <a href="#" data-go="stp">Налаштування</a></nav></div>
+<div class="thsw" id="thsw"><button data-th="classic">Класичний</button><button data-th="pole">Поле</button></div>
 <div class="sf"><div class="avt">СС</div><div><b>Стас С.</b><span id="rlbl">Адміністратор</span></div></div>
 </aside>
 <div>
@@ -1360,4 +1469,5 @@ function toB3(id){var d=D[id];if(!d||d.b!==2||d.s2!==5)return;var r=readiness(d)
 d.b=3;d.inb3=toISO(new Date());close2();kan2();b3();toast(d.uid+" передано в Земельний банк"+(ok<r.length?" · перевірка угоди: "+ok+"/"+r.length:""))}
 ["#fi3","#fo3","#fy3"].forEach(function(x){$(x).onchange=b3});
 initFiles();kan();kan2();b3();parse();
-</script></body></html>
+</script><script>(function(){var sw=document.getElementById('thsw');function mark(){var t=document.documentElement.getAttribute('data-theme');sw.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.th===t)})}sw.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;document.documentElement.setAttribute('data-theme',b.dataset.th);localStorage.setItem('zm_theme',b.dataset.th);mark()});mark()})()</script>
+</body></html>
